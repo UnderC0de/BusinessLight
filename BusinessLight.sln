@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Data.EntityFr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Data.InMemory.Tests", "tests\BusinessLight.Data.InMemory.Tests\BusinessLight.Data.InMemory.Tests.csproj", "{72CF6B05-E04C-4CCE-9602-79D5F4C620E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FA6C6444-F754-4622-A362-0F7150B507E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Domain", "samples\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj", "{38DF5C07-2575-492B-9CD1-65C5537A677F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{72CF6B05-E04C-4CCE-9602-79D5F4C620E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72CF6B05-E04C-4CCE-9602-79D5F4C620E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72CF6B05-E04C-4CCE-9602-79D5F4C620E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +82,6 @@ Global
 		{4766556B-819F-4C27-96C5-F1B15B5BC63E} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{93F99E8C-1667-4A76-A6E7-1241CF73294E} = {F4927267-341B-43A0-BC42-7F8124FEC7C8}
 		{72CF6B05-E04C-4CCE-9602-79D5F4C620E9} = {F4927267-341B-43A0-BC42-7F8124FEC7C8}
+		{38DF5C07-2575-492B-9CD1-65C5537A677F} = {FA6C6444-F754-4622-A362-0F7150B507E9}
 	EndGlobalSection
 EndGlobal

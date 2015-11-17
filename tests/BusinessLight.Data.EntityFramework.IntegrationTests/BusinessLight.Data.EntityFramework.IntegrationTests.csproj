@@ -63,7 +63,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestDbContext.cs" />
+    <Compile Include="TestDbContextSeedInitializer.cs" />
+    <Compile Include="UowRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
