@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("BusinessLight.Paging")]
-[assembly: AssemblyDescription("A library that help to paging results")]
+[assembly: AssemblyDescription("A library that helps to paging results")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Martino Bordin")]
 [assembly: AssemblyProduct("BusinessLight.Paging")]
