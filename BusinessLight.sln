@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Paging", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Paging.Tests", "tests\BusinessLight.Paging.Tests\BusinessLight.Paging.Tests.csproj", "{E6F30586-71C3-4152-A70D-46C02815E19F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Service", "src\BusinessLight.Service\BusinessLight.Service.csproj", "{2444672B-5845-4BA1-9E36-9D97322AC854}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{E6F30586-71C3-4152-A70D-46C02815E19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6F30586-71C3-4152-A70D-46C02815E19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6F30586-71C3-4152-A70D-46C02815E19F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2444672B-5845-4BA1-9E36-9D97322AC854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2444672B-5845-4BA1-9E36-9D97322AC854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2444672B-5845-4BA1-9E36-9D97322AC854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2444672B-5845-4BA1-9E36-9D97322AC854}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +110,6 @@ Global
 		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383} = {FA6C6444-F754-4622-A362-0F7150B507E9}
 		{F4750A96-07FB-4FEE-82A7-8F21E3836899} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{E6F30586-71C3-4152-A70D-46C02815E19F} = {F4927267-341B-43A0-BC42-7F8124FEC7C8}
+		{2444672B-5845-4BA1-9E36-9D97322AC854} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 	EndGlobalSection
 EndGlobal
