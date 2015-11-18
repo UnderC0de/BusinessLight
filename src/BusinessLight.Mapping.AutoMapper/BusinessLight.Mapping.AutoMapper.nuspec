@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$title$</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/martinobordin/BusinessLight/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/martinobordin/BusinessLight</projectUrl>
+        <iconUrl>http://www.martinobordin.it/businesslight.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <releaseNotes />
+        <copyright>Martino Bordin - Copyright 2015</copyright>
+        <tags>DDD Domain Model Mapping AutoMapper</tags>
+      <dependencies>
+        <dependency id="BusinessLight.Mapping" />
+        <dependency id="AutoMapper" />
+      </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\BusinessLight.Mapping.AutoMapper.dll" target="lib\net45\BusinessLight.Mapping.AutoMapper.dll" />
+        <file src="bin\Release\BusinessLight.Mapping.AutoMapper.pdb" target="lib\net45\BusinessLight.Mapping.AutoMapper.pdb" />
+    </files>
+</package>

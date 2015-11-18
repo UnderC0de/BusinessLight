@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BusinessLight.Data.InMemory")]
-[assembly: AssemblyDescription("A library that implements an InMemory repository and unity of work")]
+[assembly: AssemblyDescription("A library that implements an InMemory repository and unit of work")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Martino Bordin")]
 [assembly: AssemblyProduct("BusinessLight.Data.InMemory")]
