@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DAB9946-E63B-48EC-BF8A-F84968764C7A}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FA6C6444-F754-4622-A362-0F7150B507E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Domain", "samples\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj", "{38DF5C07-2575-492B-9CD1-65C5537A677F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Data", "samples\BusinessLight.PhoneBook.Data\BusinessLight.PhoneBook.Data.csproj", "{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38DF5C07-2575-492B-9CD1-65C5537A677F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,5 +89,6 @@ Global
 		{93F99E8C-1667-4A76-A6E7-1241CF73294E} = {F4927267-341B-43A0-BC42-7F8124FEC7C8}
 		{72CF6B05-E04C-4CCE-9602-79D5F4C620E9} = {F4927267-341B-43A0-BC42-7F8124FEC7C8}
 		{38DF5C07-2575-492B-9CD1-65C5537A677F} = {FA6C6444-F754-4622-A362-0F7150B507E9}
+		{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383} = {FA6C6444-F754-4622-A362-0F7150B507E9}
 	EndGlobalSection
 EndGlobal
