@@ -48,6 +48,10 @@
       <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
       <Name>BusinessLight.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
+      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
+      <Name>BusinessLight.Mapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="BusinessLight.Service.nuspec" />

@@ -11,6 +11,10 @@ namespace BusinessLight.PhoneBook.Data
         {
         }
 
-        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Contact> Contacts
+        {
+            get; 
+            set;
+        }
     }
 }

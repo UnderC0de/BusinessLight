@@ -17,6 +17,7 @@
       <dependencies>
         <dependency id="BusinessLight.Domain" />
         <dependency id="BusinessLight.Data" />
+        <dependency id="BusinessLight.Mapping" />
       </dependencies>
     </metadata>
     <files>
