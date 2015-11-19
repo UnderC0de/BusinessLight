@@ -1,8 +1,10 @@
-﻿using BusinessLight.Data;
+﻿using System;
+using BusinessLight.Data;
 using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper.Extensions;
 using BusinessLight.Paging;
 using BusinessLight.Paging.Extensions;
+using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
 using BusinessLight.PhoneBook.Service.Filters;
@@ -21,7 +23,9 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-               var filter = GetMapper().Map<SearchContactFilter, SearchContactDto>(searchContactDto);
+               var filter = GetMapper()
+                   .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
+
                return uow.Repository
                     .ApplyFilter(filter)
                     .ApplyProjection<ContactDto>()
@@ -29,6 +33,13 @@ namespace BusinessLight.PhoneBook.Service
             }
         }
 
-        public ContactDetailDto
+        public ContactDetailDto GetDetail(Guid id)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                return GetMapper()
+                    .Map<ContactDetailDto, Contact>(uow.Repository.GetById<Contact>(id));
+            }
+        }
     }
 }
