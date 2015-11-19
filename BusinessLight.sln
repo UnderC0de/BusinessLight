@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Mapping", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Mapping.AutoMapper", "src\BusinessLight.Mapping.AutoMapper\BusinessLight.Mapping.AutoMapper.csproj", "{E8C7BAB2-0E62-4133-9B62-10741C4EA683}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Validation", "src\BusinessLight.Validation\BusinessLight.Validation.csproj", "{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Validation.Fluent", "src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj", "{F3A3CEFA-EEAE-4777-AF10-09C17578A162}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,14 @@ Global
 		{E8C7BAB2-0E62-4133-9B62-10741C4EA683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8C7BAB2-0E62-4133-9B62-10741C4EA683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8C7BAB2-0E62-4133-9B62-10741C4EA683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,5 +158,7 @@ Global
 		{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{46A70A21-CEE2-45ED-B9E8-FDA4463CE391} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{E8C7BAB2-0E62-4133-9B62-10741C4EA683} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
+		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
+		{F3A3CEFA-EEAE-4777-AF10-09C17578A162} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 	EndGlobalSection
 EndGlobal

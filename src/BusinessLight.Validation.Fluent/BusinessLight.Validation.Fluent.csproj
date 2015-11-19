@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2444672B-5845-4BA1-9E36-9D97322AC854}</ProjectGuid>
+    <ProjectGuid>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLight.Service</RootNamespace>
-    <AssemblyName>BusinessLight.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>BusinessLight.Validation.Fluent</RootNamespace>
+    <AssemblyName>BusinessLight.Validation.Fluent</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,25 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLight.Data\BusinessLight.Data.csproj">
-      <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
-      <Name>BusinessLight.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
-      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
-      <Name>BusinessLight.Mapping</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BusinessLight.Service.nuspec" />
+    <None Include="BusinessLight.Validation.Fluent.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,13 +9,14 @@ using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
 using BusinessLight.PhoneBook.Service.Filters;
 using BusinessLight.Service;
+using BusinessLight.Validation;
 
 namespace BusinessLight.PhoneBook.Service
 {
     public class ContactService : ServiceBase
     {
-        public ContactService(IUnitOfWork unitOfWork, IMapper mapper)
-            : base(unitOfWork, mapper)
+        public ContactService(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
+            : base(unitOfWork, mapper, validationFactory)
         {
         }
 
