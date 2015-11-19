@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapperMapping.cs" />
     <Compile Include="Extensions\IQueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
