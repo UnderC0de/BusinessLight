@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Schema;
 using BusinessLight.Data;
 using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper.Extensions;
@@ -27,7 +28,16 @@ namespace BusinessLight.PhoneBook.Service
                var filter = GetMapper()
                    .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
 
-               return uow.Repository
+                var validator = GetValidationFactory().GetValidatorFor<SearchContactFilter>();
+
+                var validationResult = validator.Validate(filter);
+
+                if (validationResult.HasErrors)
+                {
+                    throw new ValidationException(validationResult);
+                }
+
+                return uow.Repository
                     .ApplyFilter(filter)
                     .ApplyProjection<ContactDto>()
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);

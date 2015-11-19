@@ -43,7 +43,7 @@ namespace BusinessLight.Service
             return _mapper;
         }
 
-        protected IValidationFactory ValidationFactory()
+        protected IValidationFactory GetValidationFactory()
         {
             return _validationFactory;
         }

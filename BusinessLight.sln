@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DAB9946-E63B-48EC-BF8A-F84968764C7A}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Validation", "src\BusinessLight.Validation\BusinessLight.Validation.csproj", "{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Validation.Fluent", "src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj", "{F3A3CEFA-EEAE-4777-AF10-09C17578A162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Api", "samples\BusinessLight.PhoneBook.Api\BusinessLight.PhoneBook.Api.csproj", "{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A3CEFA-EEAE-4777-AF10-09C17578A162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,5 +166,6 @@ Global
 		{E8C7BAB2-0E62-4133-9B62-10741C4EA683} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{F3A3CEFA-EEAE-4777-AF10-09C17578A162} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
+		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B} = {FA6C6444-F754-4622-A362-0F7150B507E9}
 	EndGlobalSection
 EndGlobal

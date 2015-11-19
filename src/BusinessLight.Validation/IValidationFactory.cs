@@ -2,6 +2,6 @@
 {
     public interface IValidationFactory
     {
-        IValidator GetValidatorFor<T>();
+        IValidator<T> GetValidatorFor<T>();
     }
 }

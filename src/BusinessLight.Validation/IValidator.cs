@@ -1,6 +1,7 @@
 ﻿namespace BusinessLight.Validation
 {
-    public interface IValidator
+    public interface IValidator<in T>
     {
+        ValidationResult Validate(T filter);
     }
 }
