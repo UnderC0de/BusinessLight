@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PhoneBookDbContext.cs" />
-    <Compile Include="PhoneBookDbContextSeedInitializer.cs" />
+    <Compile Include="PhoneBookDbContextSeedInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
