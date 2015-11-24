@@ -2,6 +2,6 @@
 {
     public interface IValidator<in T>
     {
-        ValidationResult Validate(T filter);
+        ValidationResult GetValidationResult(T instance);
     }
 }

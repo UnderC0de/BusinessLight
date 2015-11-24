@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IssueLevel.cs" />
     <Compile Include="IValidationFactory.cs" />
     <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticValidationFactory.cs" />
     <Compile Include="ValidationException.cs" />
     <Compile Include="ValidationIssue.cs" />
     <Compile Include="ValidationResult.cs" />

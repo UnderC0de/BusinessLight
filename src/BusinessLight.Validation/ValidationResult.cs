@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,7 @@ namespace BusinessLight.Validation
         {
             if (validationIssues == null)
             {
-                throw new ArgumentNullException(nameof(validationIssues));
+                throw new ArgumentNullException("validationIssues");
             }
 
             ValidationIssues = validationIssues;
@@ -27,37 +26,15 @@ namespace BusinessLight.Validation
         {
             get
             {
-                return Errors.Any();
+                return ValidationIssues.Any();
             }
         }
 
-        public bool HasWarnings
-        {
-            get
-            {
-                return Warnings.Any();
-            }
-        }
 
         public IEnumerable<ValidationIssue> ValidationIssues
         {
-            get;
-        }
-
-        public IEnumerable<ValidationIssue> Errors
-        {
-            get
-            {
-                return ValidationIssues.Where(x => x.Level == IssueLevel.Error);
-            }
-        }
-
-        public IEnumerable<ValidationIssue> Warnings
-        {
-            get
-            {
-                return ValidationIssues.Where(x => x.Level == IssueLevel.Warning);
-            }
+            get; 
+            private set;
         }
 
         public override string ToString()
@@ -66,22 +43,11 @@ namespace BusinessLight.Validation
                 var stringBuilder = new StringBuilder();
                 if (HasErrors)
                 {
-                    stringBuilder.AppendLine("Validation errors:");
-                    foreach (var error in Errors)
+                    foreach (var error in ValidationIssues)
                     {
                         stringBuilder.AppendLine(error.Message);
                     }
                 }
-
-                if (HasWarnings)
-                {
-                    stringBuilder.AppendLine("Validation warnings:");
-                    foreach (var error in Warnings)
-                    {
-                        stringBuilder.AppendLine(error.Message);
-                    }
-                }
-
                 return stringBuilder.ToString();
             }
         }

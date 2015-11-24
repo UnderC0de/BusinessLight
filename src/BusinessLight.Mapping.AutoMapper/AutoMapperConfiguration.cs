@@ -8,19 +8,21 @@ namespace BusinessLight.Mapping.AutoMapper
 {
     public class AutoMapperConfiguration
     {
-        public static void Configure()
+        public static void Configure(Assembly assembly)
         {
-            Mapper.Initialize(x => GetConfiguration(Mapper.Configuration));
+            Mapper.Initialize(x => GetConfiguration(Mapper.Configuration, new[] { assembly }));
+        }
+
+        public static void Configure(IEnumerable<Assembly> assemblies)
+        {
+            Mapper.Initialize(x => GetConfiguration(Mapper.Configuration, assemblies));
         }
 
         private static void GetConfiguration(IConfiguration configuration)
         {
-            GetConfiguration(configuration, Assembly.GetExecutingAssembly());
-        }
-
-        private static void GetConfiguration(IConfiguration configuration, Assembly assembly)
-        {
-            GetConfiguration(configuration, new[] { assembly });
+            var referencedAssemblies = Assembly.GetEntryAssembly().GetReferencedAssemblies();
+            var assemblies = referencedAssemblies.Select(Assembly.Load).ToList();
+            GetConfiguration(configuration, assemblies);
         }
 
         private static void GetConfiguration(IConfiguration configuration, IEnumerable<Assembly> assemblies)

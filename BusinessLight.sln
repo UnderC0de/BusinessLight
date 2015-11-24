@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DAB9946-E63B-48EC-BF8A-F84968764C7A}"
 EndProject
@@ -50,6 +50,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Validation.Fluent", "src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj", "{F3A3CEFA-EEAE-4777-AF10-09C17578A162}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Api", "samples\BusinessLight.PhoneBook.Api\BusinessLight.PhoneBook.Api.csproj", "{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Console", "samples\BusinessLight.PhoneBook.Console\BusinessLight.PhoneBook.Console.csproj", "{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Mapping", "samples\BusinessLight.PhoneBook.Mapping\BusinessLight.PhoneBook.Mapping.csproj", "{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.PhoneBook.Validation", "samples\BusinessLight.PhoneBook.Validation\BusinessLight.PhoneBook.Validation.csproj", "{CE8F42E2-251A-4326-8D81-3526357F85DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +147,18 @@ Global
 		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8F42E2-251A-4326-8D81-3526357F85DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8F42E2-251A-4326-8D81-3526357F85DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8F42E2-251A-4326-8D81-3526357F85DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8F42E2-251A-4326-8D81-3526357F85DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,5 +185,8 @@ Global
 		{AB7B61F3-657A-46C7-9DD0-3821C655F2FC} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{F3A3CEFA-EEAE-4777-AF10-09C17578A162} = {0DAB9946-E63B-48EC-BF8A-F84968764C7A}
 		{C56D5447-EBDF-4E58-93B9-E2E3872BC97B} = {FA6C6444-F754-4622-A362-0F7150B507E9}
+		{3BF07DB3-4CBF-4BF5-BFEA-981A1EBECAF7} = {FA6C6444-F754-4622-A362-0F7150B507E9}
+		{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF} = {FA6C6444-F754-4622-A362-0F7150B507E9}
+		{CE8F42E2-251A-4326-8D81-3526357F85DB} = {FA6C6444-F754-4622-A362-0F7150B507E9}
 	EndGlobalSection
 EndGlobal

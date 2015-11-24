@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</ProjectGuid>
+    <ProjectGuid>{7D2B2F93-E03D-44E5-BD4E-A184F117A1AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLight.Validation.Fluent</RootNamespace>
-    <AssemblyName>BusinessLight.Validation.Fluent</AssemblyName>
+    <RootNamespace>BusinessLight.PhoneBook.Mapping</RootNamespace>
+    <AssemblyName>BusinessLight.PhoneBook.Mapping</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,18 +44,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FluentValidator.cs" />
+    <Compile Include="ContactToContactDtProfile.cs" />
+    <Compile Include="SearchContactDtoToSearchContactFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BusinessLight.Validation.Fluent.nuspec" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
+      <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
+      <Name>BusinessLight.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
+      <Project>{4b4bfc5d-6ab7-4ff9-933d-035fb544281c}</Project>
+      <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
+      <Name>BusinessLight.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
+      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
+      <Name>BusinessLight.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
+      <Project>{38df5c07-2575-492b-9cd1-65c5537a677f}</Project>
+      <Name>BusinessLight.PhoneBook.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Dto\BusinessLight.PhoneBook.Dto.csproj">
+      <Project>{CBB6AFE4-6D30-48E5-AAC0-3EA7BDD451FD}</Project>
+      <Name>BusinessLight.PhoneBook.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Service\BusinessLight.PhoneBook.Service.csproj">
+      <Project>{D6D4CB26-746B-4D5F-A7BB-A389762A3F14}</Project>
+      <Name>BusinessLight.PhoneBook.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{ab7b61f3-657a-46c7-9dd0-3821c655f2fc}</Project>
-      <Name>BusinessLight.Validation</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

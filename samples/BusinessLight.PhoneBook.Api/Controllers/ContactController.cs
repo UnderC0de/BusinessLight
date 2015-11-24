@@ -16,7 +16,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             if (contactService == null)
             {
-                throw new ArgumentNullException(nameof(contactService));
+                throw new ArgumentNullException("contactService");
             }
 
             _contactService = contactService;

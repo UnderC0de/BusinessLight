@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Schema;
 using BusinessLight.Data;
 using BusinessLight.Mapping;
@@ -30,7 +31,7 @@ namespace BusinessLight.PhoneBook.Service
 
                 var validator = GetValidationFactory().GetValidatorFor<SearchContactFilter>();
 
-                var validationResult = validator.Validate(filter);
+                var validationResult = validator.GetValidationResult(filter);
 
                 if (validationResult.HasErrors)
                 {
@@ -40,6 +41,7 @@ namespace BusinessLight.PhoneBook.Service
                 return uow.Repository
                     .ApplyFilter(filter)
                     .ApplyProjection<ContactDto>()
+                    .OrderBy(x => x.BirthDate)
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);
             }
         }

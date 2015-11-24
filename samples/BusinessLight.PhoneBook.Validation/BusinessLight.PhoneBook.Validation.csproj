@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</ProjectGuid>
+    <ProjectGuid>{CE8F42E2-251A-4326-8D81-3526357F85DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLight.Validation.Fluent</RootNamespace>
-    <AssemblyName>BusinessLight.Validation.Fluent</AssemblyName>
+    <RootNamespace>BusinessLight.PhoneBook.Validation</RootNamespace>
+    <AssemblyName>BusinessLight.PhoneBook.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -44,18 +44,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FluentValidator.cs" />
+    <Compile Include="SearchContactFilterValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BusinessLight.Validation.Fluent.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{ab7b61f3-657a-46c7-9dd0-3821c655f2fc}</Project>
+    <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
+      <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
+      <Name>BusinessLight.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
+      <Project>{4b4bfc5d-6ab7-4ff9-933d-035fb544281c}</Project>
+      <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj">
+      <Project>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</Project>
+      <Name>BusinessLight.Validation.Fluent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
+      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
       <Name>BusinessLight.Validation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Service\BusinessLight.PhoneBook.Service.csproj">
+      <Project>{D6D4CB26-746B-4D5F-A7BB-A389762A3F14}</Project>
+      <Name>BusinessLight.PhoneBook.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
