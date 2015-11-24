@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactToContactDtProfile.cs" />
-    <Compile Include="SearchContactDtoToSearchContactFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchContactDtoToSearchContactFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
