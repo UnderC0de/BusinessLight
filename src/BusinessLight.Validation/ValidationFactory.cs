@@ -9,7 +9,12 @@ namespace BusinessLight.Validation
 
         public IValidator<T> GetValidatorFor<T>()
         {
-            return (IValidator<T>) _validators[typeof (T)];
+            var key = typeof (T);
+            if (_validators.ContainsKey(key))
+            {
+                return (IValidator<T>)_validators[key];
+            }
+            return null;
         }
 
         public void Register<T>(IValidator<T> validator)

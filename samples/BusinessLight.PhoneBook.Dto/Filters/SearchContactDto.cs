@@ -1,12 +1,21 @@
-﻿using BusinessLight.Dto;
+﻿using System.ComponentModel.DataAnnotations;
+using BusinessLight.Dto;
 
 namespace BusinessLight.PhoneBook.Dto.Filters
 {
     public class SearchContactDto : PagedFilter
     {
-        public string Name
+        [Display(Name="First name")]
+        public string FirstName
         {
-            get; 
+            get;
+            set;
+        }
+
+        [Display(Name = "Last name")]
+        public string LastName
+        {
+            get;
             set;
         }
     }

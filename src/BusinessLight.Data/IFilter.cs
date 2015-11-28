@@ -8,4 +8,13 @@ namespace BusinessLight.Data
     {
         Expression<Func<TSource, bool>> GetFilterExpression();
     }
+
+    public abstract class Filter<TSource> : IFilter<TSource> where TSource : UniqueEntity
+    {
+        public virtual Expression<Func<TSource, bool>> GetFilterExpression()
+        {
+            Expression<Func<TSource, bool>> filter = contact => true;
+            return filter;
+        }
+    }
 }

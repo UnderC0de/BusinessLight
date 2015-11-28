@@ -8,7 +8,7 @@ namespace BusinessLight.PhoneBook.Validation
     {
         public SearchContactFilterValidator()
         {
-            RuleFor(filter => filter.Name).NotEmpty();
+            RuleFor(filter => filter.FirstName).NotEmpty();
         }
     }
 }

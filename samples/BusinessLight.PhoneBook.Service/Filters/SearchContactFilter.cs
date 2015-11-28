@@ -1,21 +1,40 @@
 using System;
 using System.Linq.Expressions;
 using BusinessLight.Data;
+using BusinessLight.Data.Extensions;
 using BusinessLight.PhoneBook.Domain;
 
 namespace BusinessLight.PhoneBook.Service.Filters
 {
-    public class SearchContactFilter : IFilter<Contact>
+    public class SearchContactFilter : Filter<Contact>
     {
-        public string Name
+        public string FirstName
         {
             get; 
             set;
         }
 
-        public Expression<Func<Contact, bool>> GetFilterExpression()
+        public string LastName
         {
-            return contact => contact.FirstName.Contains(Name) || contact.LastName.Contains(Name);
+            get;
+            set;
+        }
+
+        public override Expression<Func<Contact, bool>> GetFilterExpression()
+        {
+            var filter = base.GetFilterExpression();
+
+            if (!string.IsNullOrWhiteSpace(FirstName))
+            {
+                filter = filter.And(contact => contact.FirstName.Contains(FirstName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(LastName))
+            {
+                filter = filter.And(contact => contact.LastName.Contains(LastName));
+            }
+            
+            return filter;
         }
     }
 }

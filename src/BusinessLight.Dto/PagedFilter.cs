@@ -5,7 +5,7 @@
         protected PagedFilter()
         {
             PageNumber = 0;
-            PageSize = 50;
+            PageSize = 20;
         }
 
         public int PageNumber

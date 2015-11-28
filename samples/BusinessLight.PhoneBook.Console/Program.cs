@@ -22,7 +22,7 @@ namespace BusinessLight.PhoneBook.Console
 
                 var searchResult = _contactService.Search(new SearchContactDto
                 {
-                    Name = "name"
+                    FirstName = "name"
                 });
                 foreach (var contactDto in searchResult.Result)
                 {

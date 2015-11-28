@@ -30,12 +30,14 @@ namespace BusinessLight.PhoneBook.Service
                    .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
 
                 var validator = GetValidationFactory().GetValidatorFor<SearchContactFilter>();
-
-                var validationResult = validator.GetValidationResult(filter);
-
-                if (validationResult.HasErrors)
+                if (validator != null)
                 {
-                    throw new ValidationException(validationResult);
+                    var validationResult = validator.GetValidationResult(filter);
+
+                    if (validationResult.HasErrors)
+                    {
+                        throw new ValidationException(validationResult);
+                    }
                 }
 
                 return uow.Repository

@@ -16,7 +16,7 @@
     <RootNamespace>BusinessLight.PhoneBook.Mvc</RootNamespace>
     <AssemblyName>BusinessLight.PhoneBook.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -44,11 +44,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -102,6 +134,10 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -120,11 +156,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\SearchContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -158,9 +198,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -173,6 +216,64 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BusinessLight.Data.EntityFramework\BusinessLight.Data.EntityFramework.csproj">
+      <Project>{AAA57E66-B61A-4371-9DCC-31089CDEDD71}</Project>
+      <Name>BusinessLight.Data.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
+      <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
+      <Name>BusinessLight.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
+      <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
+      <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
+      <Name>BusinessLight.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Mapping.AutoMapper\BusinessLight.Mapping.AutoMapper.csproj">
+      <Project>{E8C7BAB2-0E62-4133-9B62-10741C4EA683}</Project>
+      <Name>BusinessLight.Mapping.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
+      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
+      <Name>BusinessLight.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Paging\BusinessLight.Paging.csproj">
+      <Project>{F4750A96-07FB-4FEE-82A7-8F21E3836899}</Project>
+      <Name>BusinessLight.Paging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Service\BusinessLight.Service.csproj">
+      <Project>{2444672B-5845-4BA1-9E36-9D97322AC854}</Project>
+      <Name>BusinessLight.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
+      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
+      <Name>BusinessLight.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Data\BusinessLight.PhoneBook.Data.csproj">
+      <Project>{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}</Project>
+      <Name>BusinessLight.PhoneBook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Dto\BusinessLight.PhoneBook.Dto.csproj">
+      <Project>{cbb6afe4-6d30-48e5-aac0-3ea7bdd451fd}</Project>
+      <Name>BusinessLight.PhoneBook.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Mapping\BusinessLight.PhoneBook.Mapping.csproj">
+      <Project>{7d2b2f93-e03d-44e5-bd4e-a184f117a1af}</Project>
+      <Name>BusinessLight.PhoneBook.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Service\BusinessLight.PhoneBook.Service.csproj">
+      <Project>{d6d4cb26-746b-4d5f-a7bb-a389762a3f14}</Project>
+      <Name>BusinessLight.PhoneBook.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Validation\BusinessLight.PhoneBook.Validation.csproj">
+      <Project>{ce8f42e2-251a-4326-8d81-3526357f85db}</Project>
+      <Name>BusinessLight.PhoneBook.Validation</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
