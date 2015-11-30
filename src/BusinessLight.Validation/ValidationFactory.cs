@@ -5,11 +5,37 @@ namespace BusinessLight.Validation
 {
     public class ValidationFactory : IValidationFactory
     {
-        private readonly Dictionary<Type, object> _validators = new Dictionary<Type, object>();
+        private readonly Dictionary<string, object> _validators = new Dictionary<string, object>();
+
+        public void Register<T>(IValidator<T> validator)
+        {
+             Register(validator, ValidationContext.Default);
+        }
+
+        public void Register<T>(IValidator<T> validator, ValidationContext validationContext)
+        {
+            UnRegister<T>();
+            _validators.Add(GetKey<T>(validationContext), validator);
+        }
+
+        public void UnRegister<T>()
+        {
+            _validators.Remove(GetKey<T>(ValidationContext.Default));
+        }
+
+        public void UnRegister<T>(ValidationContext validationContext)
+        {
+            _validators.Remove(GetKey<T>(validationContext));
+        }
 
         public IValidator<T> GetValidatorFor<T>()
         {
-            var key = typeof (T);
+            return GetValidatorFor<T>(ValidationContext.Default);
+        }
+
+        public IValidator<T> GetValidatorFor<T>(ValidationContext validationContext)
+        {
+            var key = GetKey<T>(validationContext);
             if (_validators.ContainsKey(key))
             {
                 return (IValidator<T>)_validators[key];
@@ -17,15 +43,9 @@ namespace BusinessLight.Validation
             return null;
         }
 
-        public void Register<T>(IValidator<T> validator)
+        private static string GetKey<T>(ValidationContext validationContext)
         {
-            UnRegister<T>();
-            _validators.Add(typeof(T), validator);
-        }
-
-        public void UnRegister<T>()
-        {
-            _validators.Remove(typeof (T));
+            return string.Format("{0}-{1}", typeof(T).FullName, validationContext);
         }
     }
 }

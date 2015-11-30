@@ -13,14 +13,14 @@ namespace BusinessLight.PhoneBook.Console
 {
     public class Program
     {
-        private static ContactService _contactService;
+        private static ContactCrudService _contactCrudService;
         public static void Main(string[] args)
         {
             try
             {
                 BootStrap();
 
-                var searchResult = _contactService.Search(new SearchContactDto
+                var searchResult = _contactCrudService.Search(new SearchContactDto
                 {
                     FirstName = "name"
                 });
@@ -47,7 +47,7 @@ namespace BusinessLight.PhoneBook.Console
             var mapper = new AutoMapperMapping();
             var validationFactory = new ValidationFactory();
             validationFactory.Register(new SearchContactFilterValidator());
-            _contactService = new ContactService(unitOfWork, mapper, validationFactory);
+            _contactCrudService = new ContactCrudService(unitOfWork, mapper, validationFactory);
         }
     }
 }

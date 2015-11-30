@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Xml.Schema;
 using BusinessLight.Data;
 using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper.Extensions;
@@ -15,9 +14,9 @@ using BusinessLight.Validation;
 
 namespace BusinessLight.PhoneBook.Service
 {
-    public class ContactService : ServiceBase
+    public class ContactCrudService : CrudServiceBase
     {
-        public ContactService(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
+        public ContactCrudService(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
             : base(unitOfWork, mapper, validationFactory)
         {
         }
@@ -54,6 +53,58 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return GetMapper()
                     .Map<ContactDetailDto, Contact>(uow.Repository.GetById<Contact>(id));
+            }
+        }
+
+        public void UpdateContact(ContactDetailDto contactDetailDto)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
+                var validator = GetValidationFactory().GetValidatorFor<Contact>(ValidationContext.Edit);
+                if (validator != null)
+                {
+                    var validationResult = validator.GetValidationResult(contact);
+
+                    if (validationResult.HasErrors)
+                    {
+                        throw new ValidationException(validationResult);
+                    }
+                }
+
+                uow.Repository.Update(contact);
+                uow.Commit();
+            }
+        }
+
+        public void CreateContact(ContactDetailDto contactDetailDto)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
+                var validator = GetValidationFactory().GetValidatorFor<Contact>(ValidationContext.Create);
+                if (validator != null)
+                {
+                    var validationResult = validator.GetValidationResult(contact);
+
+                    if (validationResult.HasErrors)
+                    {
+                        throw new ValidationException(validationResult);
+                    }
+                }
+
+                uow.Repository.Add(contact);
+                uow.Commit();
+            }
+        }
+
+        public void DeleteContact(Guid id)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contact = uow.Repository.GetById<Contact>(id);
+                uow.Repository.Remove(contact);
+                uow.Commit();
             }
         }
     }

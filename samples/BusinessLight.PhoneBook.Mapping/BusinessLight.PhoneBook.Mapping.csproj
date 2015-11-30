@@ -44,7 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactToContactDtProfile.cs" />
+    <Compile Include="ContactDtoToContactProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContactToContactDetailDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContactToContactDtoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchContactDtoToSearchContactFilter.cs">
       <SubType>Code</SubType>

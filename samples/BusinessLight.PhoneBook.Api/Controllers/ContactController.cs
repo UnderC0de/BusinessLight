@@ -10,16 +10,16 @@ namespace BusinessLight.PhoneBook.Api.Controllers
 {
     public class ContactController : ApiController
     {
-        private readonly ContactService _contactService;
+        private readonly ContactCrudService _contactCrudService;
 
-        public ContactController(ContactService contactService)
+        public ContactController(ContactCrudService contactCrudService)
         {
-            if (contactService == null)
+            if (contactCrudService == null)
             {
-                throw new ArgumentNullException("contactService");
+                throw new ArgumentNullException("contactCrudService");
             }
 
-            _contactService = contactService;
+            _contactCrudService = contactCrudService;
         }
 
         [HttpPost]
@@ -27,7 +27,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                var searchResult = _contactService.Search(searchContactDto);
+                var searchResult = _contactCrudService.Search(searchContactDto);
                 return Request.CreateResponse(HttpStatusCode.OK, searchResult);
             }
             catch (ValidationException ex)

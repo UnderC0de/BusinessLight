@@ -5,13 +5,13 @@ using BusinessLight.Validation;
 
 namespace BusinessLight.Service
 {
-    public abstract class ServiceBase
+    public abstract class CrudServiceBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IValidationFactory _validationFactory;
 
-        protected ServiceBase(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
+        protected CrudServiceBase(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
         {
             if (unitOfWork == null)
             {

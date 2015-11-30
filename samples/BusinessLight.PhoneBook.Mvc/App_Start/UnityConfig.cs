@@ -39,7 +39,7 @@ namespace BusinessLight.PhoneBook.Mvc
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<ContactService, ContactService>();
+            container.RegisterType<ContactCrudService, ContactCrudService>();
             container.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             container.RegisterType<DbContext, PhoneBookDbContext>();
             container.RegisterType<IMapper, AutoMapperMapping>();

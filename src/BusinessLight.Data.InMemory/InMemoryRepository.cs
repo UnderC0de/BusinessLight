@@ -27,7 +27,8 @@ namespace BusinessLight.Data.InMemory
 
         public void Update<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            Remove(entity);
+            Add(entity);
         }
 
         public void Remove<T>(T entity) where T : UniqueEntity

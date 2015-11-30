@@ -22,17 +22,17 @@ namespace BusinessLight.Data.EntityFramework
 
         public void Add<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Add(entity);
         }
 
         public void Update<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public void Remove<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> Query<T>() where T : UniqueEntity
