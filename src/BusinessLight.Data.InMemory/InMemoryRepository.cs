@@ -22,7 +22,8 @@ namespace BusinessLight.Data.InMemory
 
         public void Add<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            Remove(entity);
+            _source.Add(entity);
         }
 
         public void Update<T>(T entity) where T : UniqueEntity
@@ -33,7 +34,7 @@ namespace BusinessLight.Data.InMemory
 
         public void Remove<T>(T entity) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+             _source.Remove(entity);
         }
 
         public IQueryable<T> Query<T>() where T : UniqueEntity

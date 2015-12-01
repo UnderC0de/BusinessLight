@@ -26,5 +26,46 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
                 countCat.Should().Be.EqualTo(10);
             }
         }
+
+        [TestMethod]
+        public void CanAdd()
+        {
+            using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
+            {
+                var countFish = unitOfWork.Repository.Query<Fish>().Count();
+                unitOfWork.Repository.Add(new Fish());
+                unitOfWork.Commit();
+                var newCountFish = unitOfWork.Repository.Query<Fish>().Count();
+                newCountFish.Should().Be.EqualTo(countFish + 1);
+            }
+        }
+
+        [TestMethod]
+        public void CanRemove()
+        {
+            using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
+            {
+                var countFish = unitOfWork.Repository.Query<Fish>().Count();
+                unitOfWork.Repository.Remove(unitOfWork.Repository.Query<Fish>().First());
+                unitOfWork.Commit();
+                var newCountFish = unitOfWork.Repository.Query<Fish>().Count();
+                newCountFish.Should().Be.EqualTo(countFish - 1);
+            }
+        }
+
+        [TestMethod]
+        public void CanUpdate()
+        {
+            using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
+            {
+                var fish = unitOfWork.Repository.Query<Fish>().First();
+                fish.Name.Should().Not.Be.EqualTo("NewName");
+                fish.Name = "NewName";
+                unitOfWork.Repository.Update(fish);
+                unitOfWork.Commit();
+                var updatedFish = unitOfWork.Repository.Query<Fish>().First(x => x.Id == fish.Id);
+                updatedFish.Name.Should().Be.EqualTo("NewName");
+            }
+        }
     }
 }
