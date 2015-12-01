@@ -1,23 +1,22 @@
 ﻿@model SearchContactViewModel
-
 @{
     ViewBag.Title = "Contacts";
 }
 
 <h2>@ViewBag.Title</h2>
-@using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "form-inline" }))
+@using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new {@class = "form-inline"}))
 {
     <div class="well">
         <div class="form-group">
-            @Html.LabelFor(x => x.SearchContactDto.FirstName, new { @class = "control-label col-sm-4" })
+            @Html.LabelFor(x => x.PagedFilter.FirstName, new {@class = "control-label col-sm-4"})
             <div class="col-sm-8">
-                @Html.TextBoxFor(x => x.SearchContactDto.FirstName, new { @class = "form-control", placeholder = "FirstName" })
+                @Html.TextBoxFor(x => x.PagedFilter.FirstName, new {@class = "form-control", placeholder = "FirstName"})
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(x => x.SearchContactDto.LastName, new { @class = "control-label col-sm-4" })
+            @Html.LabelFor(x => x.PagedFilter.LastName, new {@class = "control-label col-sm-4"})
             <div class="col-sm-8">
-                @Html.TextBoxFor(x => x.SearchContactDto.LastName, new { @class = "form-control", placeholder = "LastName" })
+                @Html.TextBoxFor(x => x.PagedFilter.LastName, new {@class = "form-control", placeholder = "LastName"})
             </div>
         </div>
         <div class="form-group">
@@ -33,53 +32,55 @@
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
         </a>
     </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PagedResult.Result.First().FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PagedResult.Result.First().LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PagedResult.Result.First().BirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfoCount)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PagedResult.Result.First().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagedResult.Result.First().LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagedResult.Result.First().BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfoCount)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model.PagedResult.Result) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactInfoCount)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-            </a>
-            <a href="@Url.Action("Delete", new {id = item.Id})" class="btn btn-danger">
-                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
-            </a>
-        </td>
-    </tr>
-}
+        @foreach (var item in Model.PagedResult.Result)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactInfoCount)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                    </a>
+                    <a href="@Url.Action("Delete", new {id = item.Id})" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
+                    </a>
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    @Html.Pager(Model)
 }

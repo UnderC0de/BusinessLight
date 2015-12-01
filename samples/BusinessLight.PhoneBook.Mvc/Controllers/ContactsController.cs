@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Net;
 using System.Web.Mvc;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
@@ -30,7 +28,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             var pagedList = _contactCrudService.Search(searchContactDto);
             var searchContactViewModel = new SearchContactViewModel
             {
-                SearchContactDto = searchContactDto,
+                PagedFilter = searchContactDto,
                 PagedResult = pagedList
             };
             return View(searchContactViewModel);
@@ -39,7 +37,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         [HttpPost]
         public ActionResult Index(SearchContactViewModel searchContactViewModel)
         {
-            searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.SearchContactDto);
+            searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.PagedFilter);
             return View(searchContactViewModel);
         }
 
