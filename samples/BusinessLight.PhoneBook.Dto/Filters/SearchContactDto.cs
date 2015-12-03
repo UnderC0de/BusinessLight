@@ -18,5 +18,12 @@ namespace BusinessLight.PhoneBook.Dto.Filters
             get;
             set;
         }
+
+        [Display(Name = "BirthDate")]
+        public string BirthDate
+        {
+            get; 
+            set;
+        }
     }
 }
