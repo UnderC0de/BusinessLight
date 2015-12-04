@@ -8,8 +8,18 @@ namespace BusinessLight.Validation
         public ValidationException(ValidationResult validationResult) 
             : base(validationResult.ToString())
         {
+            if (validationResult == null)
+            {
+                throw new ArgumentNullException("validationResult");
+            }
+
+            ValidationResult = validationResult;
         }
 
-    
+        public ValidationResult ValidationResult
+        {
+            get; 
+            set;
+        }
     }
 }

@@ -2,8 +2,10 @@
 using System.Web.Mvc;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
+using BusinessLight.PhoneBook.Mvc.Extensions;
 using BusinessLight.PhoneBook.Mvc.ViewModels;
 using BusinessLight.PhoneBook.Service;
+using BusinessLight.Validation;
 
 
 namespace BusinessLight.PhoneBook.Mvc.Controllers
@@ -24,20 +26,22 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 
         public ActionResult Index()
         {
-            var searchContactDto = new SearchContactDto();
-            var pagedList = _contactCrudService.Search(searchContactDto);
-            var searchContactViewModel = new SearchContactViewModel
-            {
-                PagedFilter = searchContactDto,
-                PagedResult = pagedList
-            };
-            return View(searchContactViewModel);
+            return View(new SearchContactViewModel());
         }
 
         [HttpPost]
         public ActionResult Index(SearchContactViewModel searchContactViewModel)
         {
-            searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.PagedFilter);
+            try
+            {
+                searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.PagedFilter);
+            }
+            catch (ValidationException ex)
+            {
+                ModelState.AddValidationErrors(ex);
+               
+            }
+
             return View(searchContactViewModel);
         }
 

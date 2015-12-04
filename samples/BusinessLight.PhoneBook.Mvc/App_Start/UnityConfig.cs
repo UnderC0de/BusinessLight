@@ -6,7 +6,10 @@ using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper;
 using BusinessLight.PhoneBook.Data;
 using BusinessLight.PhoneBook.Service;
+using BusinessLight.PhoneBook.Service.Filters;
+using BusinessLight.PhoneBook.Validation;
 using BusinessLight.Validation;
+using BusinessLight.Validation.Unity;
 using Microsoft.Practices.Unity;
 
 namespace BusinessLight.PhoneBook.Mvc
@@ -43,7 +46,8 @@ namespace BusinessLight.PhoneBook.Mvc
             container.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             container.RegisterType<DbContext, PhoneBookDbContext>();
             container.RegisterType<IMapper, AutoMapperMapping>();
-            container.RegisterType<IValidationFactory, ValidationFactory>();
+            container.RegisterType<IValidationFactory, UnityValidationFactory>();
+            container.RegisterType<IValidator<SearchContactFilter>, SearchContactFilterValidator>();
         }
     }
 }

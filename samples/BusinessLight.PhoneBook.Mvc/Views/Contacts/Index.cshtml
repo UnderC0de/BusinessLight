@@ -6,6 +6,7 @@
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "form-inline" }))
 {
+    @Html.ValidationSummary(false, string.Empty, new { @class = "text-danger" })
     <div class="well">
         <div class="row">
             <div class="col-sm-3">
@@ -20,15 +21,15 @@
                 <div class="form-group">
                     @Html.LabelFor(x => x.PagedFilter.LastName, new { @class = "control-label col-sm-4" })
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(x => x.PagedFilter.LastName, new { @class = "form-control", placeholder = "LastName" })
+                        @Html.TextBoxFor(x => x.PagedFilter.LastName, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.PageSize, new {@class = "control-label col-sm-4"})
+                    @Html.LabelFor(x => x.PagedFilter.PageSize, new { @class = "control-label col-sm-4" })
                     <div class="col-sm-8">
-                        @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new {@class = "form-control"})
+                        @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -48,55 +49,69 @@
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
         </a>
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PagedResult.Result.First().FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PagedResult.Result.First().LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PagedResult.Result.First().BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfoCount)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.PagedResult.Result)
+    if (Model.PagedResult != null)
+    {
+        if (Model.PagedResult.PagingInfo.TotalItemCount > 0)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BirthDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Note)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactInfoCount)
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-                    </a>
-                    <a href="@Url.Action("Delete", new {id = item.Id})" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
-                    </a>
-                </td>
-            </tr>
-        }
+            @Html.Pager(Model)
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfoCount)
+                    </th>
+                    <th></th>
+                </tr>
 
-    </table>
-    @Html.Pager(Model)
+                @foreach (var item in Model.PagedResult.Result)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BirthDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactInfoCount)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                            </a>
+                            <a href="@Url.Action("Delete", new {id = item.Id})" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            @Html.Pager(Model)
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No results available for the current search filter.
+            </div>
+        }
+    }
+
 }

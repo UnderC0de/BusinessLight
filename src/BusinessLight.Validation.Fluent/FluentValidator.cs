@@ -9,7 +9,7 @@ namespace BusinessLight.Validation.Fluent
         {
             var validationIssues = Validate(instance)
                 .Errors
-                .Select(x => new ValidationIssue(x.ErrorMessage));
+                .Select(x => new ValidationIssue(x.ErrorMessage, x.PropertyName, x.AttemptedValue));
 
             return new ValidationResult(validationIssues);
         }
