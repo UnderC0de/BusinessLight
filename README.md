@@ -9,6 +9,7 @@
 - Mapping abstraction (implementation with Automapper)
 - Validation abstraction (implemention with FluentValidation)
 - ServiceLayer footprint
+
 ## What is not
 It's not a silver bullet framework (otherwise I'll be billionaire). It's a footprint for developing applications and has abstractions that allows to plug-in your busienss logics.
 
