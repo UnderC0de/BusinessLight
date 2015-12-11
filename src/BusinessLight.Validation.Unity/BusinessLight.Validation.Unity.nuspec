@@ -14,11 +14,12 @@
         <releaseNotes />
         <copyright>Martino Bordin - Copyright 2015</copyright>
         <tags>Validation Unity</tags>
-    </metadata>
-  <dependencies>
+        <dependencies>
     <dependency id="BusinessLight.Validation" />
     <dependency id="Unity" />
   </dependencies>
+    </metadata>
+  
     <files>
         <file src="bin\Release\BusinessLight.Validation.Unity.dll" target="lib\net45\BusinessLight.Validation.Unity.dll" />
         <file src="bin\Release\BusinessLight.Validation.Unity.pdb" target="lib\net45\BusinessLight.Validation.Unity.pdb" />
