@@ -25,7 +25,7 @@ The solution contains a sample PhoneBook application with 3 UI:
 - Console
 
 ## Demo
-Coming soon
+Checkout the MVC sample here: http://phonebooksample.azurewebsites.net
 
 ## Disclaimer
 
