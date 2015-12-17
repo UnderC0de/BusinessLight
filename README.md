@@ -29,6 +29,6 @@ Checkout the MVC sample here: http://phonebooksample.azurewebsites.net
 
 ## Disclaimer
 
-The software is provided "AS IS". I didn't full test it (Chart.Js has tons of options) and you'd need to properly escape strings containing JavaScript and be sure to pass correct parameters (valid colors values, etc) .
+The software is provided "AS IS".
 
 To contribute and improve the code just contact me!
