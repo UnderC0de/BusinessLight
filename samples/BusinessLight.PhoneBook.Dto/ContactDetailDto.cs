@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLight.PhoneBook.Dto
 {
     public class ContactDetailDto : ContactDto
     {
-        public string Notes
-        {
-            get;
-            set;
-        }
-
+        [Display(Name = "Additional info")]
+        public string Notes { get; set; }
         public ICollection<ContactInfoDto> ContactInfos { get; set; }
     }
 }

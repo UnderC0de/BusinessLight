@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -41,10 +41,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Note, new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -56,44 +56,48 @@
             </div>
         }
     </div>
-    <div class="col-md-6">
-        <a href="@Url.Action("Create", "ContactInfos", new { contactId = Model.Id })" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
+    <div class="col-md-4">
+        <a href="@Url.Action("Create", "ContactInfos", new {contactId = Model.Id})" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create contact info
         </a>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => Model.ContactInfos.FirstOrDefault().ContactInfoDetail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => Model.ContactInfos.FirstOrDefault().ContactInfoType)
-                </th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var item in Model.ContactInfos)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactInfoDetail)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactInfoType)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Edit", "ContactInfos", new {id = item.Id})" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-                        </a>
-                        <a href="@Url.Action("Delete", "ContactInfos", new {id = item.Id})" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
-                        </a>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+        @if (Model.ContactInfos.Count > 0)
+        {
+            <br /><br />
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => Model.ContactInfos.FirstOrDefault().ContactInfoDetail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => Model.ContactInfos.FirstOrDefault().ContactInfoType)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ContactInfos)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactInfoDetail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactInfoType)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "ContactInfos", new {id = item.Id})" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                                </a>
+                                <a href="@Url.Action("Delete", "ContactInfos", new {id = item.Id})" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 </div>
 

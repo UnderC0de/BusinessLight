@@ -8,43 +8,50 @@
 {
 
     @Html.ValidationSummary(false, string.Empty, new { @class = "text-danger" })
-    <div class="well">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.FirstName, new {@class = "control-label col-sm-4"})
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(x => x.PagedFilter.FirstName, new {@class = "form-control"})
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Filter</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.PagedFilter.FirstName, new { @class = "control-label col-sm-4" })
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(x => x.PagedFilter.FirstName, new { @class = "form-control" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.LastName, new {@class = "control-label col-sm-4"})
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(x => x.PagedFilter.LastName, new {@class = "form-control"})
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.PagedFilter.LastName, new { @class = "control-label col-sm-4" })
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(x => x.PagedFilter.LastName, new { @class = "form-control" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.PageSize, new {@class = "control-label col-sm-4"})
-                    <div class="col-sm-8">
-                        @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new {@class = "form-control"})
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.PagedFilter.PageSize, new { @class = "control-label col-sm-4" })
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new { @class = "form-control" })
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-                        </button>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <p>
         <a href="@Url.Action("Create")" class="btn btn-success">
             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
@@ -70,9 +77,6 @@
                         @Html.DisplayNameFor(model => model.PagedResult.Result.First().BirthDate)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfosCount)
                     </th>
                     <th></th>
@@ -89,9 +93,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.BirthDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Note)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ContactInfosCount)

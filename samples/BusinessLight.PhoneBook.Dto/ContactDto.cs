@@ -12,8 +12,6 @@ namespace BusinessLight.PhoneBook.Dto
         public string LastName { get; set; }
         [Display(Name = "BirthDate")]
         public DateTime BirthDate { get; set; }
-        [Display(Name = "Note")]
-        public string Note { get; set; }
         [Display(Name = "Number of contacts")]
         public int ContactInfosCount { get; set; }
     }
