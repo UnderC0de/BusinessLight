@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="PhoneBookApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PhoneBook.Angular</title>
+    <script src="Scripts/angular.js" type="text/javascript"></script>
+    <script src="Scripts/app/contacts-controller.js" type="text/javascript"></script>
+</head>
+<body ng-controller="ContactsController">
+    <ul>
+        <li ng-repeat="model in contacts.Result">
+            Hello {{model.FirstName}} {{model.LastName}}!
+        </li>
+    </ul>
+    <button ng-click="search()">Search</button>
+</body>
+</html>
