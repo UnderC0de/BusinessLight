@@ -12,7 +12,7 @@
 - ServiceLayer footprint
 
 ## What is not
-It's not a silver bullet framework (otherwise I'll be billionaire). It's a footprint for developing applications and has abstractions that allows to plug-in your busienss logics.
+It's not a silver bullet framework (otherwise I'll be billionaire). It's a footprint for developing applications and has abstractions that allows to plug-in your business logics.
 
 ## Installation
 Install using Nuget or compile binary from https://github.com/martinobordin/BusinessLight.
@@ -23,7 +23,6 @@ https://www.nuget.org/packages?q=businesslight
 The solution contains a sample PhoneBook application with 3 UI:
 - MVC
 - Angular (coming soon)
-- Console
 
 ## Demo
 Checkout the MVC sample here: http://phonebooksample.azurewebsites.net
