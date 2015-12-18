@@ -42,13 +42,16 @@
   <ItemGroup>
     <Compile Include="Contact.cs" />
     <Compile Include="ContactInfo.cs" />
-    <Compile Include="ContactInfoType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
       <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
       <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
+      <Project>{B909498B-91A0-4B17-9E08-3486AED37B71}</Project>
+      <Name>BusinessLight.PhoneBook.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

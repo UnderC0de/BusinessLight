@@ -1,4 +1,4 @@
-﻿namespace BusinessLight.PhoneBook.Domain
+﻿namespace BusinessLight.PhoneBook.Common
 {
     public enum ContactInfoType
     {

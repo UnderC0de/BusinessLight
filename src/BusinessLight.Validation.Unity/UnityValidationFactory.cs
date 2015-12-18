@@ -21,10 +21,5 @@ namespace BusinessLight.Validation.Unity
         {
             return _unityContainer.Resolve<IValidator<T>>();
         }
-
-        public IValidator<T> GetValidatorFor<T>(ValidationContext validationContext)
-        {
-            return _unityContainer.Resolve<IValidator<T>>(validationContext.ToString());
-        }
     }
 }

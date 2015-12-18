@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BusinessLight.Validation
 {
@@ -9,33 +8,18 @@ namespace BusinessLight.Validation
 
         public void Register<T>(IValidator<T> validator)
         {
-             Register(validator, ValidationContext.Default);
-        }
-
-        public void Register<T>(IValidator<T> validator, ValidationContext validationContext)
-        {
             UnRegister<T>();
-            _validators.Add(GetKey<T>(validationContext), validator);
+            _validators.Add(GetKey<T>(), validator);
         }
 
         public void UnRegister<T>()
         {
-            _validators.Remove(GetKey<T>(ValidationContext.Default));
+            _validators.Remove(GetKey<T>());
         }
-
-        public void UnRegister<T>(ValidationContext validationContext)
-        {
-            _validators.Remove(GetKey<T>(validationContext));
-        }
-
+       
         public IValidator<T> GetValidatorFor<T>()
         {
-            return GetValidatorFor<T>(ValidationContext.Default);
-        }
-
-        public IValidator<T> GetValidatorFor<T>(ValidationContext validationContext)
-        {
-            var key = GetKey<T>(validationContext);
+            var key = GetKey<T>();
             if (_validators.ContainsKey(key))
             {
                 return (IValidator<T>)_validators[key];
@@ -43,9 +27,9 @@ namespace BusinessLight.Validation
             return null;
         }
 
-        private static string GetKey<T>(ValidationContext validationContext)
+        private static string GetKey<T>()
         {
-            return string.Format("{0}-{1}", typeof(T).FullName, validationContext);
+            return string.Format("{0}", typeof(T).FullName);
         }
     }
 }

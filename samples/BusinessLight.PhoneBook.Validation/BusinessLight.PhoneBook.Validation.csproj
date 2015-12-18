@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactInfoValidator.cs" />
+    <Compile Include="ContactValidator.cs" />
     <Compile Include="SearchContactFilterValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +65,14 @@
     <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
       <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
       <Name>BusinessLight.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
+      <Project>{b909498b-91a0-4b17-9e08-3486aed37b71}</Project>
+      <Name>BusinessLight.PhoneBook.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
+      <Project>{38DF5C07-2575-492B-9CD1-65C5537A677F}</Project>
+      <Name>BusinessLight.PhoneBook.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Service\BusinessLight.PhoneBook.Service.csproj">
       <Project>{D6D4CB26-746B-4D5F-A7BB-A389762A3F14}</Project>

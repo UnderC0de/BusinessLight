@@ -6,30 +6,31 @@
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "form-inline" }))
 {
+
     @Html.ValidationSummary(false, string.Empty, new { @class = "text-danger" })
     <div class="well">
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.FirstName, new { @class = "control-label col-sm-4" })
+                    @Html.LabelFor(x => x.PagedFilter.FirstName, new {@class = "control-label col-sm-4"})
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(x => x.PagedFilter.FirstName, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.PagedFilter.FirstName, new {@class = "form-control"})
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.LastName, new { @class = "control-label col-sm-4" })
+                    @Html.LabelFor(x => x.PagedFilter.LastName, new {@class = "control-label col-sm-4"})
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(x => x.PagedFilter.LastName, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.PagedFilter.LastName, new {@class = "form-control"})
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    @Html.LabelFor(x => x.PagedFilter.PageSize, new { @class = "control-label col-sm-4" })
+                    @Html.LabelFor(x => x.PagedFilter.PageSize, new {@class = "control-label col-sm-4"})
                     <div class="col-sm-8">
-                        @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.PagedFilter.PageSize, Model.PageSizeItems, new {@class = "form-control"})
                     </div>
                 </div>
             </div>
@@ -53,7 +54,10 @@
     {
         if (Model.PagedResult.PagingInfo.TotalItemCount > 0)
         {
-            @Html.Pager(Model)
+            if (Model.PagedResult.PagingInfo.PageCount > 1)
+            {
+                @Html.Pager(Model)
+            }
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>
@@ -69,7 +73,7 @@
                         @Html.DisplayNameFor(model => model.PagedResult.Result.First().Note)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfoCount)
+                        @Html.DisplayNameFor(model => model.PagedResult.Result.First().ContactInfosCount)
                     </th>
                     <th></th>
                 </tr>
@@ -90,7 +94,7 @@
                             @Html.DisplayFor(modelItem => item.Note)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ContactInfoCount)
+                            @Html.DisplayFor(modelItem => item.ContactInfosCount)
                         </td>
                         <td>
                             <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary">
@@ -104,7 +108,10 @@
                 }
 
             </table>
-            @Html.Pager(Model)
+            if (Model.PagedResult.PagingInfo.PageCount > 1)
+            {
+                @Html.Pager(Model)
+            }
         }
         else
         {

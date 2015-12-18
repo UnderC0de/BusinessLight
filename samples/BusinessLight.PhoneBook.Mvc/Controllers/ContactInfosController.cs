@@ -2,18 +2,16 @@
 using System.Web.Mvc;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Mvc.Extensions;
-using BusinessLight.PhoneBook.Mvc.ViewModels;
 using BusinessLight.PhoneBook.Service;
 using BusinessLight.Validation;
 
-
 namespace BusinessLight.PhoneBook.Mvc.Controllers
 {
-    public class ContactsController : Controller
+    public class ContactInfosController : Controller
     {
         private readonly ContactCrudService _contactCrudService;
 
-        public ContactsController(ContactCrudService contactCrudService)
+        public ContactInfosController(ContactCrudService contactCrudService)
         {
             if (contactCrudService == null)
             {
@@ -23,41 +21,25 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             _contactCrudService = contactCrudService;
         }
 
-        public ActionResult Index()
+        public ActionResult Create(Guid contactId)
         {
-            return View(new SearchContactViewModel());
-        }
-
-        [HttpPost]
-        public ActionResult Index(SearchContactViewModel searchContactViewModel)
-        {
-            try
+            var contactInfoDetailDto = new ContactInfoDetailDto
             {
-                searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.PagedFilter);
-            }
-            catch (ValidationException ex)
-            {
-                ModelState.AddValidationErrors(ex);
-            }
-
-            return View(searchContactViewModel);
-        }
-
-        public ActionResult Create()
-        {
-            return View();
+                ContactId = contactId
+            };
+            return View(contactInfoDetailDto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ContactDetailDto contact)
+        public ActionResult Create(ContactInfoDetailDto contactInfoDetailDto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _contactCrudService.CreateContact(contact);
-                    return RedirectToAction("Index");
+                    _contactCrudService.CreateContactInfo(contactInfoDetailDto);
+                    return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
                 {
@@ -65,55 +47,55 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
                 }
             }
 
-            return View(contact);
+            return View(contactInfoDetailDto);
         }
 
         public ActionResult Edit(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
-            if (contactDetail == null)
+            var contactInfoDetail = _contactCrudService.GetContactInfo(id);
+            if (contactInfoDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(contactDetail);
+            return View(contactInfoDetail);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ContactDetailDto contact)
+        public ActionResult Edit(ContactInfoDetailDto contactInfoDetailDto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _contactCrudService.UpdateContact(contact);
-                    return RedirectToAction("Index");
+                    _contactCrudService.UpdateContactInfo(contactInfoDetailDto);
+                    return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
                 {
                     ModelState.AddValidationErrors(ex);
                 }
-
             }
-            return View(contact);
+            return View(contactInfoDetailDto);
         }
 
         public ActionResult Delete(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
-            if (contactDetail == null)
+            var contactInfoDetail = _contactCrudService.GetContactInfo(id);
+            if (contactInfoDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(contactDetail);
+            return View(contactInfoDetail);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            _contactCrudService.DeleteContact(id);
-            return RedirectToAction("Index");
+            var contactInfoDetail = _contactCrudService.GetContactInfo(id);
+            _contactCrudService.DeleteContactInfo(id);
+            return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetail.ContactId });
         }
     }
 }

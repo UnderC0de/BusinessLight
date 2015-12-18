@@ -47,6 +47,8 @@
     <Compile Include="ContactDtoToContactProfile.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ContactInfoDetailDtoToContactInfoProfile.cs" />
+    <Compile Include="ContactInfoToContactInfoDtoProfile.cs" />
     <Compile Include="ContactToContactDetailDto.cs">
       <SubType>Code</SubType>
     </Compile>

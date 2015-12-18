@@ -66,6 +66,10 @@
       <Project>{4b4bfc5d-6ab7-4ff9-933d-035fb544281c}</Project>
       <Name>BusinessLight.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
+      <Project>{B909498B-91A0-4B17-9E08-3486AED37B71}</Project>
+      <Name>BusinessLight.PhoneBook.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
       <Project>{38DF5C07-2575-492B-9CD1-65C5537A677F}</Project>
       <Name>BusinessLight.PhoneBook.Domain</Name>

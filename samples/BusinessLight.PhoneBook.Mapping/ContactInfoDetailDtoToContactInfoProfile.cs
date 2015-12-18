@@ -4,12 +4,11 @@ using BusinessLight.PhoneBook.Dto;
 
 namespace BusinessLight.PhoneBook.Mapping
 {
-    public class ContactToContactDto : Profile
+    public class ContactInfoDetailDtoToContactInfo : Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Contact, ContactDto>()
-                .ForMember(x => x.ContactInfosCount, opt => opt.MapFrom(y => y.ContactInfos.Count));
+            Mapper.CreateMap<ContactInfoDetailDto, ContactInfo>();
         }
     }
 }

@@ -5,6 +5,7 @@ using BusinessLight.Data.EntityFramework;
 using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper;
 using BusinessLight.PhoneBook.Data;
+using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Service;
 using BusinessLight.PhoneBook.Service.Filters;
 using BusinessLight.PhoneBook.Validation;
@@ -48,6 +49,8 @@ namespace BusinessLight.PhoneBook.Mvc
             container.RegisterType<IMapper, AutoMapperMapping>();
             container.RegisterType<IValidationFactory, UnityValidationFactory>();
             container.RegisterType<IValidator<SearchContactFilter>, SearchContactFilterValidator>();
+            container.RegisterType<IValidator<Contact>, ContactValidator>();
+            container.RegisterType<IValidator<ContactInfo>, ContactInfoValidator>();
         }
     }
 }

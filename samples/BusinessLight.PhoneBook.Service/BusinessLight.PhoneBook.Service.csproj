@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactService.cs" />
+    <Compile Include="Filters\SearchContactByIdFilter.cs" />
+    <Compile Include="Filters\SearchContactInfoByIdFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Filters\SearchContactFilter.cs" />
   </ItemGroup>

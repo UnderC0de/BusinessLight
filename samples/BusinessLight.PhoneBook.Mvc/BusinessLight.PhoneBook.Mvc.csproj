@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\ContactInfosController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
@@ -211,6 +212,9 @@
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
+    <Content Include="Views\ContactInfos\Create.cshtml" />
+    <Content Include="Views\ContactInfos\Edit.cshtml" />
+    <Content Include="Views\ContactInfos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,9 +272,17 @@
       <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
       <Name>BusinessLight.Validation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
+      <Project>{b909498b-91a0-4b17-9e08-3486aed37b71}</Project>
+      <Name>BusinessLight.PhoneBook.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Data\BusinessLight.PhoneBook.Data.csproj">
       <Project>{3BA67D93-1AE0-4D92-A20A-CB97BE8CA383}</Project>
       <Name>BusinessLight.PhoneBook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
+      <Project>{38DF5C07-2575-492B-9CD1-65C5537A677F}</Project>
+      <Name>BusinessLight.PhoneBook.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Dto\BusinessLight.PhoneBook.Dto.csproj">
       <Project>{cbb6afe4-6d30-48e5-aac0-3ea7bdd451fd}</Project>

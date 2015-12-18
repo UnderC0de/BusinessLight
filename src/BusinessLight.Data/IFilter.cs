@@ -13,7 +13,7 @@ namespace BusinessLight.Data
     {
         public virtual Expression<Func<TSource, bool>> GetFilterExpression()
         {
-            Expression<Func<TSource, bool>> filter = contact => true;
+            Expression<Func<TSource, bool>> filter = uniqueEntity => true;
             return filter;
         }
     }

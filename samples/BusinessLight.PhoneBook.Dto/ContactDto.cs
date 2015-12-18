@@ -15,6 +15,6 @@ namespace BusinessLight.PhoneBook.Dto
         [Display(Name = "Note")]
         public string Note { get; set; }
         [Display(Name = "Number of contacts")]
-        public int ContactInfoCount { get; set; }
+        public int ContactInfosCount { get; set; }
     }
 }

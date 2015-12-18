@@ -25,8 +25,8 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-               var filter = GetMapper()
-                   .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
+                var filter = GetMapper()
+                    .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
 
                 var validator = GetValidationFactory().GetValidatorFor<SearchContactFilter>();
                 if (validator != null)
@@ -39,7 +39,8 @@ namespace BusinessLight.PhoneBook.Service
                     }
                 }
 
-                return uow.Repository
+                return uow
+                    .Repository
                     .ApplyFilter(filter)
                     .ApplyProjection<ContactDto>()
                     .OrderBy(x => x.BirthDate)
@@ -51,8 +52,23 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                return GetMapper()
-                    .Map<ContactDetailDto, Contact>(uow.Repository.GetById<Contact>(id));
+                return uow
+                    .Repository
+                    .ApplyFilter(new SearchContactByIdFilter(id))
+                    .ApplyProjection<ContactDetailDto>()
+                    .Single();
+            }
+        }
+
+        public ContactInfoDetailDto GetContactInfo(Guid id)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                return uow
+                    .Repository
+                    .ApplyFilter(new SearchContactInfoByIdFilter(id))
+                    .ApplyProjection<ContactInfoDetailDto>()
+                    .Single();
             }
         }
 
@@ -61,7 +77,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<Contact>(ValidationContext.Edit);
+                var validator = GetValidationFactory().GetValidatorFor<Contact>();
                 if (validator != null)
                 {
                     var validationResult = validator.GetValidationResult(contact);
@@ -82,7 +98,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<Contact>(ValidationContext.Create);
+                var validator = GetValidationFactory().GetValidatorFor<Contact>();
                 if (validator != null)
                 {
                     var validationResult = validator.GetValidationResult(contact);
@@ -107,5 +123,59 @@ namespace BusinessLight.PhoneBook.Service
                 uow.Commit();
             }
         }
+
+        public void DeleteContactInfo(Guid id)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contact = uow.Repository.GetById<ContactInfo>(id);
+                uow.Repository.Remove(contact);
+                uow.Commit();
+            }
+        }
+
+        public void CreateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contactInfo = GetMapper().Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
+                var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
+                if (validator != null)
+                {
+                    var validationResult = validator.GetValidationResult(contactInfo);
+
+                    if (validationResult.HasErrors)
+                    {
+                        throw new ValidationException(validationResult);
+                    }
+                }
+
+                uow.Repository.Add(contactInfo);
+                uow.Commit();
+            }
+        }
+
+        public void UpdateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                var contactInfo = GetMapper().Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
+                var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
+                if (validator != null)
+                {
+                    var validationResult = validator.GetValidationResult(contactInfo);
+
+                    if (validationResult.HasErrors)
+                    {
+                        throw new ValidationException(validationResult);
+                    }
+                }
+
+                uow.Repository.Update(contactInfo);
+                uow.Commit();
+            }
+        }
     }
+
+   
 }

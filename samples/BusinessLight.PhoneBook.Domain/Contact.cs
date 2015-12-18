@@ -6,6 +6,11 @@ namespace BusinessLight.PhoneBook.Domain
 {
     public class Contact : UniqueEntity
     {
+        public Contact()
+        {
+            ContactInfos = new List<ContactInfo>();
+        }
+
         public string FirstName
         {
             get; 
@@ -24,7 +29,7 @@ namespace BusinessLight.PhoneBook.Domain
             set;
         }
 
-        public string Note
+        public string Notes
         {
             get; 
             set;

@@ -4,7 +4,7 @@ using BusinessLight.PhoneBook.Dto;
 
 namespace BusinessLight.PhoneBook.Mapping
 {
-    public class ContactDtoToContactProfile : Profile
+    public class ContactDtoToContact : Profile
     {
         protected override void Configure()
         {

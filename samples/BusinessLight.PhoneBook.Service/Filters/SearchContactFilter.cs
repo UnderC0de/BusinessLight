@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
+using BusinessLight.Domain;
 using BusinessLight.PhoneBook.Domain;
 
 namespace BusinessLight.PhoneBook.Service.Filters
