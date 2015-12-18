@@ -3,29 +3,30 @@
 }
 
 <div class="jumbotron">
-    <h1>Phone.Book</h1>
-    <p class="lead">Phone.Book is a sample project that shows how to create a layered CRUD application with .NET</p>
-    <p><a href="https://github.com/martinobordin/BusinessLight" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> PhoneBook
+    </h1>
+    <p class="lead">PhoneBook is a sample project that shows how to create a layered application with <a href="https://github.com/martinobordin/BusinessLight">BusinessLight</a> framework</p>
+    <p><a href="@Url.Action("Index", "Contacts")" class="btn btn-primary btn-lg">Start &raquo;</a></p>
 </div>
 
-@*<div class="row">
+<div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2><span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span> Easy to use</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            The aim of BusinessLight is to speed up the development of layered application.
+            Check out the documentation or the code of this demo to see how easy is to build an app from scratch.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Light</h2>
+        <p>
+            You don't have to use the whole framework, because every part has its own nuget package.
+            Just take what you need!
+        </p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Extensible</h2>
+        <p>You can plug-in your own logic, overriding the default behaviour or rewriting entirely a new one.</p>
     </div>
-</div>*@
+</div>
