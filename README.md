@@ -1,5 +1,6 @@
 # BusinessLight
 [![Build status](https://ci.appveyor.com/api/projects/status/trqsqqr8mwag8opt?svg=true)](https://ci.appveyor.com/project/martinobordin/businesslight)
+[![NuGet version](https://badge.fury.io/nu/BusinessLight.Data.svg)](https://badge.fury.io/nu/BusinessLight.Data)
 
 ![BusinessLight](http://www.martinobordin.it/businesslight.png) Light framework for speed up writing .NET Line of Business (LOB) applications
 
