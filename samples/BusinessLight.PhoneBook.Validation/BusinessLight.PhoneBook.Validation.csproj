@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactInfoValidator.cs" />
-    <Compile Include="ContactValidator.cs" />
+    <Compile Include="ContactValidator.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SearchContactFilterValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
