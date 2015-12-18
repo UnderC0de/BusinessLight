@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Mvc.Extensions;
@@ -93,8 +94,9 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
                 {
                     ModelState.AddValidationErrors(ex);
                 }
-
             }
+
+            contact.ContactInfos = _contactCrudService.GetContactInfosForContact(contact.Id).ToList();
             return View(contact);
         }
 

@@ -16,7 +16,7 @@ namespace BusinessLight.PhoneBook.Service.Filters
         public Guid Id
         {
             get;
-            set;
+            private set;
         }
 
         public override Expression<Func<ContactInfo, bool>> GetFilterExpression()

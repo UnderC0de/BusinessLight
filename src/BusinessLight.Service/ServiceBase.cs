@@ -7,15 +7,15 @@ namespace BusinessLight.Service
 {
     public abstract class CrudServiceBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IMapper _mapper;
         private readonly IValidationFactory _validationFactory;
 
-        protected CrudServiceBase(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
+        protected CrudServiceBase(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
         {
-            if (unitOfWork == null)
+            if (unitOfWorkFactory == null)
             {
-                throw new ArgumentNullException("unitOfWork");
+                throw new ArgumentNullException("unitOfWorkFactory");
             }
 
             if (mapper == null)
@@ -28,14 +28,14 @@ namespace BusinessLight.Service
                 throw new ArgumentNullException("unitOfWork");
             }
 
-            _unitOfWork = unitOfWork;
+            _unitOfWorkFactory = unitOfWorkFactory;
             _mapper = mapper;
             _validationFactory = validationFactory;
         }
 
         protected IUnitOfWork GetUnitOfWork()
         {
-            return _unitOfWork;
+            return _unitOfWorkFactory.GetUnitOfWork();
         }
 
         protected IMapper GetMapper()

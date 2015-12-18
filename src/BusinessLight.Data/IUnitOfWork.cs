@@ -7,4 +7,9 @@ namespace BusinessLight.Data
         IRepository Repository { get; }
         void Commit();
     }
+
+    public interface IUnitOfWorkFactory
+    {
+        IUnitOfWork GetUnitOfWork();
+    }
 }

@@ -43,11 +43,11 @@ namespace BusinessLight.PhoneBook.Console
             AutoMapperConfiguration.Configure(typeof(SearchContactDtoToSearchContactFilterProfile).Assembly);
             Database.SetInitializer(new PhoneBookDbContextSeedInitializer());
 
-            var unitOfWork = new EntityFrameworkUnitOfWork(new PhoneBookDbContext());
+            var unitOfWorkFactory = new EntityFrameworkUnitOfWorkFactory(new PhoneBookDbContext());
             var mapper = new AutoMapperMapping();
             var validationFactory = new ValidationFactory();
             validationFactory.Register(new SearchContactFilterValidator());
-            _contactCrudService = new ContactCrudService(unitOfWork, mapper, validationFactory);
+            _contactCrudService = new ContactCrudService(unitOfWorkFactory, mapper, validationFactory);
         }
     }
 }

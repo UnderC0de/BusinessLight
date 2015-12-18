@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using BusinessLight.Data;
 using BusinessLight.Data.EntityFramework;
+using BusinessLight.Data.Unity;
 using BusinessLight.Mapping;
 using BusinessLight.Mapping.AutoMapper;
 using BusinessLight.PhoneBook.Data;
@@ -43,9 +44,10 @@ namespace BusinessLight.PhoneBook.Mvc
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<ContactCrudService, ContactCrudService>();
+            container.RegisterType<IUnitOfWorkFactory, UnityUnitOfWorkFactory>();
             container.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             container.RegisterType<DbContext, PhoneBookDbContext>();
+            container.RegisterType<ContactCrudService, ContactCrudService>();
             container.RegisterType<IMapper, AutoMapperMapping>();
             container.RegisterType<IValidationFactory, UnityValidationFactory>();
             container.RegisterType<IValidator<SearchContactFilter>, SearchContactFilterValidator>();

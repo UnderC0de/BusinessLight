@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BusinessLight.Data;
 using BusinessLight.Mapping;
@@ -16,8 +17,8 @@ namespace BusinessLight.PhoneBook.Service
 {
     public class ContactCrudService : CrudServiceBase
     {
-        public ContactCrudService(IUnitOfWork unitOfWork, IMapper mapper, IValidationFactory validationFactory)
-            : base(unitOfWork, mapper, validationFactory)
+        public ContactCrudService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
+            : base(unitOfWorkFactory, mapper, validationFactory)
         {
         }
 
@@ -69,6 +70,18 @@ namespace BusinessLight.PhoneBook.Service
                     .ApplyFilter(new SearchContactInfoByIdFilter(id))
                     .ApplyProjection<ContactInfoDetailDto>()
                     .Single();
+            }
+        }
+
+        public IEnumerable<ContactInfoDto> GetContactInfosForContact(Guid contactId)
+        {
+            using (var uow = GetUnitOfWork())
+            {
+                return uow
+                    .Repository
+                    .ApplyFilter(new SearchContactInfoByContactIdFilter(contactId))
+                    .ApplyProjection<ContactInfoDto>()
+                    .ToList();
             }
         }
 
