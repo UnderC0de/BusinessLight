@@ -1,12 +1,11 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using BusinessLight.Paging;
 using BusinessLight.PhoneBook.Dto;
-using BusinessLight.PhoneBook.Dto.Filters;
 using BusinessLight.PhoneBook.Service;
 using BusinessLight.Validation;
 using Swashbuckle.Swagger.Annotations;
@@ -14,11 +13,11 @@ using Swashbuckle.Swagger.Annotations;
 namespace BusinessLight.PhoneBook.Api.Controllers
 {
     [EnableCors("*", "*", "*")]
-    public class ContactController : ApiController
+    public class ContactInfoController : ApiController
     {
         private readonly ContactCrudService _contactCrudService;
 
-        public ContactController(ContactCrudService contactCrudService)
+        public ContactInfoController(ContactCrudService contactCrudService)
         {
             if (contactCrudService == null)
             {
@@ -29,10 +28,11 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         }
 
         [HttpGet]
-        [ResponseType(typeof(ContactDetailDto))]
+        [ResponseType(typeof(ContactInfoDetailDto))]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactInfoDetailDto))]
         public HttpResponseMessage Get(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
+            var contactDetail = _contactCrudService.GetContactInfo(id);
             if (contactDetail == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NoContent);
@@ -40,30 +40,13 @@ namespace BusinessLight.PhoneBook.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, contactDetail);
         }
 
-        [HttpPost]
-        [ResponseType(typeof(IPagedList<ContactDto>))]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(IPagedList<ContactDto>))]
-        public HttpResponseMessage Search(SearchContactDto searchContactDto)
-        {
-            try
-            {
-                var searchResult = _contactCrudService.Search(searchContactDto);
-                return Request.CreateResponse(HttpStatusCode.OK, searchResult);
-            }
-            catch (ValidationException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
 
         [HttpPost]
-        [ResponseType(typeof(ContactDetailDto))]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactDetailDto))]
-        public HttpResponseMessage Create(ContactDetailDto contact)
+        public HttpResponseMessage Create(ContactInfoDetailDto contact)
         {
             try
             {
-                _contactCrudService.CreateContact(contact);
+                _contactCrudService.CreateContactInfo(contact);
                 return Request.CreateResponse(HttpStatusCode.Created, contact);
             }
             catch (ValidationException ex)
@@ -73,13 +56,13 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         }
 
         [HttpPut]
-        [ResponseType(typeof(ContactDetailDto))]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactDetailDto))]
-        public HttpResponseMessage Update(ContactDetailDto contact)
+        [ResponseType(typeof(ContactInfoDetailDto))]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactInfoDetailDto))]
+        public HttpResponseMessage Update(ContactInfoDetailDto contact)
         {
             try
             {
-                _contactCrudService.UpdateContact(contact);
+                _contactCrudService.UpdateContactInfo(contact);
                 return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch (ValidationException ex)
@@ -93,7 +76,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactCrudService.DeleteContact(id);
+                _contactCrudService.DeleteContactInfo(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException ex)

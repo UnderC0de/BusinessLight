@@ -1,20 +1,25 @@
-﻿var phoneBookApp = angular.module('PhoneBookApp', [])
+﻿var phoneBookApp = angular.module('PhoneBookApp', ['ui.bootstrap'])
     .controller('ContactsController', function ($scope, $http) {
-        //$scope.contacts = [];
-        //$scope.contact = null;
-        //$http.get('http://localhost:51121/api/contact/get/0dce141c-adf6-4ead-b37a-e98153642f97').success(function (data) {
-        //    $scope.contact = data;
-        //});
+        $scope.firstName = "";
+        $scope.lastName = "";
+        $scope.birthDate = "";
+        $scope.pageNumber = 1;
+        //$scope.pageSize = "1";
+
+        $scope.pageChanged = function () {
+            $scope.search();
+        };
 
         $scope.search = function () {
-           var data =  {
-                "PageNumber": 0,
-                "PageSize": 10
+            var data = {
+                "FirstName": $scope.firstName,
+                "LastName": $scope.lastName,
+                "BirthDate": $scope.birthDate,
+                "PageNumber": $scope.pageNumber - 1,
+                "PageSize": $scope.pageSize
             }
-            $http.post("http://localhost:51121/api/contact/search", data).success(function (data, status) {
-                $scope.contacts = data;
+            $http.post("http://localhost:51121/api/contact/search", data).success(function (result, status) {
+                $scope.contacts = result;
             });
         }
-
-
     });
