@@ -5,7 +5,7 @@ namespace BusinessLight.Validation
     public class ValidationIssue
     {
         public ValidationIssue(string message) 
-            : this(message, string.Empty, null)
+            : this(message, null, null)
         {
         }
 

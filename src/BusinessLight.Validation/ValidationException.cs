@@ -6,7 +6,7 @@ namespace BusinessLight.Validation
     public class ValidationException : Exception
     {
         public ValidationException(ValidationResult validationResult) 
-            : base(validationResult.ToString())
+            : base(GetMessage(validationResult))
         {
             if (validationResult == null)
             {
@@ -14,6 +14,11 @@ namespace BusinessLight.Validation
             }
 
             ValidationResult = validationResult;
+        }
+
+        private static string GetMessage(ValidationResult validationResult)
+        {
+            return validationResult == null ? string.Empty : validationResult.ToString();
         }
 
         public ValidationResult ValidationResult
