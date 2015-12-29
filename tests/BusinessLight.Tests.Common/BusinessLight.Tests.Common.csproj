@@ -39,6 +39,10 @@
       <HintPath>..\..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SharpTestsEx, Version=1.2.1.0, Culture=neutral, PublicKeyToken=8c60d8070630b1c1, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpTestsEx.1.2.1\lib\SharpTestsEx.dll</HintPath>
       <Private>True</Private>
@@ -58,6 +62,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Dto\FishPagedFilter.cs" />
     <Compile Include="Entities\Animal.cs" />
     <Compile Include="Entities\Cat.cs" />
     <Compile Include="Entities\Customer.cs" />
@@ -66,6 +71,8 @@
     <Compile Include="Entities\SimpleValueObject.cs" />
     <Compile Include="Queries\SearchFishQuery.cs" />
     <Compile Include="Queries\SearchFishSortedQuery.cs" />
+    <Compile Include="Validators\FishValidator.cs" />
+    <Compile Include="Validators\FluentFishValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
@@ -75,6 +82,18 @@
     <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
       <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
       <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
+      <Name>BusinessLight.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj">
+      <Project>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</Project>
+      <Name>BusinessLight.Validation.Fluent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
+      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
+      <Name>BusinessLight.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

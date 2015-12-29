@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01BE48E8-0A1B-4A10-AA12-0A1AFC9ED82F}</ProjectGuid>
+    <ProjectGuid>{1AB5AB47-21CB-408E-BE67-1F14FCA1DD43}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLight.Validation.Tests</RootNamespace>
-    <AssemblyName>BusinessLight.Validation.Tests</AssemblyName>
+    <RootNamespace>BusinessLight.Dto.Tests</RootNamespace>
+    <AssemblyName>BusinessLight.Dto.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,28 +55,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ValidationExceptionTests.cs" />
+    <Compile Include="PagedFilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidationFactoryTests.cs" />
-    <Compile Include="ValidationIssueTests.cs" />
-    <Compile Include="ValidationResultTests.cs" />
+    <Compile Include="SortedFilterTests.cs" />
+    <Compile Include="SortedPAgedFilterTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
-      <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
-      <Name>BusinessLight.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
+    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
+      <Name>BusinessLight.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLight.Tests.Common\BusinessLight.Tests.Common.csproj">
       <Project>{12F619F1-E618-44E8-8EFF-6DA39936BB36}</Project>
       <Name>BusinessLight.Tests.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

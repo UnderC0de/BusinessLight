@@ -41,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Costants.cs" />
+    <Compile Include="IPagedFilter.cs" />
+    <Compile Include="ISortedFilter.cs" />
     <Compile Include="PagedFilter.cs" />
+    <Compile Include="SortedFilter.cs" />
+    <Compile Include="SortedPagedFilter.cs" />
     <Compile Include="UniqueEntityDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

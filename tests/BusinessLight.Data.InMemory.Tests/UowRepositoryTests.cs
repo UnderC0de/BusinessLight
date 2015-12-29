@@ -57,6 +57,7 @@ namespace BusinessLight.Data.InMemory.Tests
                 var allFishes = unitOfWork.Repository.Query<Fish>().OrderBy(x => x.Color).ToList();
                 var queryFishes = unitOfWork.Repository.ApplyQuery(new SearchFishSortedQuery("Na", "Color", true)).ToList();
                 queryFishes.Count.Should().Be.EqualTo(allFishes.Count);
+                
                 for (var i = 0; i < queryFishes.Count; i++)
                 {
                     var fish = allFishes.ElementAt(i);
