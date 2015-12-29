@@ -9,7 +9,7 @@ using BusinessLight.Paging.Extensions;
 using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service.Filters;
+using BusinessLight.PhoneBook.Service.Queries;
 using BusinessLight.Service;
 using BusinessLight.Validation;
 

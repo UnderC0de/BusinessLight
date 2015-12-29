@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service.Filters;
+using BusinessLight.PhoneBook.Service.Queries;
 
 namespace BusinessLight.PhoneBook.Mapping
 {

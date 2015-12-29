@@ -1,4 +1,4 @@
-﻿using BusinessLight.PhoneBook.Service.Filters;
+﻿using BusinessLight.PhoneBook.Service.Queries;
 using BusinessLight.Validation.Fluent;
 
 namespace BusinessLight.PhoneBook.Validation

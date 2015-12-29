@@ -64,8 +64,14 @@
     <Compile Include="Entities\Fish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\SimpleValueObject.cs" />
+    <Compile Include="Queries\SearchFishQuery.cs" />
+    <Compile Include="Queries\SearchFishSortedQuery.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
+      <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
+      <Name>BusinessLight.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Domain\BusinessLight.Domain.csproj">
       <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
       <Name>BusinessLight.Domain</Name>

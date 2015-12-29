@@ -4,7 +4,7 @@ using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
 using BusinessLight.PhoneBook.Domain;
 
-namespace BusinessLight.PhoneBook.Service.Filters
+namespace BusinessLight.PhoneBook.Service.Queries
 {
     public class SearchContactInfoByContactIdQuery : Query<ContactInfo>
     {

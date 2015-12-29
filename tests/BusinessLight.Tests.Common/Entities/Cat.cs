@@ -7,6 +7,9 @@
             get; 
             set;
         }
+
+        public override string Color { get; set; }
+
         public override string Go()
         {
             return "I walk!";

@@ -49,7 +49,7 @@ namespace BusinessLight.Data.InMemory
 
         public IOrderedQueryable<T> ApplyQuery<T>(ISortedQuery<T> query) where T : UniqueEntity
         {
-            throw new NotImplementedException();
+            return query.GetSortingExpression()(Query<T>().Where(query.GetFilterExpression()));
         }
 
         public T GetById<T>(Guid id) where T : UniqueEntity
