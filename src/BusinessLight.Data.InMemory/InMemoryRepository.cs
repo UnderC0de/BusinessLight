@@ -42,9 +42,14 @@ namespace BusinessLight.Data.InMemory
             return _source.OfType<T>().AsQueryable();
         }
 
-        public IQueryable<T> ApplyFilter<T>(IFilter<T> filter) where T : UniqueEntity
+        public IQueryable<T> ApplyQuery<T>(IQuery<T> query) where T : UniqueEntity
         {
-            return Query<T>().Where(filter.GetFilterExpression());
+            return Query<T>().Where(query.GetFilterExpression());
+        }
+
+        public IOrderedQueryable<T> ApplyQuery<T>(ISortedQuery<T> query) where T : UniqueEntity
+        {
+            throw new NotImplementedException();
         }
 
         public T GetById<T>(Guid id) where T : UniqueEntity

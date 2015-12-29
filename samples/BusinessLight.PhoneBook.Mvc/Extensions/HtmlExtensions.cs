@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using System.Web.Optimization;
 using BusinessLight.Dto;
 using BusinessLight.PhoneBook.Mvc.ViewModels;
 
@@ -9,7 +8,7 @@ namespace BusinessLight.PhoneBook.Mvc.Extensions
     public static class HtmlExtensions
     {
         public static MvcHtmlString Pager<TFilter, TResult>(this HtmlHelper helper, PagedViewModel<TFilter, TResult> model)
-            where TFilter : PagedFilter
+            where TFilter : IPagedFilter
             where TResult : UniqueEntityDto
         {
             var ulBuilder = new TagBuilder("ul");

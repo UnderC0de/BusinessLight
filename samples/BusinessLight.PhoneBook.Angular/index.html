@@ -42,6 +42,7 @@
                             <label class="control-label col-sm-4" for="PageSize">Page size</label>
                             <div class="col-sm-8">
                                 <select class="form-control" id="PageSize" ng-model="pageSize">
+                                    <option value="1">1</option>
                                     <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
@@ -74,13 +75,25 @@
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>
-                            FirstName
+                            <a href="#" ng-click="sortField = 'FirstName'; isAscending = !isAscending; search()">
+                                FirstName
+                                <span ng-show="sortField == 'FirstName' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-show="sortField == 'FirstName' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </a>
                         </th>
                         <th>
-                            LastName
+                            <a href="#" ng-click="sortField = 'LastName'; isAscending = !isAscending; search()">
+                                LastName
+                                <span ng-show="sortField == 'LastName' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-show="sortField == 'LastName' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </a>
                         </th>
                         <th>
-                            BirthDate
+                            <a href="#" ng-click="sortField = 'BirthDate'; isAscending = !isAscending; search()">
+                                BirthDate
+                                <span ng-show="sortField == 'BirthDate' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
+                                <span ng-show="sortField == 'BirthDate' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                            </a>
                         </th>
                         <th>
                             ContactInfosCount

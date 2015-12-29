@@ -6,7 +6,7 @@ using BusinessLight.Paging;
 namespace BusinessLight.PhoneBook.Mvc.ViewModels
 {
     public abstract class PagedViewModel<TFilter, TResult>
-        where TFilter : PagedFilter
+        where TFilter : IPagedFilter
         where TResult : UniqueEntityDto
     {
         public TFilter PagedFilter

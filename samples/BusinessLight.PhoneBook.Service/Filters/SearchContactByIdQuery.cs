@@ -4,9 +4,9 @@ using BusinessLight.PhoneBook.Domain;
 
 namespace BusinessLight.PhoneBook.Service.Filters
 {
-    public class SearchContactInfoByIdQuery : QueryById<ContactInfo>
+    public class SearchContactByIdQuery : QueryById<Contact>
     {
-        public SearchContactInfoByIdQuery(Guid id)
+        public SearchContactByIdQuery(Guid id)
         {
             Id = id;
         }

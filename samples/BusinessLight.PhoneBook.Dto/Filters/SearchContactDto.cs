@@ -3,7 +3,7 @@ using BusinessLight.Dto;
 
 namespace BusinessLight.PhoneBook.Dto.Filters
 {
-    public class SearchContactDto : PagedFilter
+    public class SearchContactDto : SortedPagedFilter
     {
         [Display(Name="First name")]
         public string FirstName

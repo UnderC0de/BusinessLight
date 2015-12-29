@@ -14,7 +14,9 @@ namespace BusinessLight.Data
 
         IQueryable<T> Query<T>() where T : UniqueEntity;
 
-        IQueryable<T> ApplyFilter<T>(IFilter<T> filter) where T : UniqueEntity;
+        IQueryable<T> ApplyQuery<T>(IQuery<T> query) where T : UniqueEntity;
+
+        IOrderedQueryable<T> ApplyQuery<T>(ISortedQuery<T> query) where T : UniqueEntity;
 
         T GetById<T>(Guid id) where T : UniqueEntity;
 

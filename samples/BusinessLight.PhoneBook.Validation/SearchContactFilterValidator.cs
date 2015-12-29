@@ -3,7 +3,7 @@ using BusinessLight.Validation.Fluent;
 
 namespace BusinessLight.PhoneBook.Validation
 {
-    public class SearchContactFilterValidator : FluentValidator<SearchContactFilter>
+    public class SearchContactFilterValidator : FluentValidator<SearchContactQuery>
     {
     }
 }

@@ -50,7 +50,7 @@ namespace BusinessLight.PhoneBook.Mvc
             container.RegisterType<ContactCrudService, ContactCrudService>();
             container.RegisterType<IMapper, AutoMapperMapping>();
             container.RegisterType<IValidationFactory, UnityValidationFactory>();
-            container.RegisterType<IValidator<SearchContactFilter>, SearchContactFilterValidator>();
+            container.RegisterType<IValidator<SearchContactQuery>, SearchContactFilterValidator>();
             container.RegisterType<IValidator<Contact>, ContactValidator>();
             container.RegisterType<IValidator<ContactInfo>, ContactInfoValidator>();
         }

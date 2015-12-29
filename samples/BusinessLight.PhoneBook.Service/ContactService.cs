@@ -27,9 +27,9 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var filter = GetMapper()
-                    .Map<SearchContactFilter, SearchContactDto>(searchContactDto);
+                    .Map<SearchContactQuery, SearchContactDto>(searchContactDto);
 
-                var validator = GetValidationFactory().GetValidatorFor<SearchContactFilter>();
+                var validator = GetValidationFactory().GetValidatorFor<SearchContactQuery>();
                 if (validator != null)
                 {
                     var validationResult = validator.GetValidationResult(filter);
@@ -42,9 +42,8 @@ namespace BusinessLight.PhoneBook.Service
 
                 return uow
                     .Repository
-                    .ApplyFilter(filter)
+                    .ApplyQuery(filter)
                     .ApplyProjection<ContactDto>()
-                    .OrderBy(x => x.BirthDate)
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);
             }
         }
@@ -55,7 +54,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyFilter(new SearchContactByIdFilter(id))
+                    .ApplyQuery(new SearchContactByIdQuery(id))
                     .ApplyProjection<ContactDetailDto>()
                     .Single();
             }
@@ -67,7 +66,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyFilter(new SearchContactInfoByIdFilter(id))
+                    .ApplyQuery(new SearchContactInfoByIdQuery(id))
                     .ApplyProjection<ContactInfoDetailDto>()
                     .Single();
             }
@@ -79,7 +78,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyFilter(new SearchContactInfoByContactIdFilter(contactId))
+                    .ApplyQuery(new SearchContactInfoByContactIdQuery(contactId))
                     .ApplyProjection<ContactInfoDto>()
                     .ToList();
             }

@@ -8,7 +8,7 @@ namespace BusinessLight.PhoneBook.Mapping
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<SearchContactDto, SearchContactFilter>();
+            Mapper.CreateMap<SearchContactDto, SearchContactQuery>();
         }
     }
 }

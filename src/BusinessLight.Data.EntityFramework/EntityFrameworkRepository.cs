@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using BusinessLight.Domain;
 
 namespace BusinessLight.Data.EntityFramework
@@ -40,9 +41,14 @@ namespace BusinessLight.Data.EntityFramework
             return _dbContext.Set<T>();
         }
 
-        public IQueryable<T> ApplyFilter<T>(IFilter<T> filter) where T : UniqueEntity
+        public IQueryable<T> ApplyQuery<T>(IQuery<T> query) where T : UniqueEntity
         {
-            return Query<T>().Where(filter.GetFilterExpression());
+            return Query<T>().Where(query.GetFilterExpression());
+        }
+
+        public IOrderedQueryable<T> ApplyQuery<T>(ISortedQuery<T> query) where T : UniqueEntity
+        {
+            return query.GetSortingExpression()(Query<T>().Where(query.GetFilterExpression()));
         }
 
         public T GetById<T>(Guid id) where T : UniqueEntity
