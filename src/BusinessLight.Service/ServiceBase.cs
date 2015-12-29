@@ -25,7 +25,7 @@ namespace BusinessLight.Service
 
             if (validationFactory == null)
             {
-                throw new ArgumentNullException("unitOfWork");
+                throw new ArgumentNullException("validationFactory");
             }
 
             _unitOfWorkFactory = unitOfWorkFactory;

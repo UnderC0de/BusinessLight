@@ -15,7 +15,9 @@ namespace BusinessLight.Validation.Tests
                 .And
                 .ValueOf
                 .ParamName
-                .Should().Be.EqualTo("validationResult");
+                .Should()
+                .Be
+                .EqualTo("validationResult");
         }
 
         [TestMethod]
@@ -23,7 +25,10 @@ namespace BusinessLight.Validation.Tests
         {
             var validationResult = new ValidationResult();
             var validationException = new ValidationException(validationResult);
-            validationException.ValidationResult.Should().Be.EqualTo(validationResult);
+            validationException
+                .ValidationResult.Should()
+                .Be
+                .EqualTo(validationResult);
         }
     }
 }
