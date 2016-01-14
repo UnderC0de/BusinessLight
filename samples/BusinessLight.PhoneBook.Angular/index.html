@@ -12,7 +12,9 @@
 <body ng-controller="ContactsController">
     <div class="container body-content">
         <h2>PhoneBook.Angular</h2>
-
+        <div class="alert alert-danger" ng-show="error">
+            An error occured while performing the search operation. ({{error.Message}})
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -42,7 +44,6 @@
                             <label class="control-label col-sm-4" for="PageSize">Page size</label>
                             <div class="col-sm-8">
                                 <select class="form-control" id="PageSize" ng-model="pageSize">
-                                    <option value="1">1</option>
                                     <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
@@ -68,7 +69,7 @@
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
             </a>
         </p>
-        
+
         <div ng-show="contacts">
             <div ng-show="contacts.Result.length > 0">
                 <uib-pagination direction-links="false" total-items="contacts.PagingInfo.TotalItemCount" items-per-page="pageSize" ng-model="pageNumber" ng-change="pageChanged()"></uib-pagination>
@@ -129,8 +130,9 @@
             <div class="alert alert-info" ng-hide="contacts.Result.length > 0">
                 No results available for the current search filter.
             </div>
-        </div>
 
+
+        </div>
     </div>
 </body>
 </html>
