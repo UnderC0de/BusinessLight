@@ -6,6 +6,7 @@
     <title>PhoneBook.Angular</title>
     <link rel="stylesheet" href="Content/bootstrap.css">
     <script src="Scripts/angular.js" type="text/javascript"></script>
+    <script src="Scripts/angular-route.js" type="text/javascript"></script>
     <script src="Scripts/angular-ui/ui-bootstrap.js" type="text/javascript"></script>
     <script src="Scripts/app/contacts-controller.js" type="text/javascript"></script>
 </head>
@@ -15,124 +16,7 @@
         <div class="alert alert-danger" ng-show="error">
             An error occured while performing the search operation. ({{error.Message}})
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
-                </h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="FirstName">First name</label>
-                            <div class="col-sm-8">
-                                <input class="form-control" id="FirstName" type="text" ng-model="firstName">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="LastName">Last name</label>
-                            <div class="col-sm-8">
-                                <input class="form-control" id="LastName" type="text" ng-model="lastName">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="PageSize">Page size</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="PageSize" ng-model="pageSize">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary" button ng-click="search()">
-
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p>
-            <a href="#" class="btn btn-success">
-                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create
-            </a>
-        </p>
-
-        <div ng-show="contacts">
-            <div ng-show="contacts.Result.length > 0">
-                <uib-pagination direction-links="false" total-items="contacts.PagingInfo.TotalItemCount" items-per-page="pageSize" ng-model="pageNumber" ng-change="pageChanged()"></uib-pagination>
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>
-                            <a href="#" ng-click="sortField = 'FirstName'; isAscending = !isAscending; search()">
-                                FirstName
-                                <span ng-show="sortField == 'FirstName' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
-                                <span ng-show="sortField == 'FirstName' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
-                            </a>
-                        </th>
-                        <th>
-                            <a href="#" ng-click="sortField = 'LastName'; isAscending = !isAscending; search()">
-                                LastName
-                                <span ng-show="sortField == 'LastName' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
-                                <span ng-show="sortField == 'LastName' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
-                            </a>
-                        </th>
-                        <th>
-                            <a href="#" ng-click="sortField = 'BirthDate'; isAscending = !isAscending; search()">
-                                BirthDate
-                                <span ng-show="sortField == 'BirthDate' && isAscending" class="glyphicon glyphicon-sort-by-attributes"></span>
-                                <span ng-show="sortField == 'BirthDate' && !isAscending" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
-                            </a>
-                        </th>
-                        <th>
-                            ContactInfosCount
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    <tr ng-repeat="model in contacts.Result">
-                        <td>
-                            {{model.FirstName}}
-                        </td>
-                        <td>
-                            {{model.LastName}}
-                        </td>
-                        <td>
-                            {{model.BirthDate| date:'shortDate'}}
-                        </td>
-                        <td>
-                            {{model.ContactInfosCount}}
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <uib-pagination direction-links="false" total-items="contacts.PagingInfo.TotalItemCount" items-per-page="pageSize" ng-model="pageNumber" ng-change="pageChanged()"></uib-pagination>
-            </div>
-            <div class="alert alert-info" ng-hide="contacts.Result.length > 0">
-                No results available for the current search filter.
-            </div>
-
-
-        </div>
+        <ng-view />
     </div>
 </body>
 </html>

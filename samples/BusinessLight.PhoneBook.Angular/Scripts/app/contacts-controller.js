@@ -1,13 +1,24 @@
-﻿var phoneBookApp = angular.module('PhoneBookApp', ['ui.bootstrap'])
+﻿var phoneBookApp = angular.module("PhoneBookApp", ["ngRoute", "ui.bootstrap"])
     .constant("dataUrl", "http://localhost:51121/api/contact/search")
+    .config(function ($routeProvider) {
+        $routeProvider.when("/checkout", {
+            templateUrl: "/views/checkoutSummary.html"
+        });
+        $routeProvider.when("/products", {
+            templateUrl: "/views/productList.html"
+        });
+        $routeProvider.otherwise({
+            templateUrl: "/scripts/views/contacts/contactList.html"
+        });
+    })
     .controller('ContactsController', function ($scope, $http, dataUrl) {
-        $scope.firstName = "";
-        $scope.lastName = "";
-        $scope.birthDate = "";
+        //$scope.firstName = "";
+        //$scope.lastName = "";
+        //$scope.birthDate = "";
         $scope.pageNumber = 1;
         $scope.pageSize = "10";
-        $scope.sortField = "";
-        $scope.isAscending = true;
+        //$scope.sortField = "";
+        //$scope.isAscending = true;
         
         $scope.pageChanged = function () {
             $scope.search();

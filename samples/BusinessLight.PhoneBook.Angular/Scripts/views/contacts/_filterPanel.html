@@ -1,0 +1,49 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="FirstName">First name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="FirstName" type="text" ng-model="firstName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="LastName">Last name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="LastName" type="text" ng-model="lastName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="PageSize">Page size</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="PageSize" ng-model="pageSize">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" button ng-click="search()">
+
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
