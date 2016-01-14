@@ -8,34 +8,38 @@
         $routeProvider.when("/edit", {
             templateUrl: "/scripts/views/contacts/contactEdit.html"
         });
-        //$routeProvider.otherwise({
-        //    templateUrl: "/scripts/views/contacts/contactList.html"
-        //});
+
+        $routeProvider.otherwise({
+            templateUrl: "/scripts/views/contacts/contactList.html"
+        });
     })
-    .controller('ContactsController', function ($scope, $http, dataUrl) {
-        //$scope.firstName = "";
-        //$scope.lastName = "";
-        //$scope.birthDate = "";
-        $scope.pageNumber = 1;
-        $scope.pageSize = "10";
-        //$scope.sortField = "";
-        //$scope.isAscending = true;
+    .controller("ContactsController", function ($scope, $http, dataUrl) {
+        $scope.filter = {
+            firstName: "",
+            lastName: "",
+            birthDate: "",
+            pageNumber: 0,
+            pageSize: "10",
+            sortField: "",
+            isAscending: true
+        }
+        
         
         $scope.pageChanged = function () {
             $scope.search();
         };
 
         $scope.search = function () {
-            var data = {
-                FirstName: $scope.firstName,
-                LastName: $scope.lastName,
-                BirthDate: $scope.birthDate,
-                PageNumber: $scope.pageNumber - 1,
-                PageSize: $scope.pageSize,
-                SortField: $scope.sortField,
-                IsAscending: $scope.isAscending
-            }
-            $http.post(dataUrl, data)
+            //var data = {
+            //    FirstName: $scope.firstName,
+            //    LastName: $scope.lastName,
+            //    BirthDate: $scope.birthDate,
+            //    PageNumber: $scope.pageNumber - 1,
+            //    PageSize: $scope.pageSize,
+            //    SortField: $scope.sortField,
+            //    IsAscending: $scope.isAscending
+            //}
+            $http.post(dataUrl, $scope.filter)
                 .success(function (result, status) {
                     $scope.contacts = result;
                 })
