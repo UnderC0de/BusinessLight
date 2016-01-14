@@ -1,1 +1,7 @@
-﻿contactDetails
+﻿<div>{{contact.Id}}</div>
+<div>{{contact.FirstName}}</div>
+<div>{{contact.LastName}}</div>
+<ul ng-repeat="model in contact.ContactInfos">
+    <li>{{model.Id}} - {{model.ContactInfoType}} - {{model.ContactInfoDetail}}</li>
+</ul>
+<a href="/#list" class="btn btn-primary">Back</a>
