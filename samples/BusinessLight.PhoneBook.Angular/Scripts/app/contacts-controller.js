@@ -1,15 +1,16 @@
 ﻿var phoneBookApp = angular.module("PhoneBookApp", ["ngRoute", "ui.bootstrap"])
     .constant("dataUrl", "http://localhost:51121/api/contact/search")
     .config(function ($routeProvider) {
-        $routeProvider.when("/checkout", {
-            templateUrl: "/views/checkoutSummary.html"
-        });
-        $routeProvider.when("/products", {
-            templateUrl: "/views/productList.html"
-        });
-        $routeProvider.otherwise({
+        $routeProvider.when("/list", {
             templateUrl: "/scripts/views/contacts/contactList.html"
         });
+
+        $routeProvider.when("/edit", {
+            templateUrl: "/scripts/views/contacts/contactEdit.html"
+        });
+        //$routeProvider.otherwise({
+        //    templateUrl: "/scripts/views/contacts/contactList.html"
+        //});
     })
     .controller('ContactsController', function ($scope, $http, dataUrl) {
         //$scope.firstName = "";

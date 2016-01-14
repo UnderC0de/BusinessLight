@@ -111,7 +111,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\contacts-controller.js" />
-    <Content Include="Scripts\views\contacts\contactDetails.html" />
+    <Content Include="Scripts\views\contacts\contactEdit.html" />
     <Content Include="Scripts\views\contacts\contactList.html" />
     <Content Include="Scripts\views\contacts\_resultPanel.html" />
     <Content Include="Scripts\views\contacts\_filterPanel.html" />
