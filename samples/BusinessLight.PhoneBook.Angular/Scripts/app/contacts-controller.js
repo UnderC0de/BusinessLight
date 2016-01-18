@@ -1,15 +1,22 @@
-﻿var phoneBookApp = angular.module("phoneBookApp", ["ngRoute", "ui.bootstrap"])
+﻿var phoneBookApp = angular.module("phoneBookApp", ["ngRoute", "ui.bootstrap", "ui.bootstrap.datepicker"])
     .constant("searchUrl", "http://localhost:51121/api/contact/search")
     .constant("getByIdUrl", "http://localhost:51121/api/contact/get")
+    .constant("createUrl", "http://localhost:51121/api/contact/create")
+    .constant("updateUrl", "http://localhost:51121/api/contact/update")
     .config(function ($routeProvider) {
         $routeProvider.when("/list", {
             templateUrl: "/scripts/views/contacts/contactList.html",
             controller: "contactsController"
         });
 
+        $routeProvider.when("/create", {
+            templateUrl: "/scripts/views/contacts/contactCreate.html",
+            controller: "contactCreateController"
+        });
+
         $routeProvider.when("/edit/:id", {
             templateUrl: "/scripts/views/contacts/contactEdit.html",
-            controller: "contactController"
+            controller: "contactEditController"
         });
 
         $routeProvider.otherwise({
@@ -43,7 +50,20 @@
                 });
         }
     })
-    .controller("contactController", function ($scope, $http, $routeParams, getByIdUrl) {
+     .controller("contactCreateController", function ($scope, $http,$location, createUrl) {
+         $scope.saveContact = function () {
+             $http.post(createUrl, $scope.contact)
+             .success(function (data) {
+                 $scope.data.contactId = data.id;
+             })
+             .error(function (error) {
+                 $scope.data.orderError = error;
+             }).finally(function () {
+                 $location.path("/list");
+             });
+         }
+     })
+    .controller("contactEditController", function ($scope, $http, $routeParams,$location, getByIdUrl, updateUrl) {
         var id = $routeParams.id;
 
         $http.get(getByIdUrl, {
@@ -51,4 +71,16 @@
         }).success(function (result) {
             $scope.contact = result;
         });
+
+        $scope.saveContact = function () {
+            $http.put(updateUrl, $scope.contact)
+            .success(function (data) {
+                $scope.data.contactId = data.id;
+            })
+            .error(function (error) {
+                $scope.data.orderError = error;
+            }).finally(function () {
+                $location.path("/list");
+            });
+        }
     });
