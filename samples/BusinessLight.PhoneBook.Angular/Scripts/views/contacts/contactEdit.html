@@ -1,7 +1,82 @@
-﻿<div>{{contact.Id}}</div>
-<div>{{contact.FirstName}}</div>
-<div>{{contact.LastName}}</div>
-<ul ng-repeat="model in contact.ContactInfos">
-    <li>{{model.Id}} - {{model.ContactInfoType}} - {{model.ContactInfoDetail}}</li>
-</ul>
-<a href="/#list" class="btn btn-primary">Back</a>
+﻿<h2>Edit contact</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form name="contactEditForm" novalidate>
+            <div class="form-horizontal">
+                <div class="form-group" ng-class="{ 'has-error': contactEditForm.FirstName.$invalid }">
+                    <label for="FirstName" class="control-label col-md-2">FirstName</label>
+                    <div class="col-md-10">
+                        <input id="FirstName" class="form-control" name="FirstName" type="text" ng-model="contact.FirstName" required />
+                        <span class="text-danger" ng-show="contactEditForm.FirstName.$error.required">
+                            FirstName is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': contactEditForm.LastName.$invalid }">
+                    <label for="LastName" class="control-label col-md-2">LastName</label>
+                    <div class="col-md-10">
+                        <input id="LastName" class="form-control" name="LastName" type="text" ng-model="contact.LastName" required />
+                        <span class="text-danger" ng-show="contactEditForm.LastName.$error.required">
+                            LastName is required
+                        </span>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">
+                    <label for="BirthDate" class="control-label col-md-2">BirthDate</label>
+                    <div class="col-md-10">
+                        <input id="BirthDate" class="form-control" name="LastName" type="text" ng-model="contact.BirthDate"/>
+                    </div>
+                </div>-->
+
+                <div class="form-group">
+                    <label for="Notes" class="control-label col-md-2">Notes</label>
+                    <div class="col-md-10">
+                        <input id="Notes" class="form-control" name="Notes" type="text" ng-model="contact.Notes" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" ng-disabled="contactEditForm.$invalid" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-6">
+        <br /><br />
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Contact info detail
+                    </th>
+                    <th>
+                        Contact info type
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="model in contact.ContactInfos">
+                    <td>
+                        {{model.ContactInfoDetail}}
+                    </td>
+                    <td>
+                        {{model.ContactInfoType}}
+                    </td>
+                    <td>
+                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <a href="/#list" class="btn btn-primary">Back to List</a>
+</div>
