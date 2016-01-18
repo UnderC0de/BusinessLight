@@ -1,4 +1,8 @@
-﻿<ng-include src="'scripts/views/contacts/_filterPanel.html'"></ng-include>
+﻿<div class="alert alert-danger" ng-show="error">
+    An error occured: {{error}}
+</div>
+
+<ng-include src="'scripts/views/contacts/_filterPanel.html'"></ng-include>
 
 <p>
     <a href="/#create" class="btn btn-success">

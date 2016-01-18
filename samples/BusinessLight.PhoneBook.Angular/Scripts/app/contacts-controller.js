@@ -50,16 +50,17 @@
                 });
         }
     })
-     .controller("contactCreateController", function ($scope, $http,$location, createUrl) {
+    .controller("contactCreateController", function ($scope, $http,$location, createUrl) {
          $scope.saveContact = function () {
              $http.post(createUrl, $scope.contact)
              .success(function (data) {
                  $scope.data.contactId = data.id;
+                 $location.path("/list");
              })
              .error(function (error) {
-                 $scope.data.orderError = error;
+                 $scope.error = error;
              }).finally(function () {
-                 $location.path("/list");
+          
              });
          }
      })
@@ -76,11 +77,12 @@
             $http.put(updateUrl, $scope.contact)
             .success(function (data) {
                 $scope.data.contactId = data.id;
+                $location.path("/list");
             })
             .error(function (error) {
-                $scope.data.orderError = error;
+                $scope.error = error;
             }).finally(function () {
-                $location.path("/list");
+               
             });
         }
     });
