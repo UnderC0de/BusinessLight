@@ -1,4 +1,4 @@
-﻿var phoneBookApp = angular.module("phoneBookApp", ["ngRoute", "ui.bootstrap", "ui.bootstrap.datepicker"])
+﻿var phoneBookApp = angular.module("phoneBookApp", ["ngRoute", "ui.bootstrap", "ui.bootstrap.datepicker", "customFilters"])
     .constant("searchUrl", "http://localhost:51121/api/contact/search")
     .constant("getByIdUrl", "http://localhost:51121/api/contact/get")
     .constant("createUrl", "http://localhost:51121/api/contact/create")

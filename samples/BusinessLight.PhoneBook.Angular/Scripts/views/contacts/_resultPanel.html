@@ -32,7 +32,7 @@
 
             <tr ng-repeat="model in contacts.Result">
                 <td>
-                    {{model.FirstName}}
+                    {{model.FirstName | labelCase}}
                 </td>
                 <td>
                     {{model.LastName}}
