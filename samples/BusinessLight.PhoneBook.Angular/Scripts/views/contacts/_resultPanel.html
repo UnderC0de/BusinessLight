@@ -38,7 +38,7 @@
                     {{model.LastName}}
                 </td>
                 <td>
-                    {{model.BirthDate| date:'shortDate'}}
+                    {{model.BirthDate| date:'shortDate'}} ({{getAge(model.BirthDate)}})
                 </td>
                 <td>
                     {{model.ContactInfosCount}}

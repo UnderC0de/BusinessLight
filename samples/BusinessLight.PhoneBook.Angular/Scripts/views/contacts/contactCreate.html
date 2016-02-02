@@ -6,32 +6,32 @@
     <div class="col-md-6">
         <form name="contactEditForm" novalidate>
             <div class="form-horizontal">
-                <div class="form-group" ng-class="{ 'has-error': contactEditForm.FirstName.$invalid }">
+                <div class="form-group" ng-class="{ 'has-error': contactEditForm.FirstName.$invalid && contactEditForm.FirstName.$dirty }">
                     <label for="FirstName" class="control-label col-md-2">FirstName</label>
                     <div class="col-md-10">
                         <input id="FirstName" class="form-control" name="FirstName" type="text" ng-model="contact.FirstName" required />
-                        <span class="text-danger" ng-show="contactEditForm.FirstName.$error.required">
+                        <span class="text-danger" ng-show="contactEditForm.FirstName.$error.required && contactEditForm.FirstName.$dirty">
                             FirstName is required
                         </span>
                     </div>
                 </div>
 
-                <div class="form-group" ng-class="{ 'has-error': contactEditForm.LastName.$invalid }">
+                <div class="form-group" ng-class="{ 'has-error': contactEditForm.LastName.$invalid && contactEditForm.LastName.$dirty }">
                     <label for="LastName" class="control-label col-md-2">LastName</label>
                     <div class="col-md-10">
                         <input id="LastName" class="form-control" name="LastName" type="text" ng-model="contact.LastName" required />
-                        <span class="text-danger" ng-show="contactEditForm.LastName.$error.required">
+                        <span class="text-danger" ng-show="contactEditForm.LastName.$error.required  && contactEditForm.LastName.$dirty">
                             LastName is required
                         </span>
                     </div>
                 </div>
 
-                <div class="form-group" ng-class="{ 'has-error': contactEditForm.BirthDate.$invalid }">
+                <div class="form-group" ng-class="{ 'has-error': contactEditForm.BirthDate.$invalid && contactEditForm.BirthDate.$dirty }">
                     <label for="BirthDate" class="control-label col-md-2">BirthDate</label>
                     <div class="col-md-10">
                         <uib-datepicker name="BirthDate" ng-model="contact.BirthDate" required></uib-datepicker>
                         <!--<input id="BirthDate" class="form-control" name="BirthDate" type="text" ng-model="contact.BirthDate" required/>-->
-                        <span class="text-danger" ng-show="contactEditForm.BirthDate.$error.required">
+                        <span class="text-danger" ng-show="contactEditForm.BirthDate.$error.required && contactEditForm.BirthDate.$dirty">
                             BirthDate is required
                         </span>
                     </div>
