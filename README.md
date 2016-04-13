@@ -20,9 +20,9 @@ Install using Nuget or compile binary from https://github.com/martinobordin/Busi
 https://www.nuget.org/packages?q=businesslight
 
 ## Samples
-The solution contains a sample PhoneBook application with 3 UI:
-- MVC
-- Angular (coming soon)
+The solution contains a sample **PhoneBook ** application with 2 UI:
+- ASP.NET MVC + ASP.NET Web API
+- AngularJs + ASP.NET Web API
 
 ## Demo
 Checkout the MVC sample here: http://phonebooksample.azurewebsites.net
