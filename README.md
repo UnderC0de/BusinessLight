@@ -19,6 +19,9 @@ Install using Nuget or compile binary from https://github.com/martinobordin/Busi
 
 https://www.nuget.org/packages?q=businesslight
 
+## Quickstart
+Check out the [wiki](https://github.com/martinobordin/BusinessLight/wiki) page to see how easy is to use BusinessLight
+
 ## Samples
 The solution contains a sample **PhoneBook ** application with 2 UI:
 - ASP.NET MVC + ASP.NET Web API
