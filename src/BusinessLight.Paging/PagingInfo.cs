@@ -2,7 +2,7 @@
 
 namespace BusinessLight.Paging
 {
-    public class PagingInfo
+    public class PagingInfo : IPagingInfo
     {
         public PagingInfo()
         {
