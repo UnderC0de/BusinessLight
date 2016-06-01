@@ -4,11 +4,11 @@ using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
 using BusinessLight.PhoneBook.Domain;
 
-namespace BusinessLight.PhoneBook.Service.Queries
+namespace BusinessLight.PhoneBook.Service.Specifications
 {
-    public class SearchContactInfoByContactIdQuery : Query<ContactInfo>
+    public class SearchContactInfoByContactIdSpecification : Specification<ContactInfo>
     {
-        public SearchContactInfoByContactIdQuery(Guid contactId)
+        public SearchContactInfoByContactIdSpecification(Guid contactId)
         {
             ContactId = contactId;
         }
@@ -19,9 +19,9 @@ namespace BusinessLight.PhoneBook.Service.Queries
             private set;
         }
 
-        public override Expression<Func<ContactInfo, bool>> GetFilterExpression()
+        public override Expression<Func<ContactInfo, bool>> GetSpecificationExpression()
         {
-            var filter = base.GetFilterExpression();
+            var filter = base.GetSpecificationExpression();
             filter = filter.And(contactInfo => contactInfo.ContactId == ContactId);
 
             return filter;

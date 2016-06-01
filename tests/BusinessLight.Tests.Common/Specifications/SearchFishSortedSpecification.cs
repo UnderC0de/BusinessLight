@@ -5,11 +5,11 @@ using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
 using BusinessLight.Tests.Common.Entities;
 
-namespace BusinessLight.Tests.Common.Queries
+namespace BusinessLight.Tests.Common.Specifications
 {
-    public class SearchFishSortedQuery : SortedQuery<Fish>
+    public class SearchFishSortedSpecification : SortedSpecification<Fish>
     {
-        public SearchFishSortedQuery(string name, string sortField, bool isAscending)
+        public SearchFishSortedSpecification(string name, string sortField, bool isAscending)
         {
             Name = name;
             SortField = sortField;
@@ -22,9 +22,9 @@ namespace BusinessLight.Tests.Common.Queries
             set;
         }
 
-        public override Expression<Func<Fish, bool>> GetFilterExpression()
+        public override Expression<Func<Fish, bool>> GetSpecificationExpression()
         {
-            var query = base.GetFilterExpression();
+            var query = base.GetSpecificationExpression();
             if (!string.IsNullOrWhiteSpace(Name))
             {
                 if (!string.IsNullOrWhiteSpace(Name))

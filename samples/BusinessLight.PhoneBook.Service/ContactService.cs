@@ -9,13 +9,13 @@ using BusinessLight.Paging.Extensions;
 using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Dto;
 using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service.Queries;
+using BusinessLight.PhoneBook.Service.Specifications;
 using BusinessLight.Service;
 using BusinessLight.Validation;
 
 namespace BusinessLight.PhoneBook.Service
 {
-    public class ContactCrudService : CrudServiceBase
+    public class ContactCrudService : ApplicationService
     {
         public ContactCrudService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
             : base(unitOfWorkFactory, mapper, validationFactory)
@@ -26,10 +26,9 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                var filter = GetMapper()
-                    .Map<SearchContactQuery, SearchContactDto>(searchContactDto);
+                var filter = Map<SearchContactSpecification, SearchContactDto>(searchContactDto);
 
-                var validator = GetValidationFactory().GetValidatorFor<SearchContactQuery>();
+                var validator = GetValidationFactory().GetValidatorFor<SearchContactSpecification>();
                 if (validator != null)
                 {
                     var validationResult = validator.GetValidationResult(filter);
@@ -42,7 +41,7 @@ namespace BusinessLight.PhoneBook.Service
 
                 return uow
                     .Repository
-                    .ApplyQuery(filter)
+                    .IsSatisfiedBy(filter)
                     .ApplyProjection<ContactDto>()
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);
             }
@@ -54,7 +53,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyQuery(new SearchContactByIdQuery(id))
+                    .IsSatisfiedBy(new SearchContactByIdSpecification(id))
                     .ApplyProjection<ContactDetailDto>()
                     .Single();
             }
@@ -66,7 +65,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyQuery(new SearchContactInfoByIdQuery(id))
+                    .IsSatisfiedBy(new SearchContactInfoByIdSpecification(id))
                     .ApplyProjection<ContactInfoDetailDto>()
                     .Single();
             }
@@ -78,7 +77,7 @@ namespace BusinessLight.PhoneBook.Service
             {
                 return uow
                     .Repository
-                    .ApplyQuery(new SearchContactInfoByContactIdQuery(contactId))
+                    .IsSatisfiedBy(new SearchContactInfoByContactIdSpecification(contactId))
                     .ApplyProjection<ContactInfoDto>()
                     .ToList();
             }
@@ -88,7 +87,7 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
+                var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
                 var validator = GetValidationFactory().GetValidatorFor<Contact>();
                 if (validator != null)
                 {
@@ -109,7 +108,7 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                var contact = GetMapper().Map<Contact, ContactDetailDto>(contactDetailDto);
+                var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
                 var validator = GetValidationFactory().GetValidatorFor<Contact>();
                 if (validator != null)
                 {
@@ -150,7 +149,7 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                var contactInfo = GetMapper().Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
+                var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
                 var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
                 if (validator != null)
                 {
@@ -171,7 +170,7 @@ namespace BusinessLight.PhoneBook.Service
         {
             using (var uow = GetUnitOfWork())
             {
-                var contactInfo = GetMapper().Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
+                var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
                 var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
                 if (validator != null)
                 {

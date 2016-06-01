@@ -4,7 +4,7 @@ using BusinessLight.PhoneBook.Common;
 
 namespace BusinessLight.PhoneBook.Domain
 {
-    public class ContactInfo : UniqueEntity
+    public class ContactInfo : Entity
     {
         public string ContactInfoDetail
         {

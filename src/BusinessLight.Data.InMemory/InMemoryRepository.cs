@@ -20,39 +20,39 @@ namespace BusinessLight.Data.InMemory
             _source = source;
         }
 
-        public void Add<T>(T entity) where T : UniqueEntity
+        public void Add<T>(T entity) where T : Entity
         {
             Remove(entity);
             _source.Add(entity);
         }
 
-        public void Update<T>(T entity) where T : UniqueEntity
+        public void Update<T>(T entity) where T : Entity
         {
             Remove(entity);
             Add(entity);
         }
 
-        public void Remove<T>(T entity) where T : UniqueEntity
+        public void Remove<T>(T entity) where T : Entity
         {
              _source.Remove(entity);
         }
 
-        public IQueryable<T> Query<T>() where T : UniqueEntity
+        public IQueryable<T> Query<T>() where T : Entity
         {
             return _source.OfType<T>().AsQueryable();
         }
 
-        public IQueryable<T> ApplyQuery<T>(IQuery<T> query) where T : UniqueEntity
+        public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
         {
-            return Query<T>().Where(query.GetFilterExpression());
+            return Query<T>().Where(specification.GetSpecificationExpression());
         }
 
-        public IOrderedQueryable<T> ApplyQuery<T>(ISortedQuery<T> query) where T : UniqueEntity
+        public IOrderedQueryable<T> IsSatisfiedBy<T>(ISortedSpecification<T> specification) where T : Entity
         {
-            return query.GetSortingExpression()(Query<T>().Where(query.GetFilterExpression()));
+            return specification.GetSortingExpression()(Query<T>().Where(specification.GetSpecificationExpression()));
         }
 
-        public T GetById<T>(Guid id) where T : UniqueEntity
+        public T GetById<T>(Guid id) where T : Entity
         {
             return _source.OfType<T>().Single(x => x.Id == id);
         }

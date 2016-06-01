@@ -2,9 +2,9 @@
 
 namespace BusinessLight.Domain
 {
-    public abstract class UniqueEntity : IEquatable<UniqueEntity>
+    public abstract class Entity : IEquatable<Entity>
     {
-        protected UniqueEntity()
+        protected Entity()
         {
             Id = Guid.NewGuid();
         }
@@ -15,7 +15,7 @@ namespace BusinessLight.Domain
             set;
         }
 
-        public bool Equals(UniqueEntity other)
+        public bool Equals(Entity other)
         {
             if (other == null)
             {
@@ -37,7 +37,24 @@ namespace BusinessLight.Domain
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as UniqueEntity);
+            return Equals(obj as Entity);
+        }
+
+        public static bool operator ==(Entity left, Entity right)
+        {
+            return Equals(left, null) ? Equals(right, null) : left.Equals(right);
+        }
+
+        /// <inheritdoc/>
+        public static bool operator !=(Entity left, Entity right)
+        {
+            return !(left == right);
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return string.Format("[{0} {1}]", GetType().Name, Id);
         }
     }
 }

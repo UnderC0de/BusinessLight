@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BusinessLight.Data")]
-[assembly: AssemblyDescription("A library that defines interface for a generic repository, unit of work and query filters")]
+[assembly: AssemblyDescription("A library that defines interface for a generic repository, unit of work and specifications")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Martino Bordin")]
 [assembly: AssemblyProduct("BusinessLight.Data")]

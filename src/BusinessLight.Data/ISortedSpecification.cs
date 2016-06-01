@@ -4,7 +4,7 @@ using BusinessLight.Domain;
 
 namespace BusinessLight.Data
 {
-    public interface ISortedQuery<TSource> : IQuery<TSource> where TSource : UniqueEntity
+    public interface ISortedSpecification<TSource> : ISpecification<TSource> where TSource : Entity
     {
         Func<IQueryable<TSource>, IOrderedQueryable<TSource>> GetSortingExpression();
     }

@@ -4,11 +4,11 @@ using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
 using BusinessLight.Tests.Common.Entities;
 
-namespace BusinessLight.Tests.Common.Queries
+namespace BusinessLight.Tests.Common.Specifications
 {
-    public class SearchFishQuery : Query<Fish>
+    public class SearchFishSpecification : Specification<Fish>
     {
-        public SearchFishQuery(string name)
+        public SearchFishSpecification(string name)
         {
             Name = name;
         }
@@ -19,9 +19,9 @@ namespace BusinessLight.Tests.Common.Queries
             set;
         }
 
-        public override Expression<Func<Fish, bool>> GetFilterExpression()
+        public override Expression<Func<Fish, bool>> GetSpecificationExpression()
         {
-            var query = base.GetFilterExpression();
+            var query = base.GetSpecificationExpression();
             if (!string.IsNullOrWhiteSpace(Name))
             {
                 if (!string.IsNullOrWhiteSpace(Name))

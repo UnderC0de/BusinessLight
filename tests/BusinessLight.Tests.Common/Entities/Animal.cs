@@ -2,7 +2,7 @@
 
 namespace BusinessLight.Tests.Common.Entities
 {
-    public abstract class Animal : UniqueEntity
+    public abstract class Animal : Entity
     {
         public abstract string Name { get; set; }
 

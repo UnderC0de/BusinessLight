@@ -33,8 +33,7 @@ namespace BusinessLight.Validation
 
         public IEnumerable<ValidationIssue> ValidationIssues
         {
-            get; 
-            private set;
+            get;
         }
 
         public override string ToString()

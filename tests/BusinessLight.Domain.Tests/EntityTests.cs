@@ -5,12 +5,12 @@ using SharpTestsEx;
 namespace BusinessLight.Domain.Tests
 {
     [TestClass]
-    public class UniqueEntityTests
+    public class EntityTests
     {
         private readonly Cat _felix;
         private readonly Fish _nemo;
 
-        public UniqueEntityTests()
+        public EntityTests()
         {
             _felix = new Cat { Name = "Felix"};
             _nemo = new Fish { Name = "Nemo" };

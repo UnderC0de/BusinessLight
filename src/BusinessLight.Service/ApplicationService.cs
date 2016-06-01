@@ -5,13 +5,13 @@ using BusinessLight.Validation;
 
 namespace BusinessLight.Service
 {
-    public abstract class CrudServiceBase
+    public abstract class ApplicationService
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IMapper _mapper;
         private readonly IValidationFactory _validationFactory;
 
-        protected CrudServiceBase(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
+        protected ApplicationService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
         {
             if (unitOfWorkFactory == null)
             {
@@ -38,9 +38,14 @@ namespace BusinessLight.Service
             return _unitOfWorkFactory.GetUnitOfWork();
         }
 
-        protected IMapper GetMapper()
+        //protected IMapper GetMapper()
+        //{
+        //    return _mapper;
+        //}
+
+        protected TDestination Map<TDestination, TSource>(TSource source)
         {
-            return _mapper;
+            return _mapper.Map<TDestination, TSource>(source);
         }
 
         protected IValidationFactory GetValidationFactory()

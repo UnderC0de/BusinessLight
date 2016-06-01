@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using BusinessLight.Tests.Common.Entities;
-using BusinessLight.Tests.Common.Queries;
+using BusinessLight.Tests.Common.Specifications;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpTestsEx;
 
@@ -34,11 +34,11 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
                 var countFish = unitOfWork.Repository.Query<Fish>().Count();
-                var queryFish = unitOfWork.Repository.ApplyQuery(new SearchFishQuery("Na")).ToList();
+                var queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("Na")).ToList();
                 queryFish.Count.Should().Be.EqualTo(countFish);
-                queryFish = unitOfWork.Repository.ApplyQuery(new SearchFishQuery("")).ToList();
+                queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("")).ToList();
                 queryFish.Count.Should().Be.EqualTo(countFish);
-                queryFish = unitOfWork.Repository.ApplyQuery(new SearchFishQuery("notexistingname")).ToList();
+                queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("notexistingname")).ToList();
                 queryFish.Count.Should().Be.EqualTo(0);
             }
         }
@@ -49,7 +49,7 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
                 var allFishes = unitOfWork.Repository.Query<Fish>().OrderBy(x => x.Color).ToList();
-                var queryFishes = unitOfWork.Repository.ApplyQuery(new SearchFishSortedQuery("Na", "Color", true)).ToList();
+                var queryFishes = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSortedSpecification("Na", "Color", true)).ToList();
                 queryFishes.Count.Should().Be.EqualTo(allFishes.Count);
                 for (var i = 0; i < queryFishes.Count; i++)
                 {
@@ -62,7 +62,7 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
 
 
                 allFishes = unitOfWork.Repository.Query<Fish>().OrderByDescending(x => x.Color).ToList();
-                queryFishes = unitOfWork.Repository.ApplyQuery(new SearchFishSortedQuery("Na", "Color", false)).ToList();
+                queryFishes = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSortedSpecification("Na", "Color", false)).ToList();
                 queryFishes.Count.Should().Be.EqualTo(allFishes.Count);
                 for (var i = 0; i < queryFishes.Count; i++)
                 {

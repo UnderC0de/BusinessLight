@@ -8,7 +8,7 @@ using BusinessLight.Mapping.AutoMapper;
 using BusinessLight.PhoneBook.Data;
 using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Service;
-using BusinessLight.PhoneBook.Service.Queries;
+using BusinessLight.PhoneBook.Service.Specifications;
 using BusinessLight.PhoneBook.Validation;
 using BusinessLight.Validation;
 using BusinessLight.Validation.Unity;
@@ -50,7 +50,7 @@ namespace BusinessLight.PhoneBook.Mvc
             container.RegisterType<ContactCrudService, ContactCrudService>();
             container.RegisterType<IMapper, AutoMapperMapping>();
             container.RegisterType<IValidationFactory, UnityValidationFactory>();
-            container.RegisterType<IValidator<SearchContactQuery>, SearchContactFilterValidator>();
+            container.RegisterType<IValidator<SearchContactSpecification>, SearchContactFilterValidator>();
             container.RegisterType<IValidator<Contact>, ContactValidator>();
             container.RegisterType<IValidator<ContactInfo>, ContactInfoValidator>();
         }

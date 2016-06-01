@@ -42,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactService.cs" />
-    <Compile Include="Queries\SearchContactByIdQuery.cs" />
-    <Compile Include="Queries\SearchContactInfoByContactIdFilter.cs" />
-    <Compile Include="Queries\SearchContactInfoByIdFilter.cs" />
+    <Compile Include="Specifications\SearchContactByIdSpecification.cs" />
+    <Compile Include="Specifications\SearchContactInfoByContactIdSpecification.cs" />
+    <Compile Include="Specifications\SearchContactInfoByIdSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\SearchContactFilter.cs" />
+    <Compile Include="Specifications\SearchContactSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">

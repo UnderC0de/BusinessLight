@@ -12,7 +12,7 @@
  * below are for informational purposes only.
  *
  * NUGET: END LICENSE TEXT */
-/*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
+/*! matchMedia() polyfill - Test a CSS media type/specification in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
 /*! NOTE: If you're already including a window.matchMedia polyfill via Modernizr or otherwise, you don't need this part */
 window.matchMedia = window.matchMedia || (function(doc, undefined){
   
@@ -44,7 +44,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 
 
 
-/*! Respond.js v1.2.0: min/max-width media query polyfill. (c) Scott Jehl. MIT/GPLv2 Lic. j.mp/respondjs  */
+/*! Respond.js v1.2.0: min/max-width media specification polyfill. (c) Scott Jehl. MIT/GPLv2 Lic. j.mp/respondjs  */
 (function( win ){
 	//exposed namespace
 	win.respond		= {};
@@ -52,7 +52,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 	//define update even in native-mq-supporting browsers, to avoid errors
 	respond.update	= function(){};
 	
-	//expose media query support flag for external use
+	//expose media specification support flag for external use
 	respond.mediaQueriesSupported	= win.matchMedia && win.matchMedia( "only all" ).matches;
 	
 	//if media queries are supported, exit here
@@ -250,7 +250,7 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 					max = parseFloat( max ) * ( max.indexOf( em ) > -1 ? ( eminpx || getEmValue() ) : 1 );
 				}
 				
-				// if there's no media query at all (the () part), or min or max is not null, and if either is present, they're true
+				// if there's no media specification at all (the () part), or min or max is not null, and if either is present, they're true
 				if( !thisstyle.hasquery || ( !minnull || !maxnull ) && ( minnull || currWidth >= min ) && ( maxnull || currWidth <= max ) ){
 						if( !styleBlocks[ thisstyle.media ] ){
 							styleBlocks[ thisstyle.media ] = [];

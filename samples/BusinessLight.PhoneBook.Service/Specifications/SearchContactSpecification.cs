@@ -5,9 +5,9 @@ using BusinessLight.Data;
 using BusinessLight.Data.Extensions;
 using BusinessLight.PhoneBook.Domain;
 
-namespace BusinessLight.PhoneBook.Service.Queries
+namespace BusinessLight.PhoneBook.Service.Specifications
 {
-    public class SearchContactQuery : SortedQuery<Contact>
+    public class SearchContactSpecification : SortedSpecification<Contact>
     {
         public string FirstName
         {
@@ -21,9 +21,9 @@ namespace BusinessLight.PhoneBook.Service.Queries
             set;
         }
 
-        public override Expression<Func<Contact, bool>> GetFilterExpression()
+        public override Expression<Func<Contact, bool>> GetSpecificationExpression()
         {
-            var filter = base.GetFilterExpression();
+            var filter = base.GetSpecificationExpression();
 
             if (!string.IsNullOrWhiteSpace(FirstName))
             {

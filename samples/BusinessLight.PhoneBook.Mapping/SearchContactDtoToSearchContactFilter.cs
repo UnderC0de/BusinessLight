@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service.Queries;
+using BusinessLight.PhoneBook.Service.Specifications;
 
 namespace BusinessLight.PhoneBook.Mapping
 {
@@ -8,7 +8,7 @@ namespace BusinessLight.PhoneBook.Mapping
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<SearchContactDto, SearchContactQuery>();
+            Mapper.CreateMap<SearchContactDto, SearchContactSpecification>();
         }
     }
 }

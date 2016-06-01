@@ -4,9 +4,9 @@ using BusinessLight.Domain;
 
 namespace BusinessLight.Data
 {
-    public abstract class SortedQuery<TSource> : Query<TSource>, ISortedQuery<TSource> where TSource : UniqueEntity
+    public abstract class SortedSpecification<TSource> : Specification<TSource>, ISortedSpecification<TSource> where TSource : Entity
     {
-        protected SortedQuery()
+        protected SortedSpecification()
         {
             SortField = string.Empty;
             IsAscending = true;
