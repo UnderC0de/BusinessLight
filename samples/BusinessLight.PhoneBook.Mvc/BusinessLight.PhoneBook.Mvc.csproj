@@ -166,7 +166,6 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
-    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -332,6 +331,10 @@
     <ProjectReference Include="..\..\src\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
       <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
       <Name>BusinessLight.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Mvc\BusinessLight.Mvc.csproj">
+      <Project>{8210dfce-3cce-43a4-be55-e23b455c082c}</Project>
+      <Name>BusinessLight.Mvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Paging\BusinessLight.Paging.csproj">
       <Project>{F4750A96-07FB-4FEE-82A7-8F21E3836899}</Project>

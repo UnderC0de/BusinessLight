@@ -13,13 +13,13 @@
         <description>$description$</description>
         <releaseNotes />
         <copyright>Martino Bordin - Copyright 2016</copyright>
-        <tags>DDD Domain Model Repository UnitOfWork</tags>
-      <dependencies>
+        <tags>MVC</tags>
+      <!--<dependencies>
         <dependency id="BusinessLight.Domain" />
-      </dependencies>
+      </dependencies>-->
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Data.dll" target="lib\net45\BusinessLight.Domain.dll" />
-        <file src="bin\Release\BusinessLight.Data.pdb" target="lib\net45\BusinessLight.Domain.pdb" />
+        <file src="bin\Release\BusinessLight.Mvc.dll" target="lib\net45\BusinessLight.Mvc.dll" />
+        <file src="bin\Release\BusinessLight.Mvc.pdb" target="lib\net45\BusinessLight.Mvc.pdb" />
     </files>
 </package>

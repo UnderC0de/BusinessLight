@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BusinessLight.Domain.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("BusinessLight.Mvc")]
+[assembly: AssemblyDescription("A support library for Asp.net MVC")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BusinessLight.Domain.Tests")]
+[assembly: AssemblyCompany("Martino Bordin")]
+[assembly: AssemblyProduct("BusinessLight.Mvc")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7ab25039-4ea1-4a54-afe8-f5e3832e83f5")]
+[assembly: Guid("8210dfce-3cce-43a4-be55-e23b455c082c")]
 
 // Version information for an assembly consists of the following four values:
 //
