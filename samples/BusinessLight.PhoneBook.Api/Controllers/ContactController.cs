@@ -16,23 +16,23 @@ namespace BusinessLight.PhoneBook.Api.Controllers
     [EnableCors("*", "*", "*")]
     public class ContactController : ApiController
     {
-        private readonly ContactCrudService _contactCrudService;
+        private readonly ContactApplicationService _contactApplicationService;
 
-        public ContactController(ContactCrudService contactCrudService)
+        public ContactController(ContactApplicationService contactApplicationService)
         {
-            if (contactCrudService == null)
+            if (contactApplicationService == null)
             {
-                throw new ArgumentNullException("contactCrudService");
+                throw new ArgumentNullException("contactApplicationService");
             }
 
-            _contactCrudService = contactCrudService;
+            _contactApplicationService = contactApplicationService;
         }
 
         [HttpGet]
         [ResponseType(typeof(ContactDetailDto))]
         public HttpResponseMessage Get(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
+            var contactDetail = _contactApplicationService.GetDetail(id);
             if (contactDetail == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NoContent);
@@ -47,7 +47,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                var searchResult = _contactCrudService.Search(searchContactDto);
+                var searchResult = _contactApplicationService.Search(searchContactDto);
                 return Request.CreateResponse(HttpStatusCode.OK, searchResult);
             }
             catch (ValidationException ex)
@@ -63,7 +63,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactCrudService.CreateContact(contact);
+                _contactApplicationService.CreateContact(contact);
                 return Request.CreateResponse(HttpStatusCode.Created, contact);
             }
             catch (ValidationException ex)
@@ -79,7 +79,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactCrudService.UpdateContact(contact);
+                _contactApplicationService.UpdateContact(contact);
                 return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch (ValidationException ex)
@@ -93,7 +93,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactCrudService.DeleteContact(id);
+                _contactApplicationService.DeleteContact(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException ex)

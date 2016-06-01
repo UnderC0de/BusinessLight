@@ -12,16 +12,16 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 {
     public class ContactsController : Controller
     {
-        private readonly ContactCrudService _contactCrudService;
+        private readonly ContactApplicationService _contactApplicationService;
 
-        public ContactsController(ContactCrudService contactCrudService)
+        public ContactsController(ContactApplicationService contactApplicationService)
         {
-            if (contactCrudService == null)
+            if (contactApplicationService == null)
             {
-                throw new ArgumentNullException("contactCrudService");
+                throw new ArgumentNullException("contactApplicationService");
             }
 
-            _contactCrudService = contactCrudService;
+            _contactApplicationService = contactApplicationService;
         }
 
         public ActionResult Index()
@@ -34,7 +34,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         {
             try
             {
-                searchContactViewModel.PagedResult = _contactCrudService.Search(searchContactViewModel.PagedFilter);
+                searchContactViewModel.PagedResult = _contactApplicationService.Search(searchContactViewModel.PagedFilter);
             }
             catch (ValidationException ex)
             {
@@ -57,7 +57,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactCrudService.CreateContact(contact);
+                    _contactApplicationService.CreateContact(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -71,7 +71,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
+            var contactDetail = _contactApplicationService.GetDetail(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactCrudService.UpdateContact(contact);
+                    _contactApplicationService.UpdateContact(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -96,13 +96,13 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
                 }
             }
 
-            contact.ContactInfos = _contactCrudService.GetContactInfosForContact(contact.Id).ToList();
+            contact.ContactInfos = _contactApplicationService.GetContactInfosForContact(contact.Id).ToList();
             return View(contact);
         }
 
         public ActionResult Delete(Guid id)
         {
-            var contactDetail = _contactCrudService.GetDetail(id);
+            var contactDetail = _contactApplicationService.GetDetail(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            _contactCrudService.DeleteContact(id);
+            _contactApplicationService.DeleteContact(id);
             return RedirectToAction("Index");
         }
     }

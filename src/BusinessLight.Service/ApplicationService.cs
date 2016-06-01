@@ -48,9 +48,29 @@ namespace BusinessLight.Service
             return _mapper.Map<TDestination, TSource>(source);
         }
 
-        protected IValidationFactory GetValidationFactory()
+        protected ValidationResult Validate<T>(T instance)
         {
-            return _validationFactory;
+            return _validationFactory.GetValidatorFor<T>().GetValidationResult(instance);
         }
+
+        protected void ValidateAndThrow<T>(T instance)
+        {
+            var validationResult = Validate(instance);
+
+            if (validationResult.HasErrors)
+            {
+                throw new ValidationException(validationResult);
+            }
+        }
+
+        //protected IValidationFactory GetValidationFactory()
+        //{
+        //    return _validationFactory;
+        //}
+
+        //protected IValidationFactory GetValidationFactory()
+        //{
+        //    return _validationFactory;
+        //}
     }
 }

@@ -47,7 +47,7 @@ namespace BusinessLight.PhoneBook.Mvc
             container.RegisterType<IUnitOfWorkFactory, UnityUnitOfWorkFactory>();
             container.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             container.RegisterType<DbContext, PhoneBookDbContext>();
-            container.RegisterType<ContactCrudService, ContactCrudService>();
+            container.RegisterType<ContactApplicationService, ContactApplicationService>();
             container.RegisterType<IMapper, AutoMapperMapping>();
             container.RegisterType<IValidationFactory, UnityValidationFactory>();
             container.RegisterType<IValidator<SearchContactSpecification>, SearchContactFilterValidator>();

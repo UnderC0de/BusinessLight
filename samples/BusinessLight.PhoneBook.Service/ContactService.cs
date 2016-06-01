@@ -15,9 +15,9 @@ using BusinessLight.Validation;
 
 namespace BusinessLight.PhoneBook.Service
 {
-    public class ContactCrudService : ApplicationService
+    public class ContactApplicationService : ApplicationService
     {
-        public ContactCrudService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
+        public ContactApplicationService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
             : base(unitOfWorkFactory, mapper, validationFactory)
         {
         }
@@ -27,17 +27,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var filter = Map<SearchContactSpecification, SearchContactDto>(searchContactDto);
-
-                var validator = GetValidationFactory().GetValidatorFor<SearchContactSpecification>();
-                if (validator != null)
-                {
-                    var validationResult = validator.GetValidationResult(filter);
-
-                    if (validationResult.HasErrors)
-                    {
-                        throw new ValidationException(validationResult);
-                    }
-                }
+                ValidateAndThrow(filter);
 
                 return uow
                     .Repository
@@ -88,16 +78,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<Contact>();
-                if (validator != null)
-                {
-                    var validationResult = validator.GetValidationResult(contact);
-
-                    if (validationResult.HasErrors)
-                    {
-                        throw new ValidationException(validationResult);
-                    }
-                }
+                ValidateAndThrow(contact);
 
                 uow.Repository.Update(contact);
                 uow.Commit();
@@ -109,16 +90,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<Contact>();
-                if (validator != null)
-                {
-                    var validationResult = validator.GetValidationResult(contact);
-
-                    if (validationResult.HasErrors)
-                    {
-                        throw new ValidationException(validationResult);
-                    }
-                }
+                ValidateAndThrow(contact);
 
                 uow.Repository.Add(contact);
                 uow.Commit();
@@ -150,16 +122,7 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
-                if (validator != null)
-                {
-                    var validationResult = validator.GetValidationResult(contactInfo);
-
-                    if (validationResult.HasErrors)
-                    {
-                        throw new ValidationException(validationResult);
-                    }
-                }
+                ValidateAndThrow(contactInfo);
 
                 uow.Repository.Add(contactInfo);
                 uow.Commit();
@@ -171,22 +134,10 @@ namespace BusinessLight.PhoneBook.Service
             using (var uow = GetUnitOfWork())
             {
                 var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
-                var validator = GetValidationFactory().GetValidatorFor<ContactInfo>();
-                if (validator != null)
-                {
-                    var validationResult = validator.GetValidationResult(contactInfo);
-
-                    if (validationResult.HasErrors)
-                    {
-                        throw new ValidationException(validationResult);
-                    }
-                }
-
+                ValidateAndThrow(contactInfo);
                 uow.Repository.Update(contactInfo);
                 uow.Commit();
             }
         }
     }
-
-   
 }

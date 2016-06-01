@@ -13,13 +13,10 @@
         <description>$description$</description>
         <releaseNotes />
         <copyright>Martino Bordin - Copyright 2016</copyright>
-        <tags>MVC</tags>
-        <dependencies>
-          <dependency id="BusinessLight.Core" />
-        </dependencies>
+        <tags>Core Utils</tags>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Mvc.dll" target="lib\net45\BusinessLight.Mvc.dll" />
-        <file src="bin\Release\BusinessLight.Mvc.pdb" target="lib\net45\BusinessLight.Mvc.pdb" />
+        <file src="bin\Release\BusinessLight.Core.dll" target="lib\net45\BusinessLight.Core.dll" />
+        <file src="bin\Release\BusinessLight.Core.pdb" target="lib\net45\BusinessLight.Core.pdb" />
     </files>
 </package>
