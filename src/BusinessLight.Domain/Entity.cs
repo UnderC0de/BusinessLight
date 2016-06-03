@@ -2,7 +2,12 @@
 
 namespace BusinessLight.Domain
 {
-    public abstract class Entity : IEquatable<Entity>
+    public interface IEntity
+    {
+        Guid Id { get; set; }
+    }
+
+    public abstract class Entity : IEquatable<Entity>, IEntity
     {
         protected Entity()
         {
