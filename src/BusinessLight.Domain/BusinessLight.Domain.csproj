@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\UserIdentifier.cs" />
+    <Compile Include="Application\IApplicationRole.cs" />
+    <Compile Include="Application\IApplicationUserClaim.cs" />
+    <Compile Include="Application\IApplicationUserLogin.cs" />
+    <Compile Include="Application\IApplicationUserRole.cs" />
+    <Compile Include="Application\IApplicationUser.cs" />
     <Compile Include="DateTimeRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />

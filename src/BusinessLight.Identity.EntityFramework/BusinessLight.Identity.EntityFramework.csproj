@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationSignInManager.cs" />
     <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,7 +94,7 @@
     <Compile Include="Domain\ApplicationUserClaim.cs" />
     <Compile Include="Domain\ApplicationUserLogin.cs" />
     <Compile Include="Domain\ApplicationUserRole.cs" />
-    <Compile Include="UserStore.cs" />
+    <Compile Include="ApplicationUserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

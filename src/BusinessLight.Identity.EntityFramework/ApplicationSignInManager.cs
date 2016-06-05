@@ -21,9 +21,9 @@ namespace BusinessLight.Identity.EntityFramework
             return user.GenerateUserIdentityAsync(UserManager);
         }
 
-        public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
+        public static ApplicationSignInManager Create(UserManager<ApplicationUser, Guid> userManager, IAuthenticationManager authenticationManager)
         {
-            return new ApplicationSignInManager(context.GetUserManager<UserManager<ApplicationUser, Guid>>(), context.Authentication);
+            return new ApplicationSignInManager(userManager, authenticationManager);
         }
     }
 }

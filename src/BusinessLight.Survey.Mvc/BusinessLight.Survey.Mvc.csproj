@@ -246,6 +246,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLight.Domain\BusinessLight.Domain.csproj">
+      <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
+      <Name>BusinessLight.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLight.Identity.EntityFramework\BusinessLight.Identity.EntityFramework.csproj">
+      <Project>{ED3F44D7-74DB-4931-9711-B7ACDF34B081}</Project>
+      <Name>BusinessLight.Identity.EntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
