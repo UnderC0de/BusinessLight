@@ -27,9 +27,6 @@ The solution contains a sample **PhoneBook ** application with 2 UI:
 - ASP.NET MVC + ASP.NET Web API
 - AngularJs + ASP.NET Web API
 
-## Demo
-Checkout the MVC sample here: http://phonebooksample.azurewebsites.net
-
 ## Disclaimer
 
 The software is provided "AS IS".
