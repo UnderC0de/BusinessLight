@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using FluentValidation;
-
-namespace BusinessLight.Validation.Fluent
+﻿namespace BusinessLight.Validation.Fluent
 {
-    public class FluentValidator<T> : AbstractValidator<T>, IValidator<T>
+    using System.Linq;
+    using FluentValidation;
+
+    public class FluentValidator<T> : AbstractValidator<T>
     {
         public ValidationResult GetValidationResult(T instance)
         {

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ExpressionExtension.cs" />
+    <Compile Include="IUnitOfWorkFactory.cs" />
     <Compile Include="Specification.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="IRepository.cs" />

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BusinessLight.Domain.Application
+﻿namespace BusinessLight.Domain.Application
 {
+    using System;
+    using System.Collections.Generic;
+
     public interface IApplicationUser<TLogin, TRole, TClaim> : IEntity
         where TLogin : IApplicationUserLogin
         where TRole : IApplicationUserRole

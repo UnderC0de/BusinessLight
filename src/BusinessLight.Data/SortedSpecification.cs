@@ -1,9 +1,10 @@
-using System;
-using System.Linq;
-using BusinessLight.Domain;
-
 namespace BusinessLight.Data
 {
+    using System;
+    using System.Linq;
+
+    using BusinessLight.Domain;
+
     public abstract class SortedSpecification<TSource> : Specification<TSource>, ISortedSpecification<TSource> where TSource : Entity
     {
         protected SortedSpecification()

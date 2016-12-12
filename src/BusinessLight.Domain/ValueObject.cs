@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace BusinessLight.Domain
+﻿namespace BusinessLight.Domain
 {
+    using System;
+    using System.Linq;
+
     public class ValueObject : IEquatable<ValueObject>
     {
         public bool Equals(ValueObject other)

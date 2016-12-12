@@ -1,11 +1,6 @@
-﻿using System;
-
-namespace BusinessLight.Domain
+﻿namespace BusinessLight.Domain
 {
-    public interface IEntity
-    {
-        Guid Id { get; set; }
-    }
+    using System;
 
     public abstract class Entity : IEquatable<Entity>, IEntity
     {

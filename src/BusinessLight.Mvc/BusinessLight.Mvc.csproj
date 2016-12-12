@@ -76,6 +76,7 @@
     <Compile Include="Extensions\PrincipalExtensions.cs" />
     <Compile Include="Extensions\RouteDataExtensions.cs" />
     <Compile Include="Extensions\UrlExtensions.cs" />
+    <Compile Include="Filters\MultipleButtonAttribute.cs" />
     <Compile Include="Filters\RouteLanguageAttribute.cs" />
     <Compile Include="MultipleButtonAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BusinessLight.Validation
+﻿namespace BusinessLight.Validation
 {
+    using System;
+
     public class ValidationIssue
     {
         public ValidationIssue(string message) 

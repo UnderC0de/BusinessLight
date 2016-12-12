@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BusinessLight.Dto
+﻿namespace BusinessLight.Dto
 {
+    using System.ComponentModel.DataAnnotations;
+
     public abstract class SortedPagedFilter : IPagedFilter, ISortedFilter
     {
         protected SortedPagedFilter()

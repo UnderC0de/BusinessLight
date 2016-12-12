@@ -1,9 +1,10 @@
-﻿using BusinessLight.PhoneBook.Domain;
-using BusinessLight.Validation.Fluent;
-using FluentValidation;
-
-namespace BusinessLight.PhoneBook.Validation
+﻿namespace BusinessLight.PhoneBook.Validation
 {
+    using BusinessLight.PhoneBook.Domain;
+    using BusinessLight.Validation.Fluent;
+
+    using FluentValidation;
+
     public class ContactValidator : FluentValidator<Contact>
     {
         public ContactValidator()

@@ -9,7 +9,7 @@ namespace BusinessLight.Validation
         {
             if (validationResult == null)
             {
-                throw new ArgumentNullException("validationResult");
+                throw new ArgumentNullException(nameof(validationResult));
             }
 
             ValidationResult = validationResult;
@@ -17,7 +17,7 @@ namespace BusinessLight.Validation
 
         private static string GetMessage(ValidationResult validationResult)
         {
-            return validationResult == null ? string.Empty : validationResult.ToString();
+            return validationResult?.ToString() ?? string.Empty;
         }
 
         public ValidationResult ValidationResult

@@ -1,10 +1,11 @@
-using System;
-using System.Linq.Expressions;
-using BusinessLight.Data.Extensions;
-using BusinessLight.Domain;
-
 namespace BusinessLight.Data
 {
+    using System;
+    using System.Linq.Expressions;
+
+    using BusinessLight.Data.Extensions;
+    using BusinessLight.Domain;
+
     public abstract class SpecificationById<TSource> : Specification<TSource> where TSource : Entity
     {
         public Guid Id

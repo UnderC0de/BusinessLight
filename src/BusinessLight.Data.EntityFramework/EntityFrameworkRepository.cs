@@ -1,11 +1,11 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
-using BusinessLight.Domain;
-
-namespace BusinessLight.Data.EntityFramework
+﻿namespace BusinessLight.Data.EntityFramework
 {
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+
+    using BusinessLight.Domain;
+
     internal class EntityFrameworkRepository : IRepository
     {
         private bool _disposed;

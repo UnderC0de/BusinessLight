@@ -1,7 +1,7 @@
-using System;
-
 namespace BusinessLight.Domain
 {
+    using System;
+
     public class DateTimeRange : Range<DateTime?>
     {
         /// <summary>
@@ -13,7 +13,7 @@ namespace BusinessLight.Domain
         /// <param name="to">
         /// The to.
         /// </param>
-        public DateTimeRange(DateTime? @from, DateTime? to) 
+        public DateTimeRange(DateTime? from, DateTime? to) 
             : base(@from, to)
         {
         }

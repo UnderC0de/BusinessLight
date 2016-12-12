@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BusinessLight.Domain.Application
+﻿namespace BusinessLight.Domain.Application
 {
+    using System;
+
     public interface IApplicationUserRole
     {
         /// <summary>UserId for the user that is in the role</summary>

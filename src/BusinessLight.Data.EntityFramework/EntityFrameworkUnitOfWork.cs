@@ -1,36 +1,36 @@
-﻿using System;
-using System.Data.Entity;
-
-namespace BusinessLight.Data.EntityFramework
+﻿namespace BusinessLight.Data.EntityFramework
 {
+    using System;
+    using System.Data.Entity;
+
     public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
-        private bool _disposed;
-        private readonly DbContext _dbContext;
-        private readonly EntityFrameworkRepository _repository;
+        private bool disposed;
+        private readonly DbContext dbContext;
+        private readonly EntityFrameworkRepository repository;
 
         public EntityFrameworkUnitOfWork(DbContext dbContext)
         {
             if (dbContext == null)
             {
-                throw new ArgumentNullException("dbContext");
+                throw new ArgumentNullException(nameof(dbContext));
             }
 
-            _dbContext = dbContext;
-            _repository = new EntityFrameworkRepository(dbContext);
+            this.dbContext = dbContext;
+            this.repository = new EntityFrameworkRepository(dbContext);
         }
 
         public IRepository Repository
         {
             get
             {
-                return _repository;
+                return this.repository;
             }
         }
 
         public void Commit()
         {
-            _dbContext.SaveChanges();
+            this.dbContext.SaveChanges();
         }
 
         public void Dispose()
@@ -41,17 +41,17 @@ namespace BusinessLight.Data.EntityFramework
 
         private void Dispose(bool disposing)
         {
-            if (_disposed)
+            if (this.disposed)
             {
                 return;
             }
 
             if (disposing)
             {
-                _repository.Dispose();
+                this.repository.Dispose();
             }
 
-            _disposed = true;
+            this.disposed = true;
         }
     }
 }

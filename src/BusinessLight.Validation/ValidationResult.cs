@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BusinessLight.Validation
+﻿namespace BusinessLight.Validation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class ValidationResult
     {
         public ValidationResult()
@@ -40,21 +40,23 @@ namespace BusinessLight.Validation
         {
             {
                 var stringBuilder = new StringBuilder();
-                if (HasErrors)
+                if (!this.HasErrors)
                 {
-                    foreach (var error in ValidationIssues)
+                    return stringBuilder.ToString();
+                }
+
+                foreach (var error in this.ValidationIssues)
+                {
+                    stringBuilder.AppendLine(error.Message);
+                    if (!string.IsNullOrWhiteSpace(error.PropertyName))
                     {
-                        stringBuilder.AppendLine(error.Message);
-                        if (!string.IsNullOrWhiteSpace(error.PropertyName))
-                        {
-                            stringBuilder.AppendLine("Property:");
-                            stringBuilder.Append(error.PropertyName);     
-                        }
-                        if (error.AttemptedValue != null)
-                        {
-                            stringBuilder.AppendLine("Value:");
-                            stringBuilder.Append(error.AttemptedValue);
-                        }
+                        stringBuilder.AppendLine("Property:");
+                        stringBuilder.Append(error.PropertyName);     
+                    }
+                    if (error.AttemptedValue != null)
+                    {
+                        stringBuilder.AppendLine("Value:");
+                        stringBuilder.Append(error.AttemptedValue);
                     }
                 }
                 return stringBuilder.ToString();

@@ -1,9 +1,11 @@
-﻿using System.Linq;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-
-namespace BusinessLight.Mapping.AutoMapper
+﻿namespace BusinessLight.Mapping.AutoMapper
 {
+    using System.Linq;
+
+    using global::AutoMapper;
+
+    using global::AutoMapper.QueryableExtensions;
+
     public class AutoMapperMapping : IMapper
     {
         public IQueryable<TDestination> ProjectTo<TDestination, TSource>(IQueryable<TSource> source)

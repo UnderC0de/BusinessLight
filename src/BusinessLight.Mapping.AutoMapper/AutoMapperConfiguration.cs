@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using AutoMapper;
-
-namespace BusinessLight.Mapping.AutoMapper
+﻿namespace BusinessLight.Mapping.AutoMapper
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
+    using global::AutoMapper;
+
     public class AutoMapperConfiguration
     {
         public static void Configure(Assembly assembly)

@@ -1,41 +1,42 @@
-﻿using System;
-using BusinessLight.Data;
-using BusinessLight.Mapping;
-using BusinessLight.Validation;
-
-namespace BusinessLight.Service
+﻿namespace BusinessLight.Service
 {
+    using System;
+
+    using BusinessLight.Data;
+    using BusinessLight.Mapping;
+    using BusinessLight.Validation;
+
     public abstract class ApplicationService
     {
-        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
-        private readonly IMapper _mapper;
-        private readonly IValidationFactory _validationFactory;
+        private readonly IUnitOfWorkFactory unitOfWorkFactory;
+        private readonly IMapper mapper;
+        private readonly IValidationFactory validationFactory;
 
         protected ApplicationService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
         {
             if (unitOfWorkFactory == null)
             {
-                throw new ArgumentNullException("unitOfWorkFactory");
+                throw new ArgumentNullException(nameof(unitOfWorkFactory));
             }
 
             if (mapper == null)
             {
-                throw new ArgumentNullException("mapper");
+                throw new ArgumentNullException(nameof(mapper));
             }
 
             if (validationFactory == null)
             {
-                throw new ArgumentNullException("validationFactory");
+                throw new ArgumentNullException(nameof(validationFactory));
             }
 
-            _unitOfWorkFactory = unitOfWorkFactory;
-            _mapper = mapper;
-            _validationFactory = validationFactory;
+            this.unitOfWorkFactory = unitOfWorkFactory;
+            this.mapper = mapper;
+            this.validationFactory = validationFactory;
         }
 
         protected IUnitOfWork GetUnitOfWork()
         {
-            return _unitOfWorkFactory.GetUnitOfWork();
+            return this.unitOfWorkFactory.GetUnitOfWork();
         }
 
         //protected IMapper GetMapper()
@@ -45,12 +46,12 @@ namespace BusinessLight.Service
 
         protected TDestination Map<TDestination, TSource>(TSource source)
         {
-            return _mapper.Map<TDestination, TSource>(source);
+            return this.mapper.Map<TDestination, TSource>(source);
         }
 
         protected ValidationResult Validate<T>(T instance)
         {
-            return _validationFactory.GetValidatorFor<T>().GetValidationResult(instance);
+            return this.validationFactory.GetValidatorFor<T>().GetValidationResult(instance);
         }
 
         protected void ValidateAndThrow<T>(T instance)
@@ -62,15 +63,5 @@ namespace BusinessLight.Service
                 throw new ValidationException(validationResult);
             }
         }
-
-        //protected IValidationFactory GetValidationFactory()
-        //{
-        //    return _validationFactory;
-        //}
-
-        //protected IValidationFactory GetValidationFactory()
-        //{
-        //    return _validationFactory;
-        //}
     }
 }

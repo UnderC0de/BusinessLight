@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
-using BusinessLight.Domain;
-
-namespace BusinessLight.Data
+﻿namespace BusinessLight.Data
 {
+    using System;
+    using System.Linq;
+
+    using BusinessLight.Domain;
+
     public interface IRepository : IDisposable
     {
         void Add<T>(T entity) where T : Entity;

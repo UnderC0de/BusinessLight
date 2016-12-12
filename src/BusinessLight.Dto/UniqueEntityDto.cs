@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BusinessLight.Dto
+﻿namespace BusinessLight.Dto
 {
+    using System;
+
     public abstract class UniqueEntityDto : IEquatable<UniqueEntityDto>
     {
         protected UniqueEntityDto()

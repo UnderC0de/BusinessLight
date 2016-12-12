@@ -1,12 +1,12 @@
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-using BusinessLight.Data;
-using BusinessLight.Data.Extensions;
-using BusinessLight.PhoneBook.Domain;
-
 namespace BusinessLight.PhoneBook.Service.Specifications
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using BusinessLight.Data;
+    using BusinessLight.Data.Extensions;
+    using BusinessLight.PhoneBook.Domain;
+
     public class SearchContactSpecification : SortedSpecification<Contact>
     {
         public string FirstName

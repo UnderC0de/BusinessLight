@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BusinessLight.Data;
-using BusinessLight.Mapping;
-using BusinessLight.Mapping.AutoMapper.Extensions;
-using BusinessLight.Paging;
-using BusinessLight.Paging.Extensions;
-using BusinessLight.PhoneBook.Domain;
-using BusinessLight.PhoneBook.Dto;
-using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service.Specifications;
-using BusinessLight.Service;
-using BusinessLight.Validation;
-
-namespace BusinessLight.PhoneBook.Service
+﻿namespace BusinessLight.PhoneBook.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using BusinessLight.Data;
+    using BusinessLight.Mapping;
+    using BusinessLight.Mapping.AutoMapper.Extensions;
+    using BusinessLight.Paging;
+    using BusinessLight.Paging.Extensions;
+    using BusinessLight.PhoneBook.Domain;
+    using BusinessLight.PhoneBook.Dto;
+    using BusinessLight.PhoneBook.Dto.Filters;
+    using BusinessLight.PhoneBook.Service.Specifications;
+    using BusinessLight.Service;
+    using BusinessLight.Validation;
+
     public class ContactApplicationService : ApplicationService
     {
         public ContactApplicationService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
