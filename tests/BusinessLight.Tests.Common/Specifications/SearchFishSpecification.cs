@@ -6,6 +6,8 @@ using BusinessLight.Tests.Common.Entities;
 
 namespace BusinessLight.Tests.Common.Specifications
 {
+    using BusinessLight.Data.Specifications;
+
     public class SearchFishSpecification : Specification<Fish>
     {
         public SearchFishSpecification(string name)

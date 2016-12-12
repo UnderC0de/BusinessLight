@@ -2,7 +2,9 @@
 {
     using System;
     using System.Linq;
+    using System.Linq.Expressions;
 
+    using BusinessLight.Data.Specifications;
     using BusinessLight.Domain;
 
     public interface IRepository : IDisposable
@@ -11,9 +13,13 @@
 
         void Update<T>(T entity) where T : Entity;
 
+        void AddOrUpdate<T>(T entity) where T : Entity;
+
         void Remove<T>(T entity) where T : Entity;
 
         IQueryable<T> Query<T>() where T : Entity;
+
+        IQueryable<T> Include<T, TProperty>(IQueryable<T> source, Expression<Func<T, TProperty>> path);
 
         IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity;
 

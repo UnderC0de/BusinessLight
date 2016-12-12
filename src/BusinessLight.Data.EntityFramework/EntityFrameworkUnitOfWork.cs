@@ -20,13 +20,7 @@
             this.repository = new EntityFrameworkRepository(dbContext);
         }
 
-        public IRepository Repository
-        {
-            get
-            {
-                return this.repository;
-            }
-        }
+        public IRepository Repository => this.repository;
 
         public void Commit()
         {

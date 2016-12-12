@@ -1,25 +1,26 @@
-﻿using System;
-using Microsoft.Practices.Unity;
-
-namespace BusinessLight.Data.Unity
+﻿namespace BusinessLight.Data.Unity
 {
+    using System;
+
+    using Microsoft.Practices.Unity;
+
     public class UnityUnitOfWorkFactory : IUnitOfWorkFactory
     {
-        private readonly IUnityContainer _unityContainer;
+        private readonly IUnityContainer unityContainer;
 
         public UnityUnitOfWorkFactory(IUnityContainer unityContainer)
         {
             if (unityContainer == null)
             {
-                throw new ArgumentNullException("unityContainer");
+                throw new ArgumentNullException(nameof(unityContainer));
             }
 
-            _unityContainer = unityContainer;
+            this.unityContainer = unityContainer;
         }
 
         public IUnitOfWork GetUnitOfWork()
         {
-            return _unityContainer.Resolve<IUnitOfWork>();
+            return this.unityContainer.Resolve<IUnitOfWork>();
         }
     }
 }

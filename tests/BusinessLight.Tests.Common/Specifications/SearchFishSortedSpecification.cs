@@ -7,6 +7,8 @@ using BusinessLight.Tests.Common.Entities;
 
 namespace BusinessLight.Tests.Common.Specifications
 {
+    using BusinessLight.Data.Specifications;
+
     public class SearchFishSortedSpecification : SortedSpecification<Fish>
     {
         public SearchFishSortedSpecification(string name, string sortField, bool isAscending)

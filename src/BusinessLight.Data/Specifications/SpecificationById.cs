@@ -1,4 +1,4 @@
-namespace BusinessLight.Data
+namespace BusinessLight.Data.Specifications
 {
     using System;
     using System.Linq.Expressions;
@@ -17,7 +17,7 @@ namespace BusinessLight.Data
         public override Expression<Func<TSource, bool>> GetSpecificationExpression()
         {
             var filter = base.GetSpecificationExpression();
-            filter = filter.And(x => x.Id == Id);
+            filter = filter.And(x => x.Id == this.Id);
 
             return filter;
         }

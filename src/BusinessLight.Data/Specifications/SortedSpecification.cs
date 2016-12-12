@@ -1,4 +1,4 @@
-namespace BusinessLight.Data
+namespace BusinessLight.Data.Specifications
 {
     using System;
     using System.Linq;
@@ -9,8 +9,8 @@ namespace BusinessLight.Data
     {
         protected SortedSpecification()
         {
-            SortField = string.Empty;
-            IsAscending = true;
+            this.SortField = string.Empty;
+            this.IsAscending = true;
         }
 
         public string SortField

@@ -4,6 +4,7 @@ namespace BusinessLight.PhoneBook.Service.Specifications
     using System.Linq.Expressions;
     using BusinessLight.Data;
     using BusinessLight.Data.Extensions;
+    using BusinessLight.Data.Specifications;
     using BusinessLight.PhoneBook.Domain;
 
     public class SearchContactInfoByContactIdSpecification : Specification<ContactInfo>

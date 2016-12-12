@@ -1,4 +1,4 @@
-namespace BusinessLight.Data
+namespace BusinessLight.Data.Specifications
 {
     using System;
     using System.Linq;

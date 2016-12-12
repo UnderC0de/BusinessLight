@@ -2,43 +2,56 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Linq.Expressions;
 
+    using BusinessLight.Data.Specifications;
     using BusinessLight.Domain;
 
     internal class EntityFrameworkRepository : IRepository
     {
-        private bool _disposed;
-        private readonly DbContext _dbContext;
+        private bool disposed;
+        private readonly DbContext dbContext;
 
         public EntityFrameworkRepository(DbContext dbContext)
         {
             if (dbContext == null)
             {
-                throw new ArgumentNullException("dbContext");
+                throw new ArgumentNullException(nameof(dbContext));
             }
 
-            _dbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public void Add<T>(T entity) where T : Entity
         {
-            _dbContext.Set<T>().Add(entity);
+            this.dbContext.Set<T>().Add(entity);
         }
 
         public void Update<T>(T entity) where T : Entity
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            this.dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void AddOrUpdate<T>(T entity) where T : Entity
+        {
+            this.dbContext.Set<T>().AddOrUpdate(entity);
         }
 
         public void Remove<T>(T entity) where T : Entity
         {
-            _dbContext.Set<T>().Remove(entity);
+            this.dbContext.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> Query<T>() where T : Entity
         {
-            return _dbContext.Set<T>();
+            return this.dbContext.Set<T>();
+        }
+
+        public IQueryable<T> Include<T, TProperty>(IQueryable<T> source, Expression<Func<T, TProperty>> path)
+        {
+            return source.Include(path);
         }
 
         public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
@@ -53,7 +66,7 @@
 
         public T GetById<T>(Guid id) where T : Entity
         {
-            return _dbContext.Set<T>().Find(id);
+            return this.dbContext.Set<T>().Find(id);
         }
 
         public void Dispose()
@@ -64,17 +77,17 @@
 
         private void Dispose(bool disposing)
         {
-            if (_disposed)
+            if (this.disposed)
             {
                 return;
             }
 
             if (disposing)
             {
-                _dbContext.Dispose();
+                this.dbContext.Dispose();
             }
 
-            _disposed = true;
+            this.disposed = true;
         }
     }
 }

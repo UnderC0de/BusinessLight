@@ -5,6 +5,10 @@ using BusinessLight.Domain;
 
 namespace BusinessLight.Data.InMemory
 {
+    using System.Linq.Expressions;
+
+    using BusinessLight.Data.Specifications;
+
     internal class InMemoryRepository : IRepository
     {
         private bool _disposed;
@@ -32,6 +36,11 @@ namespace BusinessLight.Data.InMemory
             Add(entity);
         }
 
+        public void AddOrUpdate<T>(T entity) where T : Entity
+        {
+            Update(entity);
+        }
+
         public void Remove<T>(T entity) where T : Entity
         {
              _source.Remove(entity);
@@ -40,6 +49,11 @@ namespace BusinessLight.Data.InMemory
         public IQueryable<T> Query<T>() where T : Entity
         {
             return _source.OfType<T>().AsQueryable();
+        }
+
+        public IQueryable<T> Include<T, TProperty>(IQueryable<T> source, Expression<Func<T, TProperty>> path)
+        {
+            return source;
         }
 
         public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
