@@ -4,7 +4,9 @@ using BusinessLight.Dto;
 
 namespace BusinessLight.PhoneBook.Dto
 {
-    public class ContactDto : UniqueEntityDto
+    using Dto = BusinessLight.Dto.Dto;
+
+    public class ContactDto : Dto
     {
         [Display(Name = "First name")]
         public string FirstName { get; set; }

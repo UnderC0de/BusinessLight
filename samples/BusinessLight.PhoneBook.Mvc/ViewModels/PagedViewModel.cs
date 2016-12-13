@@ -8,7 +8,7 @@
 
     public abstract class PagedViewModel<TFilter, TResult>
         where TFilter : IPagedFilter
-        where TResult : UniqueEntityDto
+        where TResult : Dto
     {
         public TFilter PagedFilter
         {

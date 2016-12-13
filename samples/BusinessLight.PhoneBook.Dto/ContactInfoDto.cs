@@ -1,11 +1,14 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using BusinessLight.Dto;
-using BusinessLight.PhoneBook.Common;
-
 namespace BusinessLight.PhoneBook.Dto
 {
-    public class ContactInfoDto : UniqueEntityDto
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using BusinessLight.Dto;
+    using BusinessLight.PhoneBook.Common;
+
+    
+
+    public class ContactInfoDto : Dto
     {
         [Display(Name = "Detail")]
         public string ContactInfoDetail { get; set; }

@@ -1,15 +1,16 @@
-﻿using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using BusinessLight.Dto;
-using BusinessLight.PhoneBook.Mvc.ViewModels;
-
-namespace BusinessLight.PhoneBook.Mvc.Extensions
+﻿namespace BusinessLight.PhoneBook.Mvc.Extensions
 {
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+
+    using BusinessLight.Dto;
+    using BusinessLight.PhoneBook.Mvc.ViewModels;
+
     public static class HtmlExtensions
     {
         public static MvcHtmlString Pager<TFilter, TResult>(this HtmlHelper helper, PagedViewModel<TFilter, TResult> model)
             where TFilter : IPagedFilter
-            where TResult : UniqueEntityDto
+            where TResult : Dto
         {
             var ulBuilder = new TagBuilder("ul");
             ulBuilder.AddCssClass("pagination");
