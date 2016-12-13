@@ -12,41 +12,7 @@
 
     public static class DbContextExtensions
     {
-        public static int ExtendedSaveChanges(this DbContext dbContext)
-        {
-            try
-            {
-                dbContext.SetTimeStamp();
-                return dbContext.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                throw new Exception(ex.GetFullExceptionMessage());
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new Exception(ex.GetFullExceptionMessage());
-            }
-        }
-
-        public static Task<int> ExtendedSaveChangesAsync(this DbContext dbContext, CancellationToken cancellationToken)
-        {
-            try
-            {
-                SetTimeStamp(dbContext);
-                return dbContext.SaveChangesAsync(cancellationToken);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                throw new Exception(ex.GetFullExceptionMessage());
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new Exception(ex.GetFullExceptionMessage());
-            }
-        }
-
-        private static void SetTimeStamp(this DbContext dbContext)
+        public static void SetTimeStamp(this DbContext dbContext)
         {
             var userName = "ApplicationUser";
             if (Thread.CurrentPrincipal != null)

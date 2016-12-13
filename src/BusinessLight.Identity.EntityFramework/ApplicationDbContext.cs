@@ -1,6 +1,8 @@
 ﻿namespace BusinessLight.Identity.EntityFramework
 {
     using System;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Validation;
     using System.Threading;
     using System.Threading.Tasks;
     using BusinessLight.Data.EntityFramework.Extensions;
@@ -27,12 +29,36 @@
 
         public override int SaveChanges()
         {
-            return this.ExtendedSaveChanges();
+            try
+            {
+                this.SetTimeStamp();
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                throw new Exception(ex.GetFullExceptionMessage());
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception(ex.GetFullExceptionMessage());
+            }
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            return this.ExtendedSaveChangesAsync(cancellationToken);
+            try
+            {
+                this.SetTimeStamp();
+                return base.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                throw new Exception(ex.GetFullExceptionMessage());
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception(ex.GetFullExceptionMessage());
+            }
         }
     }
 }
