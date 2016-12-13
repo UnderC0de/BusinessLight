@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BusinessLight.Identity.Owin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Asp.net identity owin authentication")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Martino Bordin")]
 [assembly: AssemblyProduct("BusinessLight.Identity.Owin")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
