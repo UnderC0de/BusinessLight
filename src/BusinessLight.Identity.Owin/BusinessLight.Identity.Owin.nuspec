@@ -15,6 +15,7 @@
         <copyright>Martino Bordin - Copyright 2016</copyright>
         <tags>Asp.net Identity Owin</tags>
       <dependencies>
+        <dependency id="BusinessLight.Domain" />
         <dependency id="BusinessLight.Identity.EntityFramework" />
       </dependencies>
     </metadata>
