@@ -9,6 +9,7 @@
 - Repository and Unit of Work abstraction (implementation with EntityFramework and InMemory)
 - Specification pattern
 - ServiceLayer with Dependency injection
+- Utils for Pagination, MVC development
 
 ## What is not
 It's not a silver bullet framework (otherwise I'll be billionaire). It's a footprint for developing applications and has abstractions that allows to plug-in your business logics.
