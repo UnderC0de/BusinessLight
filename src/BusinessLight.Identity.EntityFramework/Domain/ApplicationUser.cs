@@ -4,12 +4,13 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using BusinessLight.Domain;
     using BusinessLight.Domain.Application;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class ApplicationUser : IdentityUser<Guid, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IApplicationUser<ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
+    public class ApplicationUser : IdentityUser<Guid, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IApplicationUser<ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IAuditable
     {
         public virtual async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser, Guid> manager)
         {
@@ -29,5 +30,13 @@
 
         public string Culture { get; set; }
         public string TimeZone { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
+
+        public string ModifiedBy { get; set; }
     }
 }
