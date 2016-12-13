@@ -3,7 +3,6 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-
     using BusinessLight.Data.EntityFramework.Extensions;
     using BusinessLight.Identity.EntityFramework.Domain;
     using Microsoft.AspNet.Identity.EntityFramework;

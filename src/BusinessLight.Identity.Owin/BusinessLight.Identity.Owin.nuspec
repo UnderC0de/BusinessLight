@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$title$</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/martinobordin/BusinessLight/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/martinobordin/BusinessLight</projectUrl>
+        <iconUrl>http://www.martinobordin.it/businesslight.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <releaseNotes />
+        <copyright>Martino Bordin - Copyright 2016</copyright>
+        <tags>Asp.net Identity Owin</tags>
+      <dependencies>
+        <dependency id="BusinessLight.Identity.EntityFramework" />
+      </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\BusinessLight.Identity.Owin.dll" target="lib\net45\BusinessLight.Identity.Owin.dll" />
+        <file src="bin\Release\BusinessLight.Identity.Owin.pdb" target="lib\net45\BusinessLight.Identity.Owin.pdb" />
+    </files>
+</package>
