@@ -1,10 +1,13 @@
-﻿using System;
-using System.Data.Entity;
-using BusinessLight.Identity.EntityFramework.Domain;
-using Microsoft.AspNet.Identity.EntityFramework;
-
-namespace BusinessLight.Identity.EntityFramework
+﻿namespace BusinessLight.Identity.EntityFramework
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using BusinessLight.Data.EntityFramework.Extensions;
+    using BusinessLight.Identity.EntityFramework.Domain;
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public ApplicationDbContext()
@@ -23,15 +26,14 @@ namespace BusinessLight.Identity.EntityFramework
             return new ApplicationDbContext();
         }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        public override int SaveChanges()
+        {
+            return this.ExtendedSaveChanges();
+        }
 
-        //    //modelBuilder.Entity<ApplicationUser>().ToTable("Users");
-        //    //modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
-        //    //modelBuilder.Entity<IdentityUserLogin>().ToTable("Logins");
-        //    //modelBuilder.Entity<IdentityUserClaim>().ToTable("Claims");
-        //    //modelBuilder.Entity<IdentityRole>().ToTable("Roles");
-        //}
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            return this.ExtendedSaveChangesAsync(cancellationToken);
+        }
     }
 }

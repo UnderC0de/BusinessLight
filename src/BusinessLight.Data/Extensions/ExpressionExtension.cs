@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Linq.Expressions;
 
-    public static class ExpressionExtension
+    public static class ExpressionExtensions
     {
         public static Expression<TDelegate> AndAlso<TDelegate>(this Expression<TDelegate> left, Expression<TDelegate> right)
         {

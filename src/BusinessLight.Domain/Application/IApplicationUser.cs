@@ -14,7 +14,8 @@
             set;
         }
 
-        string Language { get; set; }
+        string Culture { get; set; }
+        string TimeZone { get; set; }
 
         /// <summary>Email</summary>
         string Email { get; set; }
