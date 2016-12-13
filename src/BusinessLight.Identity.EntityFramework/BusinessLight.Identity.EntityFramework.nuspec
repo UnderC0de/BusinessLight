@@ -16,6 +16,7 @@
         <tags>Asp.net Identity</tags>
       <dependencies>
         <dependency id="BusinessLight.Domain" />
+        <dependency id="BusinessLight.Data.EntityFramework" />
       </dependencies>
     </metadata>
     <files>
