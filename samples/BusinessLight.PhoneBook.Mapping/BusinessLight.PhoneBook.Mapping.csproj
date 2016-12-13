@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="ContactToContactDtoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchContactDtoToSearchContactFilter.cs">
+    <Compile Include="SearchContactDtoToSearchContactFilterProfile.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -70,10 +70,6 @@
     <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
       <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
       <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
-      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
-      <Name>BusinessLight.Mapping</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
       <Project>{38df5c07-2575-492b-9cd1-65c5537a677f}</Project>

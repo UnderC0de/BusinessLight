@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="EntityFrameworkRepository.cs" />
     <Compile Include="EntityFrameworkUnitOfWork.cs" />
+    <Compile Include="EntityFrameworkUnitOfWorkFactory.cs" />
     <Compile Include="Extensions\ExceptionsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

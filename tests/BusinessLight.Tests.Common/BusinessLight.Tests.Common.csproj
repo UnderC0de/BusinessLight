@@ -71,8 +71,6 @@
     <Compile Include="Entities\SimpleValueObject.cs" />
     <Compile Include="Specifications\SearchFishSpecification.cs" />
     <Compile Include="Specifications\SearchFishSortedSpecification.cs" />
-    <Compile Include="Validators\FishValidator.cs" />
-    <Compile Include="Validators\FluentFishValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
@@ -86,14 +84,6 @@
     <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
       <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
       <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj">
-      <Project>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</Project>
-      <Name>BusinessLight.Validation.Fluent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

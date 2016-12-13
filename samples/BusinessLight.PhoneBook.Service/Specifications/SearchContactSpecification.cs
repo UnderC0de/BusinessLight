@@ -3,7 +3,6 @@ namespace BusinessLight.PhoneBook.Service.Specifications
     using System;
     using System.Linq;
     using System.Linq.Expressions;
-    using BusinessLight.Data;
     using BusinessLight.Data.Extensions;
     using BusinessLight.Data.Specifications;
     using BusinessLight.PhoneBook.Domain;
@@ -41,13 +40,14 @@ namespace BusinessLight.PhoneBook.Service.Specifications
 
         public override Func<IQueryable<Contact>, IOrderedQueryable<Contact>> GetSortingExpression()
         {
-            switch (SortField)
+            switch (this.SortField)
             {
                 case "FirstName":
                     if (IsAscending)
                     {
                         return items => items.OrderBy(x => x.FirstName);
                     }
+
                     return items => items.OrderByDescending(x => x.FirstName);
 
                 case "LastName":
@@ -55,18 +55,21 @@ namespace BusinessLight.PhoneBook.Service.Specifications
                     {
                         return items => items.OrderBy(x => x.LastName);
                     }
+
                     return items => items.OrderByDescending(x => x.LastName);
                 case "BirthDate":
                     if (IsAscending)
                     {
                         return items => items.OrderBy(x => x.BirthDate);
                     }
+
                     return items => items.OrderByDescending(x => x.BirthDate);
                 default:
                     if (IsAscending)
                     {
                         return items => items.OrderBy(x => x.Id);
                     }
+
                     return items => items.OrderByDescending(x => x.Id);
             }
         }

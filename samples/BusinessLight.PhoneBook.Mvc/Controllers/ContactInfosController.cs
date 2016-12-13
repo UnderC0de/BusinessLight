@@ -1,24 +1,26 @@
-﻿using System;
-using System.Web.Mvc;
-using BusinessLight.PhoneBook.Dto;
-using BusinessLight.PhoneBook.Mvc.Extensions;
-using BusinessLight.PhoneBook.Service;
-using BusinessLight.Validation;
-
-namespace BusinessLight.PhoneBook.Mvc.Controllers
+﻿namespace BusinessLight.PhoneBook.Mvc.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using BusinessLight.PhoneBook.Dto;
+    using BusinessLight.PhoneBook.Mvc.Extensions;
+    using BusinessLight.PhoneBook.Service;
+
+    using FluentValidation;
+
     public class ContactInfosController : Controller
     {
-        private readonly ContactApplicationService _contactApplicationService;
+        private readonly ContactApplicationService contactApplicationService;
 
         public ContactInfosController(ContactApplicationService contactApplicationService)
         {
             if (contactApplicationService == null)
             {
-                throw new ArgumentNullException("contactApplicationService");
+                throw new ArgumentNullException(nameof(contactApplicationService));
             }
 
-            _contactApplicationService = contactApplicationService;
+            this.contactApplicationService = contactApplicationService;
         }
 
         public ActionResult Create(Guid contactId)
@@ -38,7 +40,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactApplicationService.CreateContactInfo(contactInfoDetailDto);
+                    this.contactApplicationService.CreateContactInfo(contactInfoDetailDto);
                     return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
@@ -52,7 +54,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            var contactInfoDetail = _contactApplicationService.GetContactInfo(id);
+            var contactInfoDetail = this.contactApplicationService.GetContactInfo(id);
             if (contactInfoDetail == null)
             {
                 return HttpNotFound();
@@ -68,7 +70,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactApplicationService.UpdateContactInfo(contactInfoDetailDto);
+                    this.contactApplicationService.UpdateContactInfo(contactInfoDetailDto);
                     return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
@@ -81,11 +83,12 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 
         public ActionResult Delete(Guid id)
         {
-            var contactInfoDetail = _contactApplicationService.GetContactInfo(id);
+            var contactInfoDetail = this.contactApplicationService.GetContactInfo(id);
             if (contactInfoDetail == null)
             {
                 return HttpNotFound();
             }
+
             return View(contactInfoDetail);
         }
 
@@ -93,9 +96,8 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            var contactInfoDetail = _contactApplicationService.GetContactInfo(id);
-            _contactApplicationService.DeleteContactInfo(id);
-            return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetail.ContactId });
+            this.contactApplicationService.DeleteContactInfo(id);
+            return RedirectToAction("Index", "Contacts");
         }
     }
 }

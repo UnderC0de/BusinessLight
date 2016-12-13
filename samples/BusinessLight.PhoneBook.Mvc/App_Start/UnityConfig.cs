@@ -2,16 +2,9 @@ using System;
 using System.Data.Entity;
 using BusinessLight.Data;
 using BusinessLight.Data.EntityFramework;
-using BusinessLight.Data.Unity;
-using BusinessLight.Mapping;
-using BusinessLight.Mapping.AutoMapper;
 using BusinessLight.PhoneBook.Data;
 using BusinessLight.PhoneBook.Domain;
 using BusinessLight.PhoneBook.Service;
-using BusinessLight.PhoneBook.Service.Specifications;
-using BusinessLight.PhoneBook.Validation;
-using BusinessLight.Validation;
-using BusinessLight.Validation.Unity;
 using Microsoft.Practices.Unity;
 
 namespace BusinessLight.PhoneBook.Mvc
@@ -44,15 +37,15 @@ namespace BusinessLight.PhoneBook.Mvc
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IUnitOfWorkFactory, UnityUnitOfWorkFactory>();
+            container.RegisterType<IUnitOfWorkFactory, EntityFrameworkUnitOfWorkFactory>();
             container.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             container.RegisterType<DbContext, PhoneBookDbContext>();
             container.RegisterType<ContactApplicationService, ContactApplicationService>();
-            container.RegisterType<IMapper, AutoMapperMapping>();
-            container.RegisterType<IValidationFactory, UnityValidationFactory>();
-            container.RegisterType<IValidator<SearchContactSpecification>, SearchContactFilterValidator>();
-            container.RegisterType<IValidator<Contact>, ContactValidator>();
-            container.RegisterType<IValidator<ContactInfo>, ContactInfoValidator>();
+            //container.RegisterType<IMapper, AutoMapperMapping>();
+            //container.RegisterType<IValidationFactory, UnityValidationFactory>();
+            //container.RegisterType<IValidator<SearchContactSpecification>, SearchContactFilterValidator>();
+            //container.RegisterType<IValidator<Contact>, ContactValidator>();
+            //container.RegisterType<IValidator<ContactInfo>, ContactInfoValidator>();
         }
     }
 }

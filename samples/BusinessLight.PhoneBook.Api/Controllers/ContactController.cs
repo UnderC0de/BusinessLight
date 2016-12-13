@@ -1,43 +1,42 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using System.Web.Http.Description;
-using BusinessLight.Paging;
-using BusinessLight.PhoneBook.Dto;
-using BusinessLight.PhoneBook.Dto.Filters;
-using BusinessLight.PhoneBook.Service;
-using BusinessLight.Validation;
-using Swashbuckle.Swagger.Annotations;
-
-namespace BusinessLight.PhoneBook.Api.Controllers
+﻿namespace BusinessLight.PhoneBook.Api.Controllers
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
+    using System.Web.Http.Description;
+
+    using BusinessLight.Paging;
+    using BusinessLight.PhoneBook.Dto;
+    using BusinessLight.PhoneBook.Dto.Filters;
+    using BusinessLight.PhoneBook.Service;
+
+    using FluentValidation;
+
+    using Swashbuckle.Swagger.Annotations;
+
     [EnableCors("*", "*", "*")]
     public class ContactController : ApiController
     {
-        private readonly ContactApplicationService _contactApplicationService;
+        private readonly ContactApplicationService contactApplicationService;
 
         public ContactController(ContactApplicationService contactApplicationService)
         {
             if (contactApplicationService == null)
             {
-                throw new ArgumentNullException("contactApplicationService");
+                throw new ArgumentNullException(nameof(contactApplicationService));
             }
 
-            _contactApplicationService = contactApplicationService;
+            this.contactApplicationService = contactApplicationService;
         }
 
         [HttpGet]
         [ResponseType(typeof(ContactDetailDto))]
         public HttpResponseMessage Get(Guid id)
         {
-            var contactDetail = _contactApplicationService.GetDetail(id);
-            if (contactDetail == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NoContent);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, contactDetail);
+            var contactDetail = this.contactApplicationService.GetDetail(id);
+            return contactDetail == null ? this.Request.CreateResponse(HttpStatusCode.NoContent) : this.Request.CreateResponse(HttpStatusCode.OK, contactDetail);
         }
 
         [HttpPost]
@@ -47,7 +46,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                var searchResult = _contactApplicationService.Search(searchContactDto);
+                var searchResult = this.contactApplicationService.Search(searchContactDto);
                 return Request.CreateResponse(HttpStatusCode.OK, searchResult);
             }
             catch (ValidationException ex)
@@ -63,7 +62,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactApplicationService.CreateContact(contact);
+                this.contactApplicationService.CreateContact(contact);
                 return Request.CreateResponse(HttpStatusCode.Created, contact);
             }
             catch (ValidationException ex)
@@ -79,7 +78,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactApplicationService.UpdateContact(contact);
+                this.contactApplicationService.UpdateContact(contact);
                 return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch (ValidationException ex)
@@ -93,7 +92,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         {
             try
             {
-                _contactApplicationService.DeleteContact(id);
+                this.contactApplicationService.DeleteContact(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException ex)

@@ -1,9 +1,10 @@
-﻿using AutoMapper;
-using BusinessLight.PhoneBook.Domain;
-using BusinessLight.PhoneBook.Dto;
-
-namespace BusinessLight.PhoneBook.Mapping
+﻿namespace BusinessLight.PhoneBook.Mapping
 {
+    using AutoMapper;
+
+    using BusinessLight.PhoneBook.Domain;
+    using BusinessLight.PhoneBook.Dto;
+
     public class ContactToContactDto : Profile
     {
         protected override void Configure()

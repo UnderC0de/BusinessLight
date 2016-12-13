@@ -31,7 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
@@ -61,25 +74,9 @@
       <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
       <Name>BusinessLight.Dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Mapping.AutoMapper\BusinessLight.Mapping.AutoMapper.csproj">
-      <Project>{e8c7bab2-0e62-4133-9b62-10741c4ea683}</Project>
-      <Name>BusinessLight.Mapping.AutoMapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Mapping\BusinessLight.Mapping.csproj">
-      <Project>{46A70A21-CEE2-45ED-B9E8-FDA4463CE391}</Project>
-      <Name>BusinessLight.Mapping</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Paging\BusinessLight.Paging.csproj">
       <Project>{F4750A96-07FB-4FEE-82A7-8F21E3836899}</Project>
       <Name>BusinessLight.Paging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Service\BusinessLight.Service.csproj">
-      <Project>{2444672B-5845-4BA1-9E36-9D97322AC854}</Project>
-      <Name>BusinessLight.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Domain\BusinessLight.PhoneBook.Domain.csproj">
       <Project>{38DF5C07-2575-492B-9CD1-65C5537A677F}</Project>
@@ -89,6 +86,10 @@
       <Project>{CBB6AFE4-6D30-48E5-AAC0-3EA7BDD451FD}</Project>
       <Name>BusinessLight.PhoneBook.Dto</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

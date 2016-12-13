@@ -51,11 +51,6 @@ namespace BusinessLight.Data.InMemory
             return _source.OfType<T>().AsQueryable();
         }
 
-        public IQueryable<T> Include<T, TProperty>(IQueryable<T> source, Expression<Func<T, TProperty>> path)
-        {
-            return source;
-        }
-
         public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
         {
             return Query<T>().Where(specification.GetSpecificationExpression());

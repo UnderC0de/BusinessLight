@@ -39,11 +39,6 @@
             return this.unitOfWorkFactory.GetUnitOfWork();
         }
 
-        //protected IMapper GetMapper()
-        //{
-        //    return _mapper;
-        //}
-
         protected TDestination Map<TDestination, TSource>(TSource source)
         {
             return this.mapper.Map<TDestination, TSource>(source);

@@ -67,14 +67,6 @@
       <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
       <Name>BusinessLight.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj">
-      <Project>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</Project>
-      <Name>BusinessLight.Validation.Fluent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.Tests.Common\BusinessLight.Tests.Common.csproj">
       <Project>{12F619F1-E618-44E8-8EFF-6DA39936BB36}</Project>
       <Name>BusinessLight.Tests.Common</Name>

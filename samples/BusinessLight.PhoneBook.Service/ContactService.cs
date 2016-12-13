@@ -3,83 +3,82 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using BusinessLight.Data;
-    using BusinessLight.Mapping;
-    using BusinessLight.Mapping.AutoMapper.Extensions;
     using BusinessLight.Paging;
     using BusinessLight.Paging.Extensions;
     using BusinessLight.PhoneBook.Domain;
     using BusinessLight.PhoneBook.Dto;
     using BusinessLight.PhoneBook.Dto.Filters;
     using BusinessLight.PhoneBook.Service.Specifications;
-    using BusinessLight.Service;
-    using BusinessLight.Validation;
 
-    public class ContactApplicationService : ApplicationService
+    public class ContactApplicationService
     {
-        public ContactApplicationService(IUnitOfWorkFactory unitOfWorkFactory, IMapper mapper, IValidationFactory validationFactory)
-            : base(unitOfWorkFactory, mapper, validationFactory)
+        private readonly IUnitOfWorkFactory unitOfWorkFactory;
+
+        public ContactApplicationService(IUnitOfWorkFactory unitOfWorkFactory)
         {
+            this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
         public IPagedList<ContactDto> Search(SearchContactDto searchContactDto)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var filter = Map<SearchContactSpecification, SearchContactDto>(searchContactDto);
-                ValidateAndThrow(filter);
+                var filter = Mapper.Map<SearchContactSpecification>(searchContactDto);
+                //ValidateAndThrow(filter);
 
                 return uow
                     .Repository
                     .IsSatisfiedBy(filter)
-                    .ApplyProjection<ContactDto>()
+                    .ProjectTo<ContactDto>()
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);
             }
         }
 
         public ContactDetailDto GetDetail(Guid id)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 return uow
                     .Repository
                     .IsSatisfiedBy(new SearchContactByIdSpecification(id))
-                    .ApplyProjection<ContactDetailDto>()
+                    .ProjectTo<ContactDetailDto>()
                     .Single();
             }
         }
 
         public ContactInfoDetailDto GetContactInfo(Guid id)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 return uow
                     .Repository
                     .IsSatisfiedBy(new SearchContactInfoByIdSpecification(id))
-                    .ApplyProjection<ContactInfoDetailDto>()
+                    .ProjectTo<ContactInfoDetailDto>()
                     .Single();
             }
         }
 
         public IEnumerable<ContactInfoDto> GetContactInfosForContact(Guid contactId)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 return uow
                     .Repository
                     .IsSatisfiedBy(new SearchContactInfoByContactIdSpecification(contactId))
-                    .ApplyProjection<ContactInfoDto>()
+                    .ProjectTo<ContactInfoDto>()
                     .ToList();
             }
         }
 
         public void UpdateContact(ContactDetailDto contactDetailDto)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
-                ValidateAndThrow(contact);
+                var contact = Mapper.Map<Contact>(contactDetailDto);
+                // ValidateAndThrow(contact);
 
                 uow.Repository.Update(contact);
                 uow.Commit();
@@ -88,10 +87,10 @@
 
         public void CreateContact(ContactDetailDto contactDetailDto)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contact = Map<Contact, ContactDetailDto>(contactDetailDto);
-                ValidateAndThrow(contact);
+                var contact = Mapper.Map<Contact>(contactDetailDto);
+               // ValidateAndThrow(contact);
 
                 uow.Repository.Add(contact);
                 uow.Commit();
@@ -100,7 +99,7 @@
 
         public void DeleteContact(Guid id)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contact = uow.Repository.GetById<Contact>(id);
                 uow.Repository.Remove(contact);
@@ -110,7 +109,7 @@
 
         public void DeleteContactInfo(Guid id)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contact = uow.Repository.GetById<ContactInfo>(id);
                 uow.Repository.Remove(contact);
@@ -120,10 +119,10 @@
 
         public void CreateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
-                ValidateAndThrow(contactInfo);
+                var contactInfo = Mapper.Map<ContactInfo>(contactInfoDetailDto);
+             //   ValidateAndThrow(contactInfo);
 
                 uow.Repository.Add(contactInfo);
                 uow.Commit();
@@ -132,10 +131,10 @@
 
         public void UpdateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
         {
-            using (var uow = GetUnitOfWork())
+            using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contactInfo = Map<ContactInfo, ContactInfoDetailDto>(contactInfoDetailDto);
-                ValidateAndThrow(contactInfo);
+                var contactInfo = Mapper.Map<ContactInfo>(contactInfoDetailDto);
+                //ValidateAndThrow(contactInfo);
                 uow.Repository.Update(contactInfo);
                 uow.Commit();
             }

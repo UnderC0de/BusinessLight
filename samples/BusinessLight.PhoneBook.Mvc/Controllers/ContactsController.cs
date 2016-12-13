@@ -1,27 +1,28 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using BusinessLight.PhoneBook.Dto;
-using BusinessLight.PhoneBook.Mvc.Extensions;
-using BusinessLight.PhoneBook.Mvc.ViewModels;
-using BusinessLight.PhoneBook.Service;
-using BusinessLight.Validation;
-
-
-namespace BusinessLight.PhoneBook.Mvc.Controllers
+﻿namespace BusinessLight.PhoneBook.Mvc.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using BusinessLight.PhoneBook.Dto;
+    using BusinessLight.PhoneBook.Mvc.Extensions;
+    using BusinessLight.PhoneBook.Mvc.ViewModels;
+    using BusinessLight.PhoneBook.Service;
+
+    using FluentValidation;
+
     public class ContactsController : Controller
     {
-        private readonly ContactApplicationService _contactApplicationService;
+        private readonly ContactApplicationService contactApplicationService;
 
         public ContactsController(ContactApplicationService contactApplicationService)
         {
             if (contactApplicationService == null)
             {
-                throw new ArgumentNullException("contactApplicationService");
+                throw new ArgumentNullException(nameof(contactApplicationService));
             }
 
-            _contactApplicationService = contactApplicationService;
+            this.contactApplicationService = contactApplicationService;
         }
 
         public ActionResult Index()
@@ -34,7 +35,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         {
             try
             {
-                searchContactViewModel.PagedResult = _contactApplicationService.Search(searchContactViewModel.PagedFilter);
+                searchContactViewModel.PagedResult = this.contactApplicationService.Search(searchContactViewModel.PagedFilter);
             }
             catch (ValidationException ex)
             {
@@ -57,7 +58,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactApplicationService.CreateContact(contact);
+                    this.contactApplicationService.CreateContact(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -71,7 +72,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            var contactDetail = _contactApplicationService.GetDetail(id);
+            var contactDetail = this.contactApplicationService.GetDetail(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -87,7 +88,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
             {
                 try
                 {
-                    _contactApplicationService.UpdateContact(contact);
+                    this.contactApplicationService.UpdateContact(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -96,13 +97,13 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
                 }
             }
 
-            contact.ContactInfos = _contactApplicationService.GetContactInfosForContact(contact.Id).ToList();
+            contact.ContactInfos = this.contactApplicationService.GetContactInfosForContact(contact.Id).ToList();
             return View(contact);
         }
 
         public ActionResult Delete(Guid id)
         {
-            var contactDetail = _contactApplicationService.GetDetail(id);
+            var contactDetail = this.contactApplicationService.GetDetail(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -114,7 +115,7 @@ namespace BusinessLight.PhoneBook.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            _contactApplicationService.DeleteContact(id);
+            this.contactApplicationService.DeleteContact(id);
             return RedirectToAction("Index");
         }
     }

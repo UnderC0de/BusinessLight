@@ -49,11 +49,6 @@
             return this.dbContext.Set<T>();
         }
 
-        public IQueryable<T> Include<T, TProperty>(IQueryable<T> source, Expression<Func<T, TProperty>> path)
-        {
-            return source.Include(path);
-        }
-
         public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
         {
             return Query<T>().Where(specification.GetSpecificationExpression());

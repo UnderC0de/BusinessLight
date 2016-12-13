@@ -60,14 +60,6 @@
       <Project>{4b4bfc5d-6ab7-4ff9-933d-035fb544281c}</Project>
       <Name>BusinessLight.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation.Fluent\BusinessLight.Validation.Fluent.csproj">
-      <Project>{F3A3CEFA-EEAE-4777-AF10-09C17578A162}</Project>
-      <Name>BusinessLight.Validation.Fluent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Validation\BusinessLight.Validation.csproj">
-      <Project>{AB7B61F3-657A-46C7-9DD0-3821C655F2FC}</Project>
-      <Name>BusinessLight.Validation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
       <Project>{b909498b-91a0-4b17-9e08-3486aed37b71}</Project>
       <Name>BusinessLight.PhoneBook.Common</Name>
