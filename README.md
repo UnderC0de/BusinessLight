@@ -4,12 +4,11 @@
 
 ![BusinessLight](http://www.martinobordin.it/businesslight.png) Light framework for speed up writing .NET Line of Business (LOB) applications
 
-## What is
+## What's in
 - Entities, Value objects and common types for model your data
-- Repository, Unit of Work and Query object abstraction (implementation with EntityFramework and InMemory)
-- Mapping abstraction (implementation with Automapper)
-- Validation abstraction (implemention with FluentValidation)
-- ServiceLayer footprint
+- Repository and Unit of Work abstraction (implementation with EntityFramework and InMemory)
+- Specification pattern
+- ServiceLayer with Dependency injection
 
 ## What is not
 It's not a silver bullet framework (otherwise I'll be billionaire). It's a footprint for developing applications and has abstractions that allows to plug-in your business logics.
