@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class ApplicationUser : IdentityUser<Guid, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IApplicationUser<ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IAuditable
+    public abstract class ApplicationUser : IdentityUser<Guid, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IApplicationUser<ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IAuditable
     {
         public ApplicationUser()
         {
