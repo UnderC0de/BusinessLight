@@ -62,6 +62,10 @@
     <Compile Include="Specifications\SearchContactSpecification.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{6B95374D-BACD-4AFB-B6E9-720CD412F279}</Project>
+      <Name>BusinessLight.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Data\BusinessLight.Data.csproj">
       <Project>{63D35B3F-E435-4798-BC7C-F54961671BC9}</Project>
       <Name>BusinessLight.Data</Name>

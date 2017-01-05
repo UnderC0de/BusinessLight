@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace BusinessLight.Dto
 {
     public abstract class SortedFilter : ISortedFilter
@@ -10,14 +9,12 @@ namespace BusinessLight.Dto
             IsAscending = Costants.DefaultIsAscending;
         }
 
-        [Display(Name = "Sort field")]
         public string SortField
         {
             get;
             set;
         }
 
-        [Display(Name = "Is ascending")]
         public bool IsAscending
         {
             get;

@@ -6,8 +6,6 @@ namespace BusinessLight.PhoneBook.Dto
     using BusinessLight.Dto;
     using BusinessLight.PhoneBook.Common;
 
-    
-
     public class ContactInfoDto : Dto
     {
         [Display(Name = "Detail")]
