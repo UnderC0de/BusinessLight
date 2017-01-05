@@ -1,9 +1,9 @@
-﻿using System;
-using System.Reflection;
-using System.Web.Mvc;
-
-namespace BusinessLight.Mvc
+﻿namespace BusinessLight.Mvc
 {
+    using System;
+    using System.Reflection;
+    using System.Web.Mvc;
+
     [AttributeUsage(AttributeTargets.Method)]
     public class MultipleButtonAttribute : ActionNameSelectorAttribute
     {
@@ -19,6 +19,7 @@ namespace BusinessLight.Mvc
             {
                 return false;
             }
+
             controllerContext.Controller.ControllerContext.RouteData.Values[Name] = Argument;
 
             return true;

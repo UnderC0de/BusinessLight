@@ -2,8 +2,6 @@
 {
     using System;
     using System.Linq;
-    using System.Linq.Expressions;
-
     using BusinessLight.Data.Specifications;
     using BusinessLight.Domain;
 
@@ -24,6 +22,5 @@
         IOrderedQueryable<T> IsSatisfiedBy<T>(ISortedSpecification<T> specification) where T : Entity;
 
         T GetById<T>(Guid id) where T : Entity;
-
     }
 }

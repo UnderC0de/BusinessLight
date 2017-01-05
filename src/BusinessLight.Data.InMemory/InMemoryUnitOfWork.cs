@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections;
-
-namespace BusinessLight.Data.InMemory
+﻿namespace BusinessLight.Data.InMemory
 {
+    using System;
+    using System.Collections;
+
     public class InMemoryUnitOfWork : IUnitOfWork
     {
-        private bool _disposed;
-        private readonly InMemoryRepository _repository;
+        private bool disposed;
+        private readonly InMemoryRepository repository;
 
         public InMemoryUnitOfWork(IList source)
         {
             if (source == null)
             {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
-            _repository = new InMemoryRepository(source);
+            this.repository = new InMemoryRepository(source);
         }
 
         public IRepository Repository
         {
             get
             {
-                return _repository;
+                return this.repository;
             }
         }
 
@@ -38,17 +38,17 @@ namespace BusinessLight.Data.InMemory
 
         private void Dispose(bool disposing)
         {
-            if (_disposed)
+            if (this.disposed)
             {
                 return;
             }
 
             if (disposing)
             {
-                _repository.Dispose();
+                this.repository.Dispose();
             }
 
-            _disposed = true;
+            this.disposed = true;
         }
     }
 }

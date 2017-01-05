@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BusinessLight.Core.Extensions
+﻿namespace BusinessLight.Core.Extensions
 {
+    using System;
+
     public static class DateTimeExtensions
     {
         public static DateTime ToTimeZone(this DateTime date, TimeZoneInfo timeZone)

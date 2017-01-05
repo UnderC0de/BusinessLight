@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using BusinessLight.Domain;
-
-namespace BusinessLight.Data.InMemory
+﻿namespace BusinessLight.Data.InMemory
 {
-    using System.Linq.Expressions;
-
+    using System;
+    using System.Collections;
+    using System.Linq;
     using BusinessLight.Data.Specifications;
+    using BusinessLight.Domain;
 
     internal class InMemoryRepository : IRepository
     {
-        private bool _disposed;
-        private IList _source;
+        private bool disposed;
+        private IList source;
 
         public InMemoryRepository(IList source)
         {
             if (source == null)
             {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
-            _source = source;
+            this.source = source;
         }
 
         public void Add<T>(T entity) where T : Entity
         {
             Remove(entity);
-            _source.Add(entity);
+            this.source.Add(entity);
         }
 
         public void Update<T>(T entity) where T : Entity
@@ -43,12 +40,12 @@ namespace BusinessLight.Data.InMemory
 
         public void Remove<T>(T entity) where T : Entity
         {
-             _source.Remove(entity);
+             this.source.Remove(entity);
         }
 
         public IQueryable<T> Query<T>() where T : Entity
         {
-            return _source.OfType<T>().AsQueryable();
+            return this.source.OfType<T>().AsQueryable();
         }
 
         public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
@@ -63,7 +60,7 @@ namespace BusinessLight.Data.InMemory
 
         public T GetById<T>(Guid id) where T : Entity
         {
-            return _source.OfType<T>().Single(x => x.Id == id);
+            return this.source.OfType<T>().Single(x => x.Id == id);
         }
 
         public void Dispose()
@@ -74,17 +71,17 @@ namespace BusinessLight.Data.InMemory
 
         private void Dispose(bool disposing)
         {
-            if (_disposed)
+            if (this.disposed)
             {
                 return;
             }
 
             if (disposing)
             {
-                 _source = null;
+                 this.source = null;
             }
 
-            _disposed = true;
+            this.disposed = true;
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Web.Mvc;
-
-namespace BusinessLight.Mvc.Filters
+﻿namespace BusinessLight.Mvc.Filters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading;
+    using System.Web.Mvc;
+
     /// <summary>
     /// Set the thread culture based on route parameter
     /// </summary>
