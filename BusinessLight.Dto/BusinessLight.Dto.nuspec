@@ -12,11 +12,12 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
         <releaseNotes />
-        <copyright>Martino Bordin - Copyright 2015</copyright>
+        <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>DDD Domain Model Dto Service</tags>
     </metadata>
     <files>
         <file src="bin\Release\BusinessLight.Dto.dll" target="lib\net45\BusinessLight.Dto.dll" />
         <file src="bin\Release\BusinessLight.Dto.pdb" target="lib\net45\BusinessLight.Dto.pdb" />
+        <file src="bin\Release\BusinessLight.Dto.dll" target="lib\portable-net45+win8+wpa81+wp8\BusinessLight.Dto.dll" />
     </files>
 </package>

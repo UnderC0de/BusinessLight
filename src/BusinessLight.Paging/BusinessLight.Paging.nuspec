@@ -12,7 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
         <releaseNotes />
-        <copyright>Martino Bordin - Copyright 2015</copyright>
+        <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>Pagination Orm Query</tags>
     </metadata>
     <files>
