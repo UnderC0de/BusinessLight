@@ -81,10 +81,6 @@
       <Project>{4B4BFC5D-6AB7-4FF9-933D-035FB544281C}</Project>
       <Name>BusinessLight.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
-      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
-      <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

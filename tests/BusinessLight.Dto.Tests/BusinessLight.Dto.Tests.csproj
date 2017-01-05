@@ -61,10 +61,6 @@
     <Compile Include="SortedPAgedFilterTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
-      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
-      <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.Tests.Common\BusinessLight.Tests.Common.csproj">
       <Project>{12F619F1-E618-44E8-8EFF-6DA39936BB36}</Project>
       <Name>BusinessLight.Tests.Common</Name>

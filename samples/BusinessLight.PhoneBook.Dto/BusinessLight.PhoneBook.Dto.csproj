@@ -49,10 +49,6 @@
     <Compile Include="Filters\SearchContactDto.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
-      <Project>{C6CF4E7E-6EB6-4405-96CB-5F3F641814ED}</Project>
-      <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BusinessLight.PhoneBook.Common\BusinessLight.PhoneBook.Common.csproj">
       <Project>{B909498B-91A0-4B17-9E08-3486AED37B71}</Project>
       <Name>BusinessLight.PhoneBook.Common</Name>
