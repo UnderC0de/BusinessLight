@@ -305,10 +305,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BusinessLight.Dto\BusinessLight.Dto.csproj">
-      <Project>{6B95374D-BACD-4AFB-B6E9-720CD412F279}</Project>
-      <Name>BusinessLight.Dto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Data.EntityFramework\BusinessLight.Data.EntityFramework.csproj">
       <Project>{AAA57E66-B61A-4371-9DCC-31089CDEDD71}</Project>
       <Name>BusinessLight.Data.EntityFramework</Name>

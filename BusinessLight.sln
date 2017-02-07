@@ -57,7 +57,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Identity.Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Identity.Owin", "src\BusinessLight.Identity.Owin\BusinessLight.Identity.Owin.csproj", "{A170DBEB-D0D0-46D6-AD6E-C566F6D69180}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Dto", "BusinessLight.Dto\BusinessLight.Dto.csproj", "{6B95374D-BACD-4AFB-B6E9-720CD412F279}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLight.Dto", "src\BusinessLight.Dto\BusinessLight.Dto.csproj", "{6B95374D-BACD-4AFB-B6E9-720CD412F279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
