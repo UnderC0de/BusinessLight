@@ -1,10 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using BusinessLight.Dto;
-
-namespace BusinessLight.PhoneBook.Dto
+﻿namespace BusinessLight.PhoneBook.Dto
 {
-    using Dto = BusinessLight.Dto.Dto;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using BusinessLight.Dto;
 
     public class ContactDto : Dto
     {

@@ -70,6 +70,10 @@
       <Project>{4b4bfc5d-6ab7-4ff9-933d-035fb544281c}</Project>
       <Name>BusinessLight.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\BusinessLight.Dto\BusinessLight.Dto.csproj">
+      <Project>{6B95374D-BACD-4AFB-B6E9-720CD412F279}</Project>
+      <Name>BusinessLight.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BusinessLight.Paging\BusinessLight.Paging.csproj">
       <Project>{F4750A96-07FB-4FEE-82A7-8F21E3836899}</Project>
       <Name>BusinessLight.Paging</Name>
