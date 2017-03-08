@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace BusinessLight.Mvc.Extensions
+﻿namespace BusinessLight.Mvc.Extensions
 {
+    using System;
     using System.Web.Mvc;
 
     public static class UrlExtensions

@@ -1,22 +1,36 @@
-﻿using System;
-using System.Web.Mvc;
-
-namespace BusinessLight.Mvc.Extensions
+﻿namespace BusinessLight.Mvc.Extensions
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Web;
+    using System.Web.Mvc;
     using System.Web.Mvc.Html;
     using System.Web.Routing;
 
     public static class HtmlExtensions
     {
+        /// <summary>
+        /// Returns if.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="condition">if set to <c>true</c> [condition].</param>
+        /// <param name="trueCondition">The true condition.</param>
+        /// <param name="falseCondition">The false condition.</param>
+        /// <returns></returns>
         public static T ReturnIf<T>(this HtmlHelper htmlHelper, bool condition, T trueCondition, T falseCondition = default(T))
         {
             return condition ? trueCondition : falseCondition;
         }
 
+        /// <summary>
+        /// Images the data.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="imageData">The image data.</param>
+        /// <returns></returns>
         public static string ImageData(this HtmlHelper htmlHelper, byte[] imageData)
         {
             var imageBase64 = Convert.ToBase64String(imageData);
@@ -24,21 +38,132 @@ namespace BusinessLight.Mvc.Extensions
             return imageSrc;
         }
 
+        /// <summary>
+        /// Currents the action.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <returns></returns>
         public static string CurrentAction(this HtmlHelper htmlHelper)
         {
             return htmlHelper.ViewContext.RouteData.GetActionName();
         }
 
+        /// <summary>
+        /// Currents the controller.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <returns></returns>
         public static string CurrentController(this HtmlHelper htmlHelper)
         {
             return htmlHelper.ViewContext.RouteData.GetControllerName();
         }
 
+        /// <summary>
+        /// Javascripts the string.
+        /// </summary>
+        /// <param name="html">The HTML.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         public static MvcHtmlString JavascriptString(this HtmlHelper html, string value)
         {
             return MvcHtmlString.Create(HttpUtility.JavaScriptStringEncode(value));
         }
 
+        /// <summary>
+        /// Opens the graph meta tags.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="imageUrl">The image URL.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="siteName">Name of the site.</param>
+        /// <returns></returns>
+        public static IHtmlString OpenGraphMetaTags(this HtmlHelper htmlHelper, string title, string description = null, string imageUrl = null, string url = null, string siteName = null)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(title));
+            }
+
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                url = htmlHelper.ViewContext?.RequestContext?.HttpContext?.Request?.Url?.AbsoluteUri;
+            }
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("<meta property=\"og:type\" content=\"product\" />");
+            stringBuilder.AppendLine($"<meta property=\"og:title\" content=\"{htmlHelper.Encode(title)}\" />");
+            if (!string.IsNullOrWhiteSpace(description))
+            {
+                stringBuilder.AppendLine($"<meta property=\"og:description\" content=\"{htmlHelper.Encode(description)}\" />");
+            }
+
+            if (!string.IsNullOrWhiteSpace(imageUrl))
+            {
+                stringBuilder.AppendLine("<meta property=\"og:image\" content=\"" + imageUrl + "\" />");
+            }
+
+            stringBuilder.AppendLine("<meta property=\"og:url\" content=\"" + url + "\" />");
+            if (!string.IsNullOrWhiteSpace(siteName))
+            {
+                stringBuilder.AppendLine("<meta property=\"og:site_name\" content=\"" + htmlHelper.Encode(siteName) + "\" />");
+            }
+
+            return new HtmlString(stringBuilder.ToString());
+        }
+
+        /// <summary>
+        /// Twitters the meta tags.
+        /// </summary>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="imageUrl">The image URL.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="siteName">Name of the site.</param>
+        /// <returns></returns>
+        public static IHtmlString TwitterMetaTags(this HtmlHelper htmlHelper, string title, string description = null, string imageUrl = null, string url = null, string siteName = null)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(title));
+            }
+
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                url = htmlHelper.ViewContext?.RequestContext?.HttpContext?.Request?.Url?.AbsoluteUri;
+            }
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("<meta property=\"twitter:card\" content=\"summary\" />");
+            if (!string.IsNullOrWhiteSpace(siteName))
+            {
+                stringBuilder.AppendLine($"<meta property=\"twitter:site\" content=\"{htmlHelper.Encode(siteName)}\" />");
+            }
+
+            stringBuilder.AppendLine($"<meta property=\"twitter:title\" content=\"{htmlHelper.Encode(title)}\" />");
+            if (!string.IsNullOrWhiteSpace(description))
+            {
+                stringBuilder.AppendLine($"<meta property=\"twitter:description\" content=\"{htmlHelper.Encode(description)}\" />");
+            }
+
+            if (!string.IsNullOrWhiteSpace(imageUrl))
+            {
+                stringBuilder.AppendLine($"<meta property=\"twitter:image\" content=\"{imageUrl}\" />");
+            }
+
+            stringBuilder.AppendLine($"<meta property=\"twitter:url\" content=\"{url}\" />");
+            return new HtmlString(stringBuilder.ToString());
+        }
+
+        /// <summary>
+        /// Gets the descriptions for list.
+        /// </summary>
+        /// <param name="html">The HTML.</param>
+        /// <param name="selectedIds">The selected ids.</param>
+        /// <param name="items">The items.</param>
+        /// <returns></returns>
         public static MvcHtmlString GetDescriptionsForList(this HtmlHelper html, IEnumerable<string> selectedIds, IEnumerable<SelectListItem> items)
         {
             var selectionList = items.ToList();

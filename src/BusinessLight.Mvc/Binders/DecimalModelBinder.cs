@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessLight.Mvc.Binders
+﻿namespace BusinessLight.Mvc.Binders
 {
+    using System;
     using System.Globalization;
     using System.Web.Mvc;
 
