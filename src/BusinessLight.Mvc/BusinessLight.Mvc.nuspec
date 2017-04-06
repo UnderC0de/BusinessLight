@@ -12,10 +12,11 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
         <releaseNotes />
-        <copyright>Martino Bordin - Copyright 2016</copyright>
+        <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>MVC</tags>
         <dependencies>
           <dependency id="BusinessLight.Core" />
+          <dependency id="BusinessLight.Paging" />
         </dependencies>
     </metadata>
     <files>

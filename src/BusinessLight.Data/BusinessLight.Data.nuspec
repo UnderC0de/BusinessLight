@@ -12,7 +12,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
         <releaseNotes />
-        <copyright>Martino Bordin - Copyright 2016</copyright>
+        <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>DDD Domain Model Repository UnitOfWork</tags>
       <dependencies>
         <dependency id="BusinessLight.Domain" />

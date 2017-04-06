@@ -75,8 +75,12 @@
   <ItemGroup>
     <Compile Include="Binders\DecimalModelBinder.cs" />
     <Compile Include="Binders\DoubleModelBinder.cs" />
+    <Compile Include="Extensions\GoToFormRenderOptions.cs" />
+    <Compile Include="Extensions\HtmlExtensions.Pager.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Extensions\PagedListDisplayMode.cs" />
+    <Compile Include="Extensions\PagedListRenderOptions.cs" />
     <Compile Include="Extensions\PrincipalExtensions.cs" />
     <Compile Include="Extensions\RouteDataExtensions.cs" />
     <Compile Include="Extensions\UrlExtensions.cs" />
@@ -89,6 +93,12 @@
   <ItemGroup>
     <None Include="BusinessLight.Mvc.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLight.Paging\BusinessLight.Paging.csproj">
+      <Project>{F4750A96-07FB-4FEE-82A7-8F21E3836899}</Project>
+      <Name>BusinessLight.Paging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

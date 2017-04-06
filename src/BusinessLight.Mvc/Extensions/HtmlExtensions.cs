@@ -9,7 +9,7 @@
     using System.Web.Mvc.Html;
     using System.Web.Routing;
 
-    public static class HtmlExtensions
+    public static partial class HtmlExtensions
     {
         /// <summary>
         /// Returns if.
