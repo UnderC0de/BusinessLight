@@ -19,7 +19,7 @@
       </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Data.dll" target="lib\net45\BusinessLight.Domain.dll" />
-        <file src="bin\Release\BusinessLight.Data.pdb" target="lib\net45\BusinessLight.Domain.pdb" />
+        <file src="bin\Release\BusinessLight.Data.dll" target="lib\net45\BusinessLight.Data.dll" />
+        <file src="bin\Release\BusinessLight.Data.pdb" target="lib\net45\BusinessLight.Data.pdb" />
     </files>
 </package>
