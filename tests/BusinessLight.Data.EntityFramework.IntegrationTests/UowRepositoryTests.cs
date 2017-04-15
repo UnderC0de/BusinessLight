@@ -97,7 +97,7 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
             {
                 var countFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
                 await unitOfWork.Repository.RemoveAsync((await unitOfWork.Repository.QueryAsync<Fish>()).First());
-                unitOfWork.CommitAsync();
+                await unitOfWork.CommitAsync();
                 var newCountFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
                 newCountFish.Should().Be.EqualTo(countFish - 1);
             }
