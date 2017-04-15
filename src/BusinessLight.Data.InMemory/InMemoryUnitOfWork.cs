@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using System.Threading.Tasks;
 
     public class InMemoryUnitOfWork : IUnitOfWork
     {
@@ -26,8 +27,9 @@
             }
         }
 
-        public void Commit()
+        public Task CommitAsync()
         {
+            return Task.FromResult(0);
         }
 
         public void Dispose()

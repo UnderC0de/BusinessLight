@@ -3,6 +3,7 @@
     using System;
     using System.Net;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.Http.Description;
@@ -33,20 +34,20 @@
 
         [HttpGet]
         [ResponseType(typeof(ContactDetailDto))]
-        public HttpResponseMessage Get(Guid id)
+        public async Task<HttpResponseMessage> Get(Guid id)
         {
-            var contactDetail = this.contactApplicationService.GetDetail(id);
+            var contactDetail = await this.contactApplicationService.GetDetailAsync(id);
             return contactDetail == null ? this.Request.CreateResponse(HttpStatusCode.NoContent) : this.Request.CreateResponse(HttpStatusCode.OK, contactDetail);
         }
 
         [HttpPost]
         [ResponseType(typeof(IPagedList<ContactDto>))]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(IPagedList<ContactDto>))]
-        public HttpResponseMessage Search(SearchContactDto searchContactDto)
+        public async Task<HttpResponseMessage> Search(SearchContactDto searchContactDto)
         {
             try
             {
-                var searchResult = this.contactApplicationService.Search(searchContactDto);
+                var searchResult = this.contactApplicationService.SearchAsync(searchContactDto);
                 return Request.CreateResponse(HttpStatusCode.OK, searchResult);
             }
             catch (ValidationException ex)
@@ -58,11 +59,11 @@
         [HttpPost]
         [ResponseType(typeof(ContactDetailDto))]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactDetailDto))]
-        public HttpResponseMessage Create(ContactDetailDto contact)
+        public async Task<HttpResponseMessage> Create(ContactDetailDto contact)
         {
             try
             {
-                this.contactApplicationService.CreateContact(contact);
+                await this.contactApplicationService.CreateContactAsync(contact);
                 return Request.CreateResponse(HttpStatusCode.Created, contact);
             }
             catch (ValidationException ex)
@@ -74,11 +75,11 @@
         [HttpPut]
         [ResponseType(typeof(ContactDetailDto))]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactDetailDto))]
-        public HttpResponseMessage Update(ContactDetailDto contact)
+        public async Task<HttpResponseMessage> Update(ContactDetailDto contact)
         {
             try
             {
-                this.contactApplicationService.UpdateContact(contact);
+                await this.contactApplicationService.UpdateContactAsync(contact);
                 return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch (ValidationException ex)
@@ -88,11 +89,11 @@
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(Guid id)
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {
-                this.contactApplicationService.DeleteContact(id);
+                await this.contactApplicationService.DeleteContactAsync(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException ex)

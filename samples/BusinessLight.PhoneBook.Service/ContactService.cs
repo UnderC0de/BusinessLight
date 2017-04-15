@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
+
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using BusinessLight.Data;
@@ -22,121 +24,120 @@
             this.unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public IPagedList<ContactDto> Search(SearchContactDto searchContactDto)
+        public async Task<IPagedList<ContactDto>> SearchAsync(SearchContactDto searchContactDto)
         {
-            using (var uow = unitOfWorkFactory.GetUnitOfWork())
+            using (var uow = this.unitOfWorkFactory.GetUnitOfWork())
             {
                 var filter = Mapper.Map<SearchContactSpecification>(searchContactDto);
                 //ValidateAndThrow(filter);
 
-                return uow
+                return (await uow
                     .Repository
-                    .IsSatisfiedBy(filter)
+                    .IsSatisfiedByAsync(filter))
                     .ProjectTo<ContactDto>()
                     .ApplyPaging(searchContactDto.PageNumber, searchContactDto.PageSize);
             }
         }
 
-        public ContactDetailDto GetDetail(Guid id)
+        public async Task<ContactDetailDto> GetDetailAsync(Guid id)
         {
-            using (var uow = unitOfWorkFactory.GetUnitOfWork())
+            using (var uow = this.unitOfWorkFactory.GetUnitOfWork())
             {
-                return uow
+                return (await uow
                     .Repository
-                    .IsSatisfiedBy(new SearchContactByIdSpecification(id))
+                    .IsSatisfiedByAsync(new SearchContactByIdSpecification(id)))
                     .ProjectTo<ContactDetailDto>()
                     .Single();
             }
         }
 
-        public ContactInfoDetailDto GetContactInfo(Guid id)
+        public async Task<ContactInfoDetailDto> GetContactInfoAsync(Guid id)
         {
-            using (var uow = unitOfWorkFactory.GetUnitOfWork())
+            using (var uow = this.unitOfWorkFactory.GetUnitOfWork())
             {
-                return uow
+                return (await uow
                     .Repository
-                    .IsSatisfiedBy(new SearchContactInfoByIdSpecification(id))
+                    .IsSatisfiedByAsync(new SearchContactInfoByIdSpecification(id)))
                     .ProjectTo<ContactInfoDetailDto>()
                     .Single();
             }
         }
 
-        public IEnumerable<ContactInfoDto> GetContactInfosForContact(Guid contactId)
+        public async Task<IEnumerable<ContactInfoDto>> GetContactInfosForContactAsync(Guid contactId)
         {
-            using (var uow = unitOfWorkFactory.GetUnitOfWork())
+            using (var uow = this.unitOfWorkFactory.GetUnitOfWork())
             {
-                return uow
+                return (await uow
                     .Repository
-                    .IsSatisfiedBy(new SearchContactInfoByContactIdSpecification(contactId))
+                    .IsSatisfiedByAsync(new SearchContactInfoByContactIdSpecification(contactId)))
                     .ProjectTo<ContactInfoDto>()
                     .ToList();
             }
         }
 
-        public void UpdateContact(ContactDetailDto contactDetailDto)
+        public async Task UpdateContactAsync(ContactDetailDto contactDetailDto)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contact = Mapper.Map<Contact>(contactDetailDto);
-                // ValidateAndThrow(contact);
 
-                uow.Repository.Update(contact);
-                uow.Commit();
+                await uow.Repository.UpdateAsync(contact);
+                await uow.CommitAsync();
             }
         }
 
-        public void CreateContact(ContactDetailDto contactDetailDto)
+        public async Task CreateContactAsync(ContactDetailDto contactDetailDto)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contact = Mapper.Map<Contact>(contactDetailDto);
                // ValidateAndThrow(contact);
 
-                uow.Repository.Add(contact);
-                uow.Commit();
+                await uow.Repository.AddAsync(contact);
+                await uow.CommitAsync();
             }
         }
 
-        public void DeleteContact(Guid id)
+        public async Task DeleteContactAsync(Guid id)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contact = uow.Repository.GetById<Contact>(id);
-                uow.Repository.Remove(contact);
-                uow.Commit();
+                var contact = await uow.Repository.GetByIdAsync<Contact>(id);
+                await uow.Repository.RemoveAsync(contact);
+                await uow.CommitAsync();
             }
         }
 
-        public void DeleteContactInfo(Guid id)
+        public async Task DeleteContactInfoAsync(Guid id)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
-                var contact = uow.Repository.GetById<ContactInfo>(id);
-                uow.Repository.Remove(contact);
-                uow.Commit();
+                var contact = await uow.Repository.GetByIdAsync<ContactInfo>(id);
+                await uow.Repository.RemoveAsync(contact);
+                await uow.CommitAsync();
             }
         }
 
-        public void CreateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
+        public async Task CreateContactInfoAsync(ContactInfoDetailDto contactInfoDetailDto)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contactInfo = Mapper.Map<ContactInfo>(contactInfoDetailDto);
              //   ValidateAndThrow(contactInfo);
 
-                uow.Repository.Add(contactInfo);
-                uow.Commit();
+                await uow.Repository.AddAsync(contactInfo);
+                await uow.CommitAsync();
             }
         }
 
-        public void UpdateContactInfo(ContactInfoDetailDto contactInfoDetailDto)
+        public async Task UpdateContactInfoAsync(ContactInfoDetailDto contactInfoDetailDto)
         {
             using (var uow = unitOfWorkFactory.GetUnitOfWork())
             {
                 var contactInfo = Mapper.Map<ContactInfo>(contactInfoDetailDto);
                 //ValidateAndThrow(contactInfo);
-                uow.Repository.Update(contactInfo);
-                uow.Commit();
+                await uow.Repository.UpdateAsync(contactInfo);
+                await uow.CommitAsync();
             }
         }
     }

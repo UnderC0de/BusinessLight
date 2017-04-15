@@ -3,6 +3,7 @@ namespace BusinessLight.PhoneBook.Api.Controllers
     using System;
     using System.Net;
     using System.Net.Http;
+    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.Http.Description;
@@ -32,19 +33,19 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         [HttpGet]
         [ResponseType(typeof(ContactInfoDetailDto))]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactInfoDetailDto))]
-        public HttpResponseMessage Get(Guid id)
+        public async Task<HttpResponseMessage> Get(Guid id)
         {
-            var contactDetail = this.contactApplicationService.GetContactInfo(id);
+            var contactDetail = await this.contactApplicationService.GetContactInfoAsync(id);
             return contactDetail == null ? this.Request.CreateResponse(HttpStatusCode.NoContent) : this.Request.CreateResponse(HttpStatusCode.OK, contactDetail);
         }
 
 
         [HttpPost]
-        public HttpResponseMessage Create(ContactInfoDetailDto contact)
+        public async Task<HttpResponseMessage> Create(ContactInfoDetailDto contact)
         {
             try
             {
-                this.contactApplicationService.CreateContactInfo(contact);
+                await this.contactApplicationService.CreateContactInfoAsync(contact);
                 return Request.CreateResponse(HttpStatusCode.Created, contact);
             }
             catch (ValidationException ex)
@@ -56,11 +57,11 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         [HttpPut]
         [ResponseType(typeof(ContactInfoDetailDto))]
         [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ContactInfoDetailDto))]
-        public HttpResponseMessage Update(ContactInfoDetailDto contact)
+        public async Task<HttpResponseMessage> Update(ContactInfoDetailDto contact)
         {
             try
             {
-                this.contactApplicationService.UpdateContactInfo(contact);
+                await this.contactApplicationService.UpdateContactInfoAsync(contact);
                 return Request.CreateResponse(HttpStatusCode.OK, contact);
             }
             catch (ValidationException ex)
@@ -70,11 +71,11 @@ namespace BusinessLight.PhoneBook.Api.Controllers
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(Guid id)
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {
-                this.contactApplicationService.DeleteContactInfo(id);
+                await this.contactApplicationService.DeleteContactInfoAsync(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException ex)

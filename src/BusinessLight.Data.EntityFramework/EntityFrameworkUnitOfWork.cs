@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Threading.Tasks;
 
     public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
@@ -22,9 +23,9 @@
 
         public IRepository Repository => this.repository;
 
-        public void Commit()
+        public async Task CommitAsync()
         {
-            this.dbContext.SaveChanges();
+            await this.dbContext.SaveChangesAsync();
         }
 
         public void Dispose()

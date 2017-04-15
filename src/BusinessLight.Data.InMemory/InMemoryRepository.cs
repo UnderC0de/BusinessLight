@@ -3,6 +3,8 @@
     using System;
     using System.Collections;
     using System.Linq;
+    using System.Threading.Tasks;
+
     using BusinessLight.Data.Specifications;
     using BusinessLight.Domain;
 
@@ -21,46 +23,50 @@
             this.source = source;
         }
 
-        public void Add<T>(T entity) where T : Entity
+        public async Task AddAsync<T>(T entity) where T : Entity
         {
-            Remove(entity);
+            await RemoveAsync(entity);
             this.source.Add(entity);
+            
         }
 
-        public void Update<T>(T entity) where T : Entity
+        public async Task UpdateAsync<T>(T entity) where T : Entity
         {
-            Remove(entity);
-            Add(entity);
+            await RemoveAsync(entity);
+            await AddAsync(entity);
         }
 
-        public void AddOrUpdate<T>(T entity) where T : Entity
+        public async Task AddOrUpdateAsync<T>(T entity) where T : Entity
         {
-            Update(entity);
+            await UpdateAsync(entity);
         }
 
-        public void Remove<T>(T entity) where T : Entity
+        public Task RemoveAsync<T>(T entity) where T : Entity
         {
              this.source.Remove(entity);
+            return Task.FromResult(0);
         }
 
-        public IQueryable<T> Query<T>() where T : Entity
+        public Task<IQueryable<T>> QueryAsync<T>() where T : Entity
         {
-            return this.source.OfType<T>().AsQueryable();
+            IQueryable<T> result = this.source.OfType<T>().AsQueryable();
+            return Task.FromResult(result);
         }
 
-        public IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity
+        public async Task<IQueryable<T>> IsSatisfiedByAsync<T>(ISpecification<T> specification) where T : Entity
         {
-            return Query<T>().Where(specification.GetSpecificationExpression());
+            return (await QueryAsync<T>()).Where(specification.GetSpecificationExpression());
         }
 
-        public IOrderedQueryable<T> IsSatisfiedBy<T>(ISortedSpecification<T> specification) where T : Entity
+        public async Task<IOrderedQueryable<T>> IsSatisfiedByAsync<T>(ISortedSpecification<T> specification) where T : Entity
         {
-            return specification.GetSortingExpression()(Query<T>().Where(specification.GetSpecificationExpression()));
+            return specification.GetSortingExpression()((await QueryAsync<T>()).Where(specification.GetSpecificationExpression()));
         }
 
-        public T GetById<T>(Guid id) where T : Entity
+        public Task<T> GetByIdAsync<T>(Guid id) where T : Entity
         {
-            return this.source.OfType<T>().Single(x => x.Id == id);
+            var result = this.source.OfType<T>().Single(x => x.Id == id);
+            return Task.FromResult(result);
         }
 
         public void Dispose()

@@ -2,25 +2,26 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
     using BusinessLight.Data.Specifications;
     using BusinessLight.Domain;
 
     public interface IRepository : IDisposable
     {
-        void Add<T>(T entity) where T : Entity;
+        Task AddAsync<T>(T entity) where T : Entity;
 
-        void Update<T>(T entity) where T : Entity;
+        Task UpdateAsync<T>(T entity) where T : Entity;
 
-        void AddOrUpdate<T>(T entity) where T : Entity;
+        Task AddOrUpdateAsync<T>(T entity) where T : Entity;
 
-        void Remove<T>(T entity) where T : Entity;
+        Task RemoveAsync<T>(T entity) where T : Entity;
 
-        IQueryable<T> Query<T>() where T : Entity;
+        Task<IQueryable<T>> QueryAsync<T>() where T : Entity;
 
-        IQueryable<T> IsSatisfiedBy<T>(ISpecification<T> specification) where T : Entity;
+        Task<IQueryable<T>> IsSatisfiedByAsync<T>(ISpecification<T> specification) where T : Entity;
 
-        IOrderedQueryable<T> IsSatisfiedBy<T>(ISortedSpecification<T> specification) where T : Entity;
+        Task<IOrderedQueryable<T>> IsSatisfiedByAsync<T>(ISortedSpecification<T> specification) where T : Entity;
 
-        T GetById<T>(Guid id) where T : Entity;
+        Task<T> GetByIdAsync<T>(Guid id) where T : Entity;
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace BusinessLight.PhoneBook.Mvc.Controllers
 {
     using System;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using BusinessLight.PhoneBook.Dto;
@@ -34,13 +35,13 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ContactInfoDetailDto contactInfoDetailDto)
+        public async Task<ActionResult> Create(ContactInfoDetailDto contactInfoDetailDto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    this.contactApplicationService.CreateContactInfo(contactInfoDetailDto);
+                    await this.contactApplicationService.CreateContactInfoAsync(contactInfoDetailDto);
                     return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
@@ -52,9 +53,9 @@
             return View(contactInfoDetailDto);
         }
 
-        public ActionResult Edit(Guid id)
+        public async Task<ActionResult> Edit(Guid id)
         {
-            var contactInfoDetail = this.contactApplicationService.GetContactInfo(id);
+            var contactInfoDetail = await this.contactApplicationService.GetContactInfoAsync(id);
             if (contactInfoDetail == null)
             {
                 return HttpNotFound();
@@ -70,7 +71,7 @@
             {
                 try
                 {
-                    this.contactApplicationService.UpdateContactInfo(contactInfoDetailDto);
+                    this.contactApplicationService.UpdateContactInfoAsync(contactInfoDetailDto);
                     return RedirectToAction("Edit", "Contacts", new { id = contactInfoDetailDto.ContactId });
                 }
                 catch (ValidationException ex)
@@ -81,9 +82,9 @@
             return View(contactInfoDetailDto);
         }
 
-        public ActionResult Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
-            var contactInfoDetail = this.contactApplicationService.GetContactInfo(id);
+            var contactInfoDetail = await this.contactApplicationService.GetContactInfoAsync(id);
             if (contactInfoDetail == null)
             {
                 return HttpNotFound();
@@ -94,9 +95,9 @@
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            this.contactApplicationService.DeleteContactInfo(id);
+            await this.contactApplicationService.DeleteContactInfoAsync(id);
             return RedirectToAction("Index", "Contacts");
         }
     }

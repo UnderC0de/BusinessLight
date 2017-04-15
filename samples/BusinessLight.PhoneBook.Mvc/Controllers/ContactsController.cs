@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using BusinessLight.PhoneBook.Dto;
@@ -31,11 +32,11 @@
         }
 
         [HttpPost]
-        public ActionResult Index(SearchContactViewModel searchContactViewModel)
+        public async Task<ActionResult> Index(SearchContactViewModel searchContactViewModel)
         {
             try
             {
-                searchContactViewModel.PagedResult = this.contactApplicationService.Search(searchContactViewModel.PagedFilter);
+                searchContactViewModel.PagedResult = await this.contactApplicationService.SearchAsync(searchContactViewModel.PagedFilter);
             }
             catch (ValidationException ex)
             {
@@ -52,13 +53,13 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ContactDetailDto contact)
+        public async Task<ActionResult> Create(ContactDetailDto contact)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    this.contactApplicationService.CreateContact(contact);
+                    await this.contactApplicationService.CreateContactAsync(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -70,9 +71,9 @@
             return View(contact);
         }
 
-        public ActionResult Edit(Guid id)
+        public async Task<ActionResult> Edit(Guid id)
         {
-            var contactDetail = this.contactApplicationService.GetDetail(id);
+            var contactDetail = await this.contactApplicationService.GetDetailAsync(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -82,13 +83,13 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ContactDetailDto contact)
+        public async Task<ActionResult> Edit(ContactDetailDto contact)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    this.contactApplicationService.UpdateContact(contact);
+                    await this.contactApplicationService.UpdateContactAsync(contact);
                     return RedirectToAction("Index");
                 }
                 catch (ValidationException ex)
@@ -97,13 +98,13 @@
                 }
             }
 
-            contact.ContactInfos = this.contactApplicationService.GetContactInfosForContact(contact.Id).ToList();
+            contact.ContactInfos = (await this.contactApplicationService.GetContactInfosForContactAsync(contact.Id)).ToList();
             return View(contact);
         }
 
-        public ActionResult Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
-            var contactDetail = this.contactApplicationService.GetDetail(id);
+            var contactDetail = await this.contactApplicationService.GetDetailAsync(id);
             if (contactDetail == null)
             {
                 return HttpNotFound();
@@ -113,9 +114,9 @@
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            this.contactApplicationService.DeleteContact(id);
+            await this.contactApplicationService.DeleteContactAsync(id);
             return RedirectToAction("Index");
         }
     }

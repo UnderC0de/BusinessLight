@@ -8,6 +8,8 @@ using SharpTestsEx;
 
 namespace BusinessLight.Data.EntityFramework.IntegrationTests
 {
+    using System.Threading.Tasks;
+
     [TestClass]
     public class UowRepositoryTests
     {
@@ -17,39 +19,39 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
         }
 
         [TestMethod]
-        public void CanQuery()
+        public async Task CanQuery()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var countFish = unitOfWork.Repository.Query<Fish>().Count();
-                var countCat = unitOfWork.Repository.Query<Cat>().Count();
+                var countFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
+                var countCat = (await unitOfWork.Repository.QueryAsync<Cat>()).Count();
                 countFish.Should().Be.EqualTo(5);
                 countCat.Should().Be.EqualTo(10);
             }
         }
 
         [TestMethod]
-        public void CanApplyQuery()
+        public async Task CanApplyQuery()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var countFish = unitOfWork.Repository.Query<Fish>().Count();
-                var queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("Na")).ToList();
+                var countFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
+                var queryFish = (await unitOfWork.Repository.IsSatisfiedByAsync(new SearchFishSpecification("Na"))).ToList();
                 queryFish.Count.Should().Be.EqualTo(countFish);
-                queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("")).ToList();
+                queryFish = (await unitOfWork.Repository.IsSatisfiedByAsync(new SearchFishSpecification(string.Empty))).ToList();
                 queryFish.Count.Should().Be.EqualTo(countFish);
-                queryFish = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSpecification("notexistingname")).ToList();
+                queryFish = (await unitOfWork.Repository.IsSatisfiedByAsync(new SearchFishSpecification("notexistingname"))).ToList();
                 queryFish.Count.Should().Be.EqualTo(0);
             }
         }
 
         [TestMethod]
-        public void CanApplySortedQuery()
+        public async Task CanApplySortedQuery()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var allFishes = unitOfWork.Repository.Query<Fish>().OrderBy(x => x.Color).ToList();
-                var queryFishes = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSortedSpecification("Na", "Color", true)).ToList();
+                var allFishes = (await unitOfWork.Repository.QueryAsync<Fish>()).OrderBy(x => x.Color).ToList();
+                var queryFishes = (await unitOfWork.Repository.IsSatisfiedByAsync(new SearchFishSortedSpecification("Na", "Color", true))).ToList();
                 queryFishes.Count.Should().Be.EqualTo(allFishes.Count);
                 for (var i = 0; i < queryFishes.Count; i++)
                 {
@@ -61,8 +63,8 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
                 }
 
 
-                allFishes = unitOfWork.Repository.Query<Fish>().OrderByDescending(x => x.Color).ToList();
-                queryFishes = unitOfWork.Repository.IsSatisfiedBy(new SearchFishSortedSpecification("Na", "Color", false)).ToList();
+                allFishes = (await unitOfWork.Repository.QueryAsync<Fish>()).OrderByDescending(x => x.Color).ToList();
+                queryFishes = (await unitOfWork.Repository.IsSatisfiedByAsync(new SearchFishSortedSpecification("Na", "Color", false))).ToList();
                 queryFishes.Count.Should().Be.EqualTo(allFishes.Count);
                 for (var i = 0; i < queryFishes.Count; i++)
                 {
@@ -76,42 +78,42 @@ namespace BusinessLight.Data.EntityFramework.IntegrationTests
         }
 
         [TestMethod]
-        public void CanAdd()
+        public async Task CanAdd()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var countFish = unitOfWork.Repository.Query<Fish>().Count();
-                unitOfWork.Repository.Add(new Fish());
-                unitOfWork.Commit();
-                var newCountFish = unitOfWork.Repository.Query<Fish>().Count();
+                var countFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
+                await unitOfWork.Repository.AddAsync(new Fish());
+                await unitOfWork.CommitAsync();
+                var newCountFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
                 newCountFish.Should().Be.EqualTo(countFish + 1);
             }
         }
 
         [TestMethod]
-        public void CanRemove()
+        public async Task CanRemove()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var countFish = unitOfWork.Repository.Query<Fish>().Count();
-                unitOfWork.Repository.Remove(unitOfWork.Repository.Query<Fish>().First());
-                unitOfWork.Commit();
-                var newCountFish = unitOfWork.Repository.Query<Fish>().Count();
+                var countFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
+                await unitOfWork.Repository.RemoveAsync((await unitOfWork.Repository.QueryAsync<Fish>()).First());
+                unitOfWork.CommitAsync();
+                var newCountFish = (await unitOfWork.Repository.QueryAsync<Fish>()).Count();
                 newCountFish.Should().Be.EqualTo(countFish - 1);
             }
         }
 
         [TestMethod]
-        public void CanUpdate()
+        public async Task CanUpdate()
         {
             using (var unitOfWork = new EntityFrameworkUnitOfWork(new TestDbContext()))
             {
-                var fish = unitOfWork.Repository.Query<Fish>().First();
+                var fish = (await unitOfWork.Repository.QueryAsync<Fish>()).First();
                 fish.Name.Should().Not.Be.EqualTo("NewName");
                 fish.Name = "NewName";
-                unitOfWork.Repository.Update(fish);
-                unitOfWork.Commit();
-                var updatedFish = unitOfWork.Repository.Query<Fish>().First(x => x.Id == fish.Id);
+                await unitOfWork.Repository.UpdateAsync(fish);
+                await unitOfWork.CommitAsync();
+                var updatedFish = (await unitOfWork.Repository.QueryAsync<Fish>()).First(x => x.Id == fish.Id);
                 updatedFish.Name.Should().Be.EqualTo("NewName");
             }
         }
