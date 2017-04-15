@@ -16,7 +16,7 @@
         <tags>Core Utils</tags>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Core.dll" target="lib\net45\BusinessLight.Core.dll" />
-        <file src="bin\Release\BusinessLight.Core.pdb" target="lib\net45\BusinessLight.Core.pdb" />
+        <file src="bin\Release\BusinessLight.Core.dll" target="lib\net452\BusinessLight.Core.dll" />
+        <file src="bin\Release\BusinessLight.Core.pdb" target="lib\net452\BusinessLight.Core.pdb" />
     </files>
 </package>

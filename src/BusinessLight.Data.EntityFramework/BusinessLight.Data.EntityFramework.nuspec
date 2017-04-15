@@ -15,13 +15,13 @@
         <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>DDD Domain Model Repository UnitOfWork EntityFramework CodeFirst Orm</tags>
       <dependencies>
-        <dependency id="BusinessLight.Domain" />
+        <!--<dependency id="BusinessLight.Domain" />-->
         <dependency id="BusinessLight.Data" />
         <dependency id="EntityFramework" />
       </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Data.EntityFramework.dll" target="lib\net45\BusinessLight.Data.EntityFramework.dll" />
-        <file src="bin\Release\BusinessLight.Data.EntityFramework.pdb" target="lib\net45\BusinessLight.Data.EntityFramework.pdb" />
+        <file src="bin\Release\BusinessLight.Data.EntityFramework.dll" target="lib\net452\BusinessLight.Data.EntityFramework.dll" />
+        <file src="bin\Release\BusinessLight.Data.EntityFramework.pdb" target="lib\net452\BusinessLight.Data.EntityFramework.pdb" />
     </files>
 </package>

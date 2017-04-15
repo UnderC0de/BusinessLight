@@ -20,7 +20,7 @@
       </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Identity.Owin.dll" target="lib\net45\BusinessLight.Identity.Owin.dll" />
-        <file src="bin\Release\BusinessLight.Identity.Owin.pdb" target="lib\net45\BusinessLight.Identity.Owin.pdb" />
+        <file src="bin\Release\BusinessLight.Identity.Owin.dll" target="lib\net452\BusinessLight.Identity.Owin.dll" />
+        <file src="bin\Release\BusinessLight.Identity.Owin.pdb" target="lib\net452\BusinessLight.Identity.Owin.pdb" />
     </files>
 </package>

@@ -21,7 +21,7 @@
       </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Data.DocumentDb.dll" target="lib\net45\BusinessLight.Data.DocumentDb.dll" />
-        <file src="bin\Release\BusinessLight.Data.DocumentDb.pdb" target="lib\net45\BusinessLight.Data.DocumentDb.pdb" />
+        <file src="bin\Release\BusinessLight.Data.DocumentDb.dll" target="lib\net452\BusinessLight.Data.DocumentDb.dll" />
+        <file src="bin\Release\BusinessLight.Data.DocumentDb.pdb" target="lib\net452\BusinessLight.Data.DocumentDb.pdb" />
     </files>
 </package>

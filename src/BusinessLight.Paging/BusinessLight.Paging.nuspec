@@ -16,7 +16,7 @@
         <tags>Pagination Orm Query</tags>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Paging.dll" target="lib\net45\BusinessLight.Paging.dll" />
-        <file src="bin\Release\BusinessLight.Paging.pdb" target="lib\net45\BusinessLight.Paging.pdb" />
+        <file src="bin\Release\BusinessLight.Paging.dll" target="lib\net452\BusinessLight.Paging.dll" />
+        <file src="bin\Release\BusinessLight.Paging.pdb" target="lib\net452\BusinessLight.Paging.pdb" />
     </files>
 </package>

@@ -20,7 +20,7 @@
       </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Data.InMemory.dll" target="lib\net45\BusinessLight.Data.InMemory.dll" />
-        <file src="bin\Release\BusinessLight.Data.InMemory.pdb" target="lib\net45\BusinessLight.Data.InMemory.pdb" />
+        <file src="bin\Release\BusinessLight.Data.InMemory.dll" target="lib\net452\BusinessLight.Data.InMemory.dll" />
+        <file src="bin\Release\BusinessLight.Data.InMemory.pdb" target="lib\net452\BusinessLight.Data.InMemory.pdb" />
     </files>
 </package>

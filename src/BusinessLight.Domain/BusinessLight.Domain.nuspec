@@ -16,7 +16,7 @@
         <tags>DDD Domain Model</tags>
     </metadata>
     <files>
-        <file src="bin\Release\BusinessLight.Domain.dll" target="lib\net45\BusinessLight.Domain.dll" />
-        <file src="bin\Release\BusinessLight.Domain.pdb" target="lib\net45\BusinessLight.Domain.pdb" />
+        <file src="bin\Release\BusinessLight.Domain.dll" target="lib\net452\BusinessLight.Domain.dll" />
+        <file src="bin\Release\BusinessLight.Domain.pdb" target="lib\net452\BusinessLight.Domain.pdb" />
     </files>
 </package>
