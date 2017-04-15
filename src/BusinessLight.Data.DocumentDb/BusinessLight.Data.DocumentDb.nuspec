@@ -15,9 +15,9 @@
         <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>DDD Domain Model Repository UnitOfWork DocumentDb CodeFirst Orm</tags>
       <dependencies>
-        <dependency id="BusinessLight.Domain" />
-        <dependency id="BusinessLight.Data" />
-        <dependency id="Microsoft.Azure.DocumentDB" />
+        <dependency id="BusinessLight.Domain" version="1.0" />
+        <dependency id="BusinessLight.Data" version="1.0" />
+        <dependency id="Microsoft.Azure.DocumentDB" version="1.0" />
       </dependencies>
     </metadata>
     <files>

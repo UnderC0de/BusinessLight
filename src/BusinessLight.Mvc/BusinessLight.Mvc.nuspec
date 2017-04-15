@@ -15,8 +15,8 @@
         <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>MVC</tags>
         <dependencies>
-          <dependency id="BusinessLight.Core" />
-          <dependency id="BusinessLight.Paging" />
+          <dependency id="BusinessLight.Core" version="1.0" />
+          <dependency id="BusinessLight.Paging" version="1.0" />
         </dependencies>
     </metadata>
     <files>
