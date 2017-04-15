@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>$id$</id>
         <version>$version$</version>
@@ -14,9 +14,9 @@
         <releaseNotes />
         <copyright>Martino Bordin - Copyright 2017</copyright>
         <tags>DDD Domain Model Repository UnitOfWork</tags>
-      <dependencies>
-        <dependency id="BusinessLight.Domain" />
-      </dependencies>
+        <!--<dependencies>
+            <dependency id="BusinessLight.Domain" />
+        </dependencies>-->
     </metadata>
     <files>
         <file src="bin\Release\BusinessLight.Data.dll" target="lib\net45\BusinessLight.Data.dll" />
